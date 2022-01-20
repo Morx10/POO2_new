@@ -10,7 +10,7 @@ package Objetos;
  */
 public abstract class Rovers implements Acciones {
     
-    private String nombreRover;
+    public String nombreRover;
     private double ubicacionx;
     private double ubicaciony;
     private int bateria;

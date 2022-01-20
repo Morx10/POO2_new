@@ -26,7 +26,7 @@ public class RoversData {
             while((linea = bf.readLine())!=null){
                 String[] p = linea.split(",");
                 Rovers rover;
-                if(p[3].equals("Solar")){
+                if(p[3].equals("solar")){
                     rover = new RoverSolar(p[0],Double.parseDouble(p[1]),Double.parseDouble(p[2]));
                 }else{
                     rover = new RoverEolica(p[0],Double.parseDouble(p[1]),Double.parseDouble(p[2]));

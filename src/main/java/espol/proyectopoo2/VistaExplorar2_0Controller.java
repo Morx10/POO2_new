@@ -36,6 +36,8 @@ import javafx.scene.shape.Circle;
  * @author marit
  */
 public class VistaExplorar2_0Controller implements Initializable {
+    
+    private static Rovers rover;
 
     @FXML
     private Pane marteimage;
@@ -73,7 +75,7 @@ public class VistaExplorar2_0Controller implements Initializable {
     
     @FXML
     private void cargarRovers(ActionEvent event) throws IOException {
-        Rovers rover=cbrovers.getValue();
+        rover=cbrovers.getValue();
         ImageView imgview=null;
         
         try{
@@ -104,6 +106,12 @@ public class VistaExplorar2_0Controller implements Initializable {
                 comandos.clear();
                 cajadeComandos.appendText(text);
                 cajadeComandos.appendText("\n");
+                
+                
+                //
+                if(text.equals("cargar")){
+                    rover.cargar();
+                }
          
             }           
         }

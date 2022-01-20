@@ -4,6 +4,8 @@
  */
 package Objetos;
 
+import javafx.scene.control.Alert;
+
 /**
  *
  * @author marit
@@ -17,7 +19,12 @@ public class RoverEolica extends Rovers {
 
     @Override
     public void cargar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Alert alert= new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("despliegue de molinos");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        super.setUbicacionx(100);
+        super.setUbicaciony(100);
     }
     
 }
