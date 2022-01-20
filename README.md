@@ -1,2 +1,2 @@
-# POO2_new
- 
+# Proyecto2POO
+ Proyecto segundo Parcial POO

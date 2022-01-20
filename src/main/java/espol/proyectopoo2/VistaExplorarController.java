@@ -1,0 +1,129 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ */
+package espol.proyectopoo2;
+
+import Data.*;
+import Objetos.Crater;
+import Objetos.Rovers;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+
+/**
+ * FXML Controller class
+ *
+ * @author sanch
+ */
+public class VistaExplorarController implements Initializable {
+
+    @FXML
+    private Pane marteimage;
+    @FXML
+    private ComboBox<Rovers> cbrovers;
+    @FXML
+    private TextField comandos;
+    @FXML
+    private TextArea cajadeComandos;
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        List<Rovers> rovers = RoversData.cargarRovers();
+        cbrovers.getItems().addAll(rovers);
+        
+        List<Crater> crateres = CraterData.cargarCrateres();
+        
+        for(Crater i:crateres){
+            Circle c= new Circle(i.isRadiocrater(),Color.TRANSPARENT);
+            c.setStrokeWidth(2);
+            c.setStroke(Color.BLUE);
+            StackPane st= new StackPane();
+            st.getChildren().addAll(c);
+            marteimage.getChildren().addAll(st);
+            
+            st.setLayoutX(i.isLatitud());
+            st.setLayoutY(i.isLongitud());
+            
+        }
+        
+    }    
+
+    @FXML
+    private void volverMenuPrincipal(MouseEvent event) throws IOException {
+        Parent root = App.loadFXML("VistaPrincipal");
+        App.setRoot(root);   
+    }
+     
+
+    @FXML
+    private void comandosnow(ActionEvent event) {
+        comandos.setOnKeyPressed(new EventHandler<KeyEvent>(){
+            @Override
+            public void handle(KeyEvent event) {
+            if(event.getCode() == KeyCode.ENTER){
+                String text= comandos.getText();
+                comandos.clear();
+                cajadeComandos.appendText(text);
+                cajadeComandos.appendText("\n");
+                System.out.println("hola");
+         
+            }           
+        }
+        });
+        
+     }
+
+    @FXML
+    private void cargarRovers(ActionEvent event) {
+        Rovers rover=cbrovers.getValue();
+        ImageView imgview=null;
+        
+        try{
+                InputStream input = App.class.getResource("rover.png").openStream();
+                Image img = new Image(input, 50,50,true,true);
+                imgview = new ImageView(img);
+            }catch(NullPointerException | IOException ex){
+                //no hay la imagen buscada
+                System.out.println("no esta la imagen");
+                imgview = new ImageView();
+            }
+        if((marteimage.getChildren().get(marteimage.getChildren().size()-1)) instanceof ImageView){
+        marteimage.getChildren().remove(marteimage.getChildren().size()-1);
+    }       
+        marteimage.getChildren().addAll(imgview);
+            
+        imgview.setLayoutX(rover.getUbicacionx());
+        imgview.setLayoutY(rover.getUbicaciony());
+        
+        
+        
+    }
+    }
+
+    
+

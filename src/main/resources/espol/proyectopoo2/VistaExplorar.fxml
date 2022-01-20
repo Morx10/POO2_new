@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaExplorarController">
+   <right>
+      <VBox prefHeight="365.0" prefWidth="123.0" BorderPane.alignment="CENTER">
+         <children>
+            <ComboBox fx:id="cbrobers" onAction="#cargarRovers" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin></ComboBox>
+            <Label text="Ingrese comandos:" />
+            <TextField fx:id="comandos" onAction="#comandosnow">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Comandos Ingresados:">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <TextArea fx:id="cajadeComandos" prefHeight="200.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextArea>
+            <Button mnemonicParsing="false" onMouseClicked="#volverMenuPrincipal" text="Volver" />
+         </children></VBox>
+   </right>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <center>
+      <Pane id="marteimage" fx:id="marteimage" prefHeight="389.0" prefWidth="462.0" stylesheets="@vistaExplorarcss.css" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets right="5.0" />
+         </BorderPane.margin></Pane>
+   </center>
+</BorderPane>
