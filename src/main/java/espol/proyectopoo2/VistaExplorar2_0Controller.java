@@ -4,7 +4,8 @@
  */
 package espol.proyectopoo2;
 
-import Data.*;
+import Data.CraterData;
+import Data.RoversData;
 import Objetos.Crater;
 import Objetos.Rovers;
 import java.io.IOException;
@@ -18,25 +19,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
+import javafx.scene.shape.Circle;
 
 /**
  * FXML Controller class
  *
- * @author sanch
+ * @author marit
  */
-public class VistaExplorarController implements Initializable {
+public class VistaExplorar2_0Controller implements Initializable {
 
     @FXML
     private Pane marteimage;
@@ -46,13 +45,12 @@ public class VistaExplorarController implements Initializable {
     private TextField comandos;
     @FXML
     private TextArea cajadeComandos;
-
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+            // TODO
         List<Rovers> rovers = RoversData.cargarRovers();
         cbrovers.getItems().addAll(rovers);
         
@@ -70,36 +68,11 @@ public class VistaExplorarController implements Initializable {
             st.setLayoutY(i.isLongitud());
             
         }
-        
+        // TODO
     }    
-
+    
     @FXML
-    private void volverMenuPrincipal(MouseEvent event) throws IOException {
-        Parent root = App.loadFXML("VistaPrincipal");
-        App.setRoot(root);   
-    }
-     
-
-    @FXML
-    private void comandosnow(ActionEvent event) {
-        comandos.setOnKeyPressed(new EventHandler<KeyEvent>(){
-            @Override
-            public void handle(KeyEvent event) {
-            if(event.getCode() == KeyCode.ENTER){
-                String text= comandos.getText();
-                comandos.clear();
-                cajadeComandos.appendText(text);
-                cajadeComandos.appendText("\n");
-                System.out.println("hola");
-         
-            }           
-        }
-        });
-        
-     }
-
-    @FXML
-    private void cargarRovers(ActionEvent event) {
+    private void cargarRovers(ActionEvent event) throws IOException {
         Rovers rover=cbrovers.getValue();
         ImageView imgview=null;
         
@@ -119,11 +92,29 @@ public class VistaExplorarController implements Initializable {
             
         imgview.setLayoutX(rover.getUbicacionx());
         imgview.setLayoutY(rover.getUbicaciony());
-        
-        
-        
-    }
     }
 
+    @FXML
+    private void comandosnow(KeyEvent event) {
+        comandos.setOnKeyPressed(new EventHandler<KeyEvent>(){
+            @Override
+            public void handle(KeyEvent event) {
+            if(event.getCode() == KeyCode.ENTER){
+                String text= comandos.getText();
+                comandos.clear();
+                cajadeComandos.appendText(text);
+                cajadeComandos.appendText("\n");
+         
+            }           
+        }
+        });
+    }
+
+    @FXML
+    private void volerMenuPrincipal(ActionEvent event) throws IOException {
+        Parent root = App.loadFXML("VistaPrincipal");
+        App.setRoot(root);   
+    }
+   
     
-
+}

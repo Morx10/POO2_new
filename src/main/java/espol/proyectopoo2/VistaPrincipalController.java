@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -29,11 +30,6 @@ public class VistaPrincipalController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void Explorar(MouseEvent event) throws IOException {
-        Parent root = App.loadFXML("VistaExplorar");
-        App.setRoot(root);  
-    }
 
     @FXML
     private void planificarRutas(MouseEvent event) throws IOException {
@@ -50,6 +46,14 @@ public class VistaPrincipalController implements Initializable {
     @FXML
     private void Salir(MouseEvent event) {
         Platform.exit();
+    }
+
+
+
+    @FXML
+    private void Explorar(MouseEvent event) throws IOException {
+        Parent root = App.loadFXML("VistaExplorar2_0");
+        App.setRoot(root);
     }
     
 }
