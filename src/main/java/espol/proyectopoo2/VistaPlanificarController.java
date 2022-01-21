@@ -28,6 +28,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 /**
  * FXML Controller class
@@ -61,6 +63,7 @@ public class VistaPlanificarController implements Initializable {
     @FXML
     private void generarRuta(KeyEvent event) {
         KeyCode tecla = event.getCode(); 
+        vboxRutas.getChildren().clear();
         vboxRutas.setSpacing(10);
         if(tecla == tecla.ENTER){
             //Crear una lista con los cráteres que se quieren visitar
@@ -96,11 +99,13 @@ public class VistaPlanificarController implements Initializable {
                 paneRutas.add(new Label((i+1)+".- "+c.getNombrecrater()),0,i);
                 i++;
             }
+            Label titulo = new Label("Ruta sugerida de exploración");
+            titulo.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
             paneRutas.setHgap(10);
             paneRutas.setAlignment(Pos.CENTER);
             paneRutas.setMaxHeight(100);
             paneRutas.setMaxWidth(2000);
-            vboxRutas.getChildren().add(paneRutas);
+            vboxRutas.getChildren().addAll(titulo,paneRutas);
             vboxRutas.setVisible(true);
         }
     }
