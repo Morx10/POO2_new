@@ -29,7 +29,7 @@ public abstract class Rovers implements Acciones {
     }
 
     @Override
-    public void girar() {
+    public void girar(double girar) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

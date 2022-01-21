@@ -47,6 +47,9 @@ public class VistaExplorar2_0Controller implements Initializable {
     private TextField comandos;
     @FXML
     private TextArea cajadeComandos;
+    
+    private static double DELTA_MOVIMIENTO=20;
+    private static ImageView imgview;
     /**
      * Initializes the controller class.
      */
@@ -76,7 +79,7 @@ public class VistaExplorar2_0Controller implements Initializable {
     @FXML
     private void cargarRovers(ActionEvent event) throws IOException {
         rover=cbrovers.getValue();
-        ImageView imgview=null;
+        
         
         try{
                 InputStream input = App.class.getResource("rover.png").openStream();
@@ -108,9 +111,11 @@ public class VistaExplorar2_0Controller implements Initializable {
                 cajadeComandos.appendText("\n");
                 
                 
-                //
+                //FUNCION CARGAR ROVER
                 if(text.equals("cargar")){
+                    
                     rover.cargar();
+                    
                 }
          
             }           
@@ -122,6 +127,60 @@ public class VistaExplorar2_0Controller implements Initializable {
     private void volerMenuPrincipal(ActionEvent event) throws IOException {
         Parent root = App.loadFXML("VistaPrincipal");
         App.setRoot(root);   
+    }
+    
+    private static void moverobjeto(double ubicacionX, double ubicacionY){
+        double destinoX= rover.getUbicacionx();
+        double destinoY= rover.getUbicaciony();
+        
+        int banderax=0;
+        int banderay=0;
+        
+        double nuevaubicacionx;
+        double nuevaubicaciony;
+        //ubicacion en X 
+
+        
+        while(ubicacionX<destinoX){
+            nuevaubicacionx= ubicacionX+DELTA_MOVIMIENTO;
+            imgview.setLayoutX(nuevaubicacionx);               
+        }
+        while(ubicacionX > destinoX){ 
+            if(banderax==0){
+                banderax=1;
+                rover.girar(180);
+            }
+            nuevaubicacionx= ubicacionX-DELTA_MOVIMIENTO;
+            imgview.setLayoutX(nuevaubicacionx);
+            
+        }
+        
+        if(banderax==1){
+            rover.girar(180);
+        }
+        
+        //ubicacion en Y
+        
+        while(ubicacionY<destinoY){
+            
+            if(banderay==0){
+                rover.girar(90);
+            }
+            
+            nuevaubicaciony= ubicacionX+DELTA_MOVIMIENTO;
+            imgview.setLayoutY(nuevaubicaciony);               
+        }
+        while(ubicacionY > destinoY){
+            if(banderay==0){
+                rover.girar(-90);
+            }
+            rover.girar(180);
+            nuevaubicaciony= ubicacionX-DELTA_MOVIMIENTO;
+            imgview.setLayoutY(nuevaubicaciony);
+        }
+        
+        
+        
     }
    
     
