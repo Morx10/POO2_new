@@ -4,6 +4,7 @@
  */
 package Objetos;
 
+import espol.proyectopoo2.VistaExplorar2_0Controller;
 import java.util.HashSet;
 import javafx.scene.control.Alert;
 
@@ -27,8 +28,14 @@ public class RoverSolar extends Rovers {
         alert.setContentText("abriendo paneles");
         alert.setHeaderText(null);
         alert.showAndWait();
+        
+        double ubicacionX=super.getUbicacionx();
+        double ubicacionY=super.getUbicaciony();
         super.setUbicacionx(100);
         super.setUbicaciony(100);
+        
+        VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
+        
         
         
     }

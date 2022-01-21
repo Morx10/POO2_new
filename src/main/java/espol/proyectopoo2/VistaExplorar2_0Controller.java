@@ -6,6 +6,7 @@ package espol.proyectopoo2;
 
 import Data.CraterData;
 import Data.RoversData;
+import Hilos.HiloSencillo;
 import Objetos.Crater;
 import Objetos.Rovers;
 import java.io.IOException;
@@ -129,34 +130,41 @@ public class VistaExplorar2_0Controller implements Initializable {
         App.setRoot(root);   
     }
     
-    private static void moverobjeto(double ubicacionX, double ubicacionY){
+    public static void moverobjeto(double ubicacionX, double ubicacionY){
         double destinoX= rover.getUbicacionx();
         double destinoY= rover.getUbicaciony();
+        System.out.println("entre");
+        
+        HiloSencillo hilo= new HiloSencillo();
+        hilo.setDaemon(true);
         
         int banderax=0;
         int banderay=0;
-        
-        double nuevaubicacionx;
-        double nuevaubicaciony;
         //ubicacion en X 
 
         
         while(ubicacionX<destinoX){
-            nuevaubicacionx= ubicacionX+DELTA_MOVIMIENTO;
-            imgview.setLayoutX(nuevaubicacionx);               
+            ubicacionX= ubicacionX+DELTA_MOVIMIENTO;
+            imgview.setLayoutX(ubicacionX);
+            System.out.println("me movi");
+            hilo.run();
         }
         while(ubicacionX > destinoX){ 
             if(banderax==0){
                 banderax=1;
-                rover.girar(180);
+                //rover.girar(180);
             }
-            nuevaubicacionx= ubicacionX-DELTA_MOVIMIENTO;
-            imgview.setLayoutX(nuevaubicacionx);
+            ubicacionX= ubicacionX-DELTA_MOVIMIENTO;
+            imgview.setLayoutX(ubicacionX);
+            System.out.println("me movi");
+            hilo.run();          
             
+        
         }
         
+        
         if(banderax==1){
-            rover.girar(180);
+            //rover.girar(180);
         }
         
         //ubicacion en Y
@@ -164,19 +172,25 @@ public class VistaExplorar2_0Controller implements Initializable {
         while(ubicacionY<destinoY){
             
             if(banderay==0){
-                rover.girar(90);
+                //rover.girar(90);
             }
             
-            nuevaubicaciony= ubicacionX+DELTA_MOVIMIENTO;
-            imgview.setLayoutY(nuevaubicaciony);               
+            ubicacionY= ubicacionY+DELTA_MOVIMIENTO;
+            imgview.setLayoutY(ubicacionY);
+            System.out.println("me movi");
+            hilo.run();
+            
         }
         while(ubicacionY > destinoY){
             if(banderay==0){
-                rover.girar(-90);
+                //rover.girar(-90);
             }
-            rover.girar(180);
-            nuevaubicaciony= ubicacionX-DELTA_MOVIMIENTO;
-            imgview.setLayoutY(nuevaubicaciony);
+            //rover.girar(180);
+            ubicacionY= ubicacionY-DELTA_MOVIMIENTO;
+            imgview.setLayoutY(ubicacionY);
+            System.out.println("me movi");
+            hilo.run();
+
         }
         
         
