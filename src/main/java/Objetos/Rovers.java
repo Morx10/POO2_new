@@ -4,6 +4,8 @@
  */
 package Objetos;
 
+import espol.proyectopoo2.VistaExplorar2_0Controller;
+
 /**
  *
  * @author marit
@@ -30,7 +32,7 @@ public abstract class Rovers implements Acciones {
 
     @Override
     public void girar(double girar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        VistaExplorar2_0Controller.rotar(girar);
     }
 
     @Override

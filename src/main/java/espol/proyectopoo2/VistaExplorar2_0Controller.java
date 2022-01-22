@@ -152,7 +152,7 @@ public class VistaExplorar2_0Controller implements Initializable {
         while(ubicacionX > destinoX){ 
             if(banderax==0){
                 banderax=1;
-                //rover.girar(180);
+                rover.girar(180);
             }
             ubicacionX= ubicacionX-DELTA_MOVIMIENTO;
             imgview.setLayoutX(ubicacionX);
@@ -164,7 +164,7 @@ public class VistaExplorar2_0Controller implements Initializable {
         
         
         if(banderax==1){
-            //rover.girar(180);
+            rover.girar(180);
         }
         
         //ubicacion en Y
@@ -172,7 +172,7 @@ public class VistaExplorar2_0Controller implements Initializable {
         while(ubicacionY<destinoY){
             
             if(banderay==0){
-                //rover.girar(90);
+                rover.girar(90);
             }
             
             ubicacionY= ubicacionY+DELTA_MOVIMIENTO;
@@ -183,9 +183,9 @@ public class VistaExplorar2_0Controller implements Initializable {
         }
         while(ubicacionY > destinoY){
             if(banderay==0){
-                //rover.girar(-90);
+                rover.girar(-90);
             }
-            //rover.girar(180);
+            rover.girar(180);
             ubicacionY= ubicacionY-DELTA_MOVIMIENTO;
             imgview.setLayoutY(ubicacionY);
             System.out.println("me movi");
@@ -194,6 +194,11 @@ public class VistaExplorar2_0Controller implements Initializable {
         }
         
         
+        
+    }
+    
+    public static void rotar(double grados){
+        imgview.setRotate(grados);
         
     }
    

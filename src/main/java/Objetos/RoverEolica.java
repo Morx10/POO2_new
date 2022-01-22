@@ -23,8 +23,7 @@ public class RoverEolica extends Rovers {
         alert.setContentText("despliegue de molinos");
         alert.setHeaderText(null);
         alert.showAndWait();
-        super.setUbicacionx(100);
-        super.setUbicaciony(100);
+        super.girar(-90);
     }
     
 }
