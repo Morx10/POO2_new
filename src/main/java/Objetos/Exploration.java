@@ -4,6 +4,9 @@
  */
 package Objetos;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 /**
  *
  * @author Grace
@@ -40,6 +43,8 @@ public class Exploration {
     public void setContenido(String mineral) {
         this.mineral = mineral;
     }
+
+   
 
     
 }
