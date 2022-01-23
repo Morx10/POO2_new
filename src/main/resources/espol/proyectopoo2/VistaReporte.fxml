@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="543.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaReporteController">
+<BorderPane prefHeight="537.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaReporteController">
    <bottom>
-      <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="133.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="838.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#volverMenuPrincipal" text="Volver" />
          </children>
@@ -24,7 +24,7 @@
       <TextField alignment="TOP_CENTER" text="Registro de las exploraciones realizadas" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <HBox prefHeight="186.0" prefWidth="258.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="469.0" prefWidth="294.0" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="454.0" prefWidth="122.0">
                <children>
@@ -33,9 +33,9 @@
                   <TextField text="Mineral:" />
                </children>
             </VBox>
-            <VBox prefHeight="454.0" prefWidth="137.0">
+            <VBox prefHeight="469.0" prefWidth="173.0">
                <children>
-                  <TextField prefHeight="26.0" prefWidth="122.0" />
+                  <TextField prefHeight="26.0" prefWidth="156.0" />
                   <TextField layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="122.0" />
                   <TextField layoutX="10.0" layoutY="10.0" prefHeight="21.0" prefWidth="138.0" />
                </children>
@@ -43,12 +43,13 @@
          </children>
       </HBox>
    </left>
-   <center>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+   <right>
+      <TableView prefHeight="469.0" prefWidth="508.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="156.80004727840424" text="Fecha de Exploración" />
+          <TableColumn minWidth="7.20001220703125" prefWidth="161.60003662109375" text="Nombre del cráter" />
+            <TableColumn prefWidth="161.5999816894531" text="Minerales " />
         </columns>
       </TableView>
-   </center>
+   </right>
 </BorderPane>
