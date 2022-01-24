@@ -46,11 +46,11 @@
       </HBox>
    </left>
    <right>
-      <TableView prefHeight="469.0" prefWidth="508.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="TablaRegistro" prefHeight="469.0" prefWidth="508.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="156.80004727840424" text="Fecha de Exploración" />
-          <TableColumn minWidth="7.20001220703125" prefWidth="161.60003662109375" text="Nombre del cráter" />
-            <TableColumn prefWidth="161.5999816894531" text="Minerales " />
+          <TableColumn fx:id="Fecha" prefWidth="156.80004727840424" text="Fecha de Exploración" />
+          <TableColumn fx:id="Nombre" minWidth="7.20001220703125" prefWidth="161.60003662109375" text="Nombre del cráter" />
+            <TableColumn fx:id="Minerales" prefWidth="161.5999816894531" text="Minerales " />
         </columns>
       </TableView>
    </right>
