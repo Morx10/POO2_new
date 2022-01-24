@@ -44,12 +44,18 @@ public class VistaReporteController implements Initializable {
     @FXML
     private TableColumn<Exploration,String> Minerales;
     
+    private ObservableList<Exploration> datos;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
+
+        Fecha.setCellValueFactory(new PropertyValueFactory<Exploration, String>("fecha"));
+        Nombre.setCellValueFactory(new PropertyValueFactory<Exploration, String>("crater_name"));
+        Minerales.setCellValueFactory(new PropertyValueFactory<Exploration, String>("mineral"));
     }    
 
     @FXML
@@ -61,7 +67,6 @@ public class VistaReporteController implements Initializable {
     @FXML
     private void BuscarRegistro(MouseEvent event) {
         try{
-
         List<Exploration> exploraciones = new ArrayList<Exploration>();
         exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
@@ -69,13 +74,7 @@ public class VistaReporteController implements Initializable {
         String FechaI=fIniciotxt.getText();
         String FechaF=ffintxt.getText();
         String minerales=mineralestxt.getText();
-        Fecha.setCellValueFactory(new PropertyValueFactory<Exploration, String>("fecha"));
-        Nombre.setCellValueFactory(new PropertyValueFactory<Exploration, String>("crater_name"));
-        Minerales.setCellValueFactory(new PropertyValueFactory<Exploration, String>("mineral"));
-        List<Exploration> filtrado=ExplorationData.FiltradoFecha(FechaI,FechaF,exploraciones,minerales);
-        ObservableList<Exploration> datos=FXCollections.observableArrayList();
-        for(Exploration ex: filtrado){
-            datos.add(ex);}
+        datos=ExplorationData.FiltradoFecha(FechaI,FechaF,datos,minerales);
         TablaRegistro.setItems(datos);}
         catch(RuntimeException ex){ }
 
