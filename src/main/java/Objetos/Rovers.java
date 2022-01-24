@@ -4,6 +4,7 @@
  */
 package Objetos;
 
+import Data.RoversData;
 import espol.proyectopoo2.VistaExplorar2_0Controller;
 
 /**
@@ -18,12 +19,12 @@ public abstract class Rovers implements Acciones {
     private double bateria;
     private double grados;
 
-    public Rovers(String nombreRover, double ubicacionx, double ubicaciony) {
+    public Rovers(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
         this.nombreRover = nombreRover;
         this.ubicacionx = ubicacionx;
         this.ubicaciony = ubicaciony;
         this.bateria = 100;
-        this.grados = 0;
+        this.grados = grados;
     }      
     
 
@@ -37,6 +38,7 @@ public abstract class Rovers implements Acciones {
     public void girar(double girar) {
         grados= grados+girar;
         VistaExplorar2_0Controller.rotar(grados);
+        RoversData.escribirRover();
         
     }
 
@@ -46,7 +48,7 @@ public abstract class Rovers implements Acciones {
         double dirY= y-ubicaciony;
        
         double hypot = Math.hypot(dirX,dirY);
-        bateria= bateria - (hypot/20);
+        bateria= bateria - (hypot/20 );
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

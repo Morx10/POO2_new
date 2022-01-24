@@ -15,8 +15,8 @@ import javafx.scene.control.Alert;
 public class RoverSolar extends Rovers {
     
 
-    public RoverSolar(String nombreRover, double ubicacionx, double ubicaciony) {
-        super(nombreRover, ubicacionx, ubicaciony);
+    public RoverSolar(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
+        super(nombreRover, ubicacionx, ubicaciony, grados);
     }
 
 
