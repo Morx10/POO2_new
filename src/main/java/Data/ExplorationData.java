@@ -74,37 +74,43 @@ public class ExplorationData {
      
      
      
-     public static boolean ValidationFecha(String FInicio,String Ffin,List<Exploration> explorations){
+     public static boolean ValidationFecha(String FInicio,String Ffin,Exploration exp){
          LocalDate FechaIni=TransformarFecha(FInicio);
          LocalDate FechaFin=TransformarFecha(Ffin);
-         for(Exploration exp:explorations){
-            LocalDate fecha=TransformarFecha(exp.getFecha());
-            if((fecha.isBefore(FechaFin)||fecha.isEqual(FechaFin))&&(fecha.isAfter(FechaIni)||fecha.isEqual(FechaIni))){
-                return true;}}
+         LocalDate fecha=TransformarFecha(exp.getFecha());
+         if((fecha.isBefore(FechaFin)||fecha.isEqual(FechaFin))&&(fecha.isAfter(FechaIni)||fecha.isEqual(FechaIni))){
+                return true;}
          return false;}
      
      
-     public static boolean ValidarMinerales(List<Exploration> explorations,String minel){
-         for(Exploration exp:explorations){
+     public static boolean ValidarMinerales(Exploration exp,String minel){
             String minerales=exp.getMineral();
             String [] parts=minerales.split(",");
             for(int i = 0; i < parts.length; i++){
                 if(parts[i].equals(minel)){
                     return true;}}
-          }
-         return false;
-     }
+         return false;}
+     
      
      
      
      public static List<Exploration>  FiltradoFecha(String FInicio,String Ffin,List<Exploration> explorations, String mineral){
          
-        return explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,explorations)))&&(ValidarMinerales(explorations,mineral))).collect(Collectors.toList());
+        return explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
      }
+     
+     
      public static void main(String[] args) {
         //Crater c= new Crater("1","Mead",466.51,491.53,33.36);
         //ExplorationData.escribirExploracion(c);
         //System.out.println(ExplorationData.obtenerExploracion());
+        List<Exploration> exploraciones = new ArrayList<Exploration>();
+        exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
+        exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
+        exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
+       
+        
+        System.out.println(FiltradoFecha("10-01-2020","11-01-2021",exploraciones,"Sodio"));
     }
      
      
