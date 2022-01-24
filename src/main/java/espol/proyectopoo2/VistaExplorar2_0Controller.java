@@ -200,93 +200,95 @@ public class VistaExplorar2_0Controller implements Initializable {
     //NO SE TOCA
     
     public static class MovRunnable implements Runnable{
-        double ubicacionX;
-        double ubicacionY;
+        double partidaX;
+        double partidaY;
         public MovRunnable(){}
-        public MovRunnable(double ubicacionX, double ubicacionY){
-            this.ubicacionX = ubicacionX;
-            this.ubicacionY = ubicacionY;
+        public MovRunnable(double partidaX, double partidaY){
+            this.partidaX = partidaX;
+            this.partidaY = partidaY;
         }
         double destinoX = rover.getUbicacionx();
         double destinoY = rover.getUbicaciony();
          public void run(){
             try {
                 //CUARTO CUADRANTE
-                while((ubicacionX < destinoX) && (ubicacionY < destinoY)){
+                while((partidaX < destinoX) && (partidaY < destinoY)){
                     Platform.runLater( ()->{
-                        ubicacionX = ubicacionX + DELTA_MOVIMIENTO;
-                        ubicacionY = ubicacionY + DELTA_MOVIMIENTO;
-                        imgview.setLayoutX(ubicacionX);
-                        imgview.setLayoutY(ubicacionY);
+                        partidaX = partidaX + DELTA_MOVIMIENTO;
+                        partidaY = partidaY + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
                     });
                 Thread.sleep(250);
                 }
                 
                 //TERCERO CUADRANTE
-                while((ubicacionX > destinoX) && (ubicacionY < destinoY)){
+                while((partidaX > destinoX) && (partidaY < destinoY)){
                     Platform.runLater( ()->{
-                        ubicacionX = ubicacionX - DELTA_MOVIMIENTO;
-                        ubicacionY = ubicacionY + DELTA_MOVIMIENTO;
-                        imgview.setLayoutX(ubicacionX);
-                        imgview.setLayoutY(ubicacionY);
+                        partidaX = partidaX - DELTA_MOVIMIENTO;
+                        partidaY = partidaY + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
                     });
                 Thread.sleep(250);
                 }
                 
                 //SEGUNDO CUADRANTE
-                while((ubicacionX > destinoX) && (ubicacionY > destinoY)){
+                while((partidaX > destinoX) && (partidaY > destinoY)){
                     Platform.runLater( ()->{
-                        ubicacionX = ubicacionX - DELTA_MOVIMIENTO;
-                        ubicacionY = ubicacionY - DELTA_MOVIMIENTO;
-                        imgview.setLayoutX(ubicacionX);
-                        imgview.setLayoutY(ubicacionY);
+                        partidaX = partidaX - DELTA_MOVIMIENTO;
+                        partidaY = partidaY - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
                     });
                 Thread.sleep(250);
                 }
                 
                 //PRIMER CUADRANTE
-                while((ubicacionX < destinoX) && (ubicacionY > destinoY)){
+                while((partidaX < destinoX) && (partidaY > destinoY)){
                     Platform.runLater( ()->{
-                        ubicacionX = ubicacionX + DELTA_MOVIMIENTO;
-                        ubicacionY = ubicacionY - DELTA_MOVIMIENTO;
-                        imgview.setLayoutX(ubicacionX);
-                        imgview.setLayoutY(ubicacionY);
+                        partidaX = partidaX + DELTA_MOVIMIENTO;
+                        partidaY = partidaY - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
                     });
                 Thread.sleep(250);
                 }
                 
                 //EJE 0
-                while((ubicacionX < destinoX) && (ubicacionY == destinoY)){
+                while((partidaX < destinoX) && (partidaY == destinoY)){
                     Platform.runLater( ()->{
-                        ubicacionX = ubicacionX + DELTA_MOVIMIENTO;
-                        imgview.setLayoutX(ubicacionX);
-                        imgview.setLayoutY(ubicacionY);
+                        partidaX = partidaX + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
                     });
                 Thread.sleep(250);
                 }
-                while((ubicacionX > destinoX) && (ubicacionY == destinoY)){
+                while((partidaX > destinoX) && (partidaY == destinoY)){
                     Platform.runLater( ()->{
-                        ubicacionX = ubicacionX - DELTA_MOVIMIENTO;
-                        imgview.setLayoutX(ubicacionX);
-                        imgview.setLayoutY(ubicacionY);
+                        partidaX = partidaX - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
                     });
                 Thread.sleep(250);
                 }
                 
                 //EJE 1
-                while((ubicacionX == destinoX) && (ubicacionY < destinoY)){
+                while((partidaX == destinoX) && (partidaY < destinoY)){
                     Platform.runLater( ()->{
-                        ubicacionY = ubicacionY + DELTA_MOVIMIENTO;
-                        imgview.setLayoutX(ubicacionX);
-                        imgview.setLayoutY(ubicacionY);
+                        partidaY = partidaY + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
                     });
                 Thread.sleep(250);
                 }
-                while((ubicacionX == destinoX) && (ubicacionY > destinoY)){
+                
+                
+                while((partidaX == destinoX) && (partidaY > destinoY)){
                     Platform.runLater( ()->{
-                        ubicacionX = ubicacionX - DELTA_MOVIMIENTO;
-                        imgview.setLayoutX(ubicacionX);
-                        imgview.setLayoutY(ubicacionY);
+                        partidaX = partidaX - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
                     });
                 Thread.sleep(250);
                 }
