@@ -6,7 +6,6 @@ package espol.proyectopoo2;
 
 import Data.CraterData;
 import Data.RoversData;
-import Hilos.HiloSencillo;
 import Objetos.Crater;
 import Objetos.Rovers;
 import java.io.IOException;
