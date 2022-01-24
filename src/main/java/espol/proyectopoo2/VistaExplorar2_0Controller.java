@@ -19,6 +19,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -113,9 +114,20 @@ public class VistaExplorar2_0Controller implements Initializable {
                 
                 
                 //FUNCION CARGAR ROVER
-                if(text.equals("cargar")){
-                    
-                    rover.cargar();
+                if(text.equals("cargar")){                    
+                    rover.cargar();                
+                }
+                
+                String[] p= text.split(":");
+                if(p[0].equals("girar")){
+                    try{
+                        rover.girar(Double.parseDouble(p[1]));
+                    }catch(Exception ex){
+                        Alert alert= new Alert(Alert.AlertType.WARNING);
+                        alert.setContentText("ingrese una cantidad correcta");
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                    }
                     
                 }
          

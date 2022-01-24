@@ -16,12 +16,14 @@ public abstract class Rovers implements Acciones {
     private double ubicacionx;
     private double ubicaciony;
     private int bateria;
+    private double grados;
 
     public Rovers(String nombreRover, double ubicacionx, double ubicaciony) {
         this.nombreRover = nombreRover;
         this.ubicacionx = ubicacionx;
         this.ubicaciony = ubicaciony;
         this.bateria = 100;
+        this.grados = 0;
     }      
     
 
@@ -32,7 +34,9 @@ public abstract class Rovers implements Acciones {
 
     @Override
     public void girar(double girar) {
-        VistaExplorar2_0Controller.rotar(girar);
+        grados= grados+girar;
+        VistaExplorar2_0Controller.rotar(grados);
+        
     }
 
     @Override
