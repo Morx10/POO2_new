@@ -14,20 +14,26 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -49,16 +55,17 @@ public class VistaExplorar2_0Controller implements Initializable {
     @FXML
     private TextArea cajadeComandos;
     
-    private static double DELTA_MOVIMIENTO=20;
+    private static double DELTA_MOVIMIENTO=10;
     private static ImageView imgview;
+    @FXML
+    private VBox datos;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            // TODO
-        List<Rovers> rovers = RoversData.cargarRovers();
-        cbrovers.getItems().addAll(rovers);
+
+        cbrovers.getItems().addAll(App.getRovers());
         
         List<Crater> crateres = CraterData.cargarCrateres();
         
@@ -73,6 +80,32 @@ public class VistaExplorar2_0Controller implements Initializable {
             st.setLayoutX(i.isLatitud());
             st.setLayoutY(i.isLongitud());
             
+            //click crater
+            st.setOnMouseClicked(
+                    (MouseEvent ev)-> {
+            ev.consume();
+            datos.getChildren().clear();
+            
+            Label lnombre = new Label(i.getNombrecrater());
+            
+            String[] minerales = CraterData.cargarMinerales(i.getNombrecrater());                      
+
+            datos.getChildren().addAll(lnombre);
+            try{
+                for(String s:minerales){
+                Label min= new Label(s);
+                datos.getChildren().add(min);
+            }
+                
+            }catch(Exception ex){
+                Label min= new Label("No hay información");
+                datos.getChildren().add(min);
+            }
+            
+            
+            
+        });
+            
         }
         // TODO
     }    
@@ -80,6 +113,8 @@ public class VistaExplorar2_0Controller implements Initializable {
     @FXML
     private void cargarRovers(ActionEvent event) throws IOException {
         rover=cbrovers.getValue();
+        
+        cajadeComandos.clear();
         
         
         try{
@@ -98,6 +133,7 @@ public class VistaExplorar2_0Controller implements Initializable {
             
         imgview.setLayoutX(rover.getUbicacionx());
         imgview.setLayoutY(rover.getUbicaciony());
+        imgview.setRotate(rover.getGrados());
     }
 
     @FXML
@@ -113,11 +149,28 @@ public class VistaExplorar2_0Controller implements Initializable {
                 
                 
                 //FUNCION CARGAR ROVER
-                if(text.equals("cargar")){
-                    
-                    rover.cargar();
+                if(text.equals("cargar")){                    
+                    rover.cargar();                
+                }
+                
+                if(text.equals("avanzar")){
+                    rover.avanzar();
+                }
+                
+                String[] p= text.split(":");
+                if(p[0].equals("girar")){
+                    try{
+                        rover.girar(Double.parseDouble(p[1]));
+                    }catch(Exception ex){
+                        Alert alert= new Alert(Alert.AlertType.WARNING);
+                        alert.setContentText("ingrese una cantidad correcta");
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                    }
                     
                 }
+                
+                
          
             }           
         }
@@ -131,76 +184,142 @@ public class VistaExplorar2_0Controller implements Initializable {
     }
     
     public static void moverobjeto(double ubicacionX, double ubicacionY){
-        double destinoX= rover.getUbicacionx();
-        double destinoY= rover.getUbicaciony();
-        System.out.println("entre");
         
-        HiloSencillo hilo= new HiloSencillo();
-        hilo.setDaemon(true);
-        
-        int banderax=0;
-        int banderay=0;
-        //ubicacion en X 
 
         
-        while(ubicacionX<destinoX){
-            ubicacionX= ubicacionX+DELTA_MOVIMIENTO;
-            imgview.setLayoutX(ubicacionX);
-            System.out.println("me movi");
-            hilo.run();
-        }
-        while(ubicacionX > destinoX){ 
-            if(banderax==0){
-                banderax=1;
-                rover.girar(180);
-            }
-            ubicacionX= ubicacionX-DELTA_MOVIMIENTO;
-            imgview.setLayoutX(ubicacionX);
-            System.out.println("me movi");
-            hilo.run();          
-            
         
-        }
-        
-        
-        if(banderax==1){
-            rover.girar(180);
-        }
-        
-        //ubicacion en Y
-        
-        while(ubicacionY<destinoY){
-            
-            if(banderay==0){
-                rover.girar(90);
-            }
-            
-            ubicacionY= ubicacionY+DELTA_MOVIMIENTO;
-            imgview.setLayoutY(ubicacionY);
-            System.out.println("me movi");
-            hilo.run();
-            
-        }
-        while(ubicacionY > destinoY){
-            if(banderay==0){
-                rover.girar(-90);
-            }
-            rover.girar(180);
-            ubicacionY= ubicacionY-DELTA_MOVIMIENTO;
-            imgview.setLayoutY(ubicacionY);
-            System.out.println("me movi");
-            hilo.run();
-
-        }
-        
-        
+        MovRunnable movRunnable = new MovRunnable(ubicacionX, ubicacionY); //partida
+        Thread t1 = new Thread(movRunnable);
+        t1.setDaemon(true);
+        t1.start();
         
     }
     
-    public static void rotar(double grados){
+    
+    
+    //NO SE TOCA
+    
+    public static class MovRunnable implements Runnable{
+        double partidaX;
+        double partidaY;
+        public MovRunnable(){}
+        public MovRunnable(double partidaX, double partidaY){
+            this.partidaX = partidaX;
+            this.partidaY = partidaY;
+        }
+        double destinoX = rover.getUbicacionx();
+        double destinoY = rover.getUbicaciony();
+         public void run(){
+            try {
+                //CUARTO CUADRANTE
+                while((partidaX < destinoX) && (partidaY < destinoY)){
+                    Platform.runLater( ()->{
+                        partidaX = partidaX + DELTA_MOVIMIENTO;
+                        partidaY = partidaY + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                //TERCERO CUADRANTE
+                while((partidaX > destinoX) && (partidaY < destinoY)){
+                    Platform.runLater( ()->{
+                        partidaX = partidaX - DELTA_MOVIMIENTO;
+                        partidaY = partidaY + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                //SEGUNDO CUADRANTE
+                while((partidaX > destinoX) && (partidaY > destinoY)){
+                    Platform.runLater( ()->{
+                        partidaX = partidaX - DELTA_MOVIMIENTO;
+                        partidaY = partidaY - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                //PRIMER CUADRANTE
+                while((partidaX < destinoX) && (partidaY > destinoY)){
+                    Platform.runLater( ()->{
+                        partidaX = partidaX + DELTA_MOVIMIENTO;
+                        partidaY = partidaY - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                //EJE 0
+                while((partidaX < destinoX) && (partidaY == destinoY)){
+                    Platform.runLater( ()->{
+                        partidaX = partidaX + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
+                    });
+                Thread.sleep(250);
+                }
+                while((partidaX > destinoX) && (partidaY == destinoY)){
+                    Platform.runLater( ()->{
+                        partidaX = partidaX - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                //EJE 1
+                while((partidaX == destinoX) && (partidaY < destinoY)){
+                    Platform.runLater( ()->{
+                        partidaY = partidaY + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                
+                while((partidaX == destinoX) && (partidaY > destinoY)){
+                    Platform.runLater( ()->{
+                        partidaX = partidaX - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(partidaX);
+                        imgview.setLayoutY(partidaY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                imgview.setLayoutX(destinoX);
+                imgview.setLayoutY(destinoY);
+                
+                
+            }catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+                    
+                }
+                
+        } 
+    
+     
+      public static void rotar(double grados){
         imgview.setRotate(grados);
         
     }
+
+}
+    
+
+    
    
     
-}
+    
+    
+   
+   
+    
+

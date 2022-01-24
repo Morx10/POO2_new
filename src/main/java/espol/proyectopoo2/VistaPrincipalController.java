@@ -4,8 +4,11 @@
  */
 package espol.proyectopoo2;
 
+import Data.RoversData;
+import Objetos.Rovers;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -20,6 +23,9 @@ import javafx.scene.input.MouseEvent;
  * @author sanch
  */
 public class VistaPrincipalController implements Initializable {
+    
+    
+
 
 
     /**
@@ -27,7 +33,7 @@ public class VistaPrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
     }    
 
 

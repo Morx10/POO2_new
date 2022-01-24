@@ -1,5 +1,7 @@
 package espol.proyectopoo2;
 
+import Data.RoversData;
+import Objetos.Rovers;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * JavaFX App
@@ -14,6 +17,12 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    
+    private static List<Rovers> rovers;
+
+    public static List<Rovers> getRovers() {
+        return rovers;
+    }
 
     @Override
     public void start(Stage stage){
@@ -25,6 +34,8 @@ public class App extends Application {
         }catch(IOException ex){
             ex.printStackTrace();
         }
+        
+         rovers = RoversData.cargarRovers();
     }
     /**
      * Cambia el contenedor raiz de la escena por el pasado como parametro

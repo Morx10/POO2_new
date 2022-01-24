@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class CraterData {
     public static String ruta=CONSTANTES.ARCHIVOS+"/crateres_info.txt";
+    public static String ruta2=CONSTANTES.ARCHIVOS+"/exploraciones.txt";
     
     public static List<Crater> cargarCrateres(){
         List<Crater> crateres = new ArrayList<>();
@@ -33,6 +34,26 @@ public class CraterData {
             ex.printStackTrace();
         }
         return crateres;
+    }
+    
+    public static String[] cargarMinerales(String crater){
+        String[] minerales = null;
+        try( BufferedReader bf = 
+                new BufferedReader(new FileReader(ruta2)) ){
+            String linea;
+            while((linea = bf.readLine())!=null){
+                String[] p = linea.split(";");
+                System.out.println(p[1]);
+                
+                if(p[1].equals(crater)){
+                    minerales = p[2].split(",");
+                }
+            }         
+        }  catch (Exception ex) {
+            System.out.println("No hay informacion");
+            ex.printStackTrace();
+        }
+        return minerales;
     }
     
     public static void main(String[] args){
