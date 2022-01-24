@@ -43,7 +43,6 @@ public class CraterData {
             String linea;
             while((linea = bf.readLine())!=null){
                 String[] p = linea.split(";");
-                System.out.println(p[1]);
                 
                 if(p[1].equals(crater)){
                     minerales = p[2].split(",");
@@ -54,6 +53,23 @@ public class CraterData {
             ex.printStackTrace();
         }
         return minerales;
+    }
+    
+    
+    public static List<String> crateresSensados(){
+        List<String> crateres = new ArrayList<>();
+        try( BufferedReader bf = 
+                new BufferedReader(new FileReader(ruta2)) ){
+            String linea;
+            while((linea = bf.readLine())!=null){
+                String[] p = linea.split(";");               
+                crateres.add(p[1]);                      
+            }         
+        }  catch (Exception ex) {
+            System.out.println("No hay informacion");
+            ex.printStackTrace();
+        }
+        return crateres;
     }
     
     public static void main(String[] args){

@@ -80,6 +80,15 @@ public class VistaExplorar2_0Controller implements Initializable {
             st.setLayoutX(i.isLatitud());
             st.setLayoutY(i.isLongitud());
             
+            List<String> crateresSensados= CraterData.crateresSensados();
+            
+            for(String cr: crateresSensados){
+                if(cr.equals(i.getNombrecrater())){
+                    c.setFill(Color.BLUE);
+                    c.setOpacity(0.5);
+                }
+            }
+            
             //click crater
             st.setOnMouseClicked(
                     (MouseEvent ev)-> {
@@ -87,6 +96,7 @@ public class VistaExplorar2_0Controller implements Initializable {
             datos.getChildren().clear();
             
             Label lnombre = new Label(i.getNombrecrater());
+            lnombre.setStyle("-fx-font-weight:bold");
             
             String[] minerales = CraterData.cargarMinerales(i.getNombrecrater());                      
 
@@ -107,7 +117,7 @@ public class VistaExplorar2_0Controller implements Initializable {
         });
             
         }
-        // TODO
+        
     }    
     
     @FXML
