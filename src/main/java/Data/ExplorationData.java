@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -95,8 +96,9 @@ public class ExplorationData {
      
      
      public static List<Exploration>  FiltradoFecha(String FInicio,String Ffin,List<Exploration> explorations, String mineral){
-         
-        return explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
+         List<Exploration>  filtrado=explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
+         Collections.sort(filtrado, (j1, j2) -> (j1.getNameCrater()).compareTo((j2.getNameCrater())));
+        return filtrado;
      }
      
      
@@ -108,11 +110,6 @@ public class ExplorationData {
         exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
         exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
-       
-        
-        System.out.println(FiltradoFecha("10-01-2020","11-01-2021",exploraciones,"Sodio"));
-    }
-     
-     
-     
+        System.out.println(FiltradoFecha("10-01-2020","11-01-2022",exploraciones,"Sodio"));    
+}
 }
