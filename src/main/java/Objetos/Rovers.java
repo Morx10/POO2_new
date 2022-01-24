@@ -31,7 +31,18 @@ public abstract class Rovers implements Acciones {
     @Override
     public void avanzar() {
         bateria=bateria-1;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double ubicacionX =getUbicacionx();
+        double ubicacionY =getUbicaciony();
+        
+        setUbicacionx(Math.cos(Math.toRadians(grados))*(10*(Math.pow(2,1/2)))+ubicacionx);
+        setUbicaciony(Math.sin(Math.toRadians(grados))*(10*(Math.pow(2,1/2)))+ubicaciony);
+    
+        VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
+        
+        RoversData.escribirRover();
+        
+        
+                
     }
 
     @Override
@@ -39,6 +50,7 @@ public abstract class Rovers implements Acciones {
         grados= grados+girar;
         VistaExplorar2_0Controller.rotar(grados);
         RoversData.escribirRover();
+        
         
     }
 
@@ -99,6 +111,10 @@ public abstract class Rovers implements Acciones {
 
     public double getGrados() {
         return grados;
+    }
+
+    public void setGrados(double grados) {
+        this.grados = grados;
     }
     
 }

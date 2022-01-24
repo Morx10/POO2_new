@@ -29,13 +29,30 @@ public class RoverSolar extends Rovers {
         alert.setHeaderText(null);
         alert.showAndWait();
         
+        super.girar(-super.getGrados());
+      
+        
+        
         double ubicacionX=super.getUbicacionx();
         double ubicacionY=super.getUbicaciony();
         super.setUbicacionx(100);
         super.setUbicaciony(100);
+        if(ubicacionY==100){
+            if(ubicacionX>100){
+                VistaExplorar2_0Controller.rotar(180);
+            }           
+        }else if(ubicacionX==100){
+            if(ubicacionY>100){
+                VistaExplorar2_0Controller.rotar(-90);
+            }          
+        }else{
+             super.girar(Math.toDegrees(Math.atan((100-ubicacionY)/(100-ubicacionX))));
+        }
+       
         
         VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
         super.setBateria(100);
+        
      
         
     }

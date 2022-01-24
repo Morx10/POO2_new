@@ -69,9 +69,6 @@ public class RoversData {
            write.write(line);
            write.newLine();
        }
-       /// escribir una linea en el reporte con el nombre del pais y el numero. de envios
-       
-       System.out.println("Reporte generado");
        } catch (IOException ex) {
             ex.printStackTrace();
         }

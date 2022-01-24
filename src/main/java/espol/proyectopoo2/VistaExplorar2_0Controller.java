@@ -153,6 +153,10 @@ public class VistaExplorar2_0Controller implements Initializable {
                     rover.cargar();                
                 }
                 
+                if(text.equals("avanzar")){
+                    rover.avanzar();
+                }
+                
                 String[] p= text.split(":");
                 if(p[0].equals("girar")){
                     try{
@@ -165,6 +169,8 @@ public class VistaExplorar2_0Controller implements Initializable {
                     }
                     
                 }
+                
+                
          
             }           
         }
@@ -178,7 +184,9 @@ public class VistaExplorar2_0Controller implements Initializable {
     }
     
     public static void moverobjeto(double ubicacionX, double ubicacionY){
-        System.out.println("entre");
+        
+
+        
         
         MovRunnable movRunnable = new MovRunnable(ubicacionX, ubicacionY); //partida
         Thread t1 = new Thread(movRunnable);
@@ -186,6 +194,10 @@ public class VistaExplorar2_0Controller implements Initializable {
         t1.start();
         
     }
+    
+    
+    
+    //NO SE TOCA
     
     public static class MovRunnable implements Runnable{
         double ubicacionX;
@@ -199,6 +211,7 @@ public class VistaExplorar2_0Controller implements Initializable {
         double destinoY = rover.getUbicaciony();
          public void run(){
             try {
+                //CUARTO CUADRANTE
                 while((ubicacionX < destinoX) && (ubicacionY < destinoY)){
                     Platform.runLater( ()->{
                         ubicacionX = ubicacionX + DELTA_MOVIMIENTO;
@@ -208,6 +221,80 @@ public class VistaExplorar2_0Controller implements Initializable {
                     });
                 Thread.sleep(250);
                 }
+                
+                //TERCERO CUADRANTE
+                while((ubicacionX > destinoX) && (ubicacionY < destinoY)){
+                    Platform.runLater( ()->{
+                        ubicacionX = ubicacionX - DELTA_MOVIMIENTO;
+                        ubicacionY = ubicacionY + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(ubicacionX);
+                        imgview.setLayoutY(ubicacionY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                //SEGUNDO CUADRANTE
+                while((ubicacionX > destinoX) && (ubicacionY > destinoY)){
+                    Platform.runLater( ()->{
+                        ubicacionX = ubicacionX - DELTA_MOVIMIENTO;
+                        ubicacionY = ubicacionY - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(ubicacionX);
+                        imgview.setLayoutY(ubicacionY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                //PRIMER CUADRANTE
+                while((ubicacionX < destinoX) && (ubicacionY > destinoY)){
+                    Platform.runLater( ()->{
+                        ubicacionX = ubicacionX + DELTA_MOVIMIENTO;
+                        ubicacionY = ubicacionY - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(ubicacionX);
+                        imgview.setLayoutY(ubicacionY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                //EJE 0
+                while((ubicacionX < destinoX) && (ubicacionY == destinoY)){
+                    Platform.runLater( ()->{
+                        ubicacionX = ubicacionX + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(ubicacionX);
+                        imgview.setLayoutY(ubicacionY);
+                    });
+                Thread.sleep(250);
+                }
+                while((ubicacionX > destinoX) && (ubicacionY == destinoY)){
+                    Platform.runLater( ()->{
+                        ubicacionX = ubicacionX - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(ubicacionX);
+                        imgview.setLayoutY(ubicacionY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                //EJE 1
+                while((ubicacionX == destinoX) && (ubicacionY < destinoY)){
+                    Platform.runLater( ()->{
+                        ubicacionY = ubicacionY + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(ubicacionX);
+                        imgview.setLayoutY(ubicacionY);
+                    });
+                Thread.sleep(250);
+                }
+                while((ubicacionX == destinoX) && (ubicacionY > destinoY)){
+                    Platform.runLater( ()->{
+                        ubicacionX = ubicacionX - DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(ubicacionX);
+                        imgview.setLayoutY(ubicacionY);
+                    });
+                Thread.sleep(250);
+                }
+                
+                imgview.setLayoutX(destinoX);
+                imgview.setLayoutY(destinoY);
+                
+                
             }catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
