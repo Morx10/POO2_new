@@ -22,14 +22,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -53,6 +57,8 @@ public class VistaExplorar2_0Controller implements Initializable {
     
     private static double DELTA_MOVIMIENTO=10;
     private static ImageView imgview;
+    @FXML
+    private VBox datos;
     /**
      * Initializes the controller class.
      */
@@ -73,6 +79,32 @@ public class VistaExplorar2_0Controller implements Initializable {
             
             st.setLayoutX(i.isLatitud());
             st.setLayoutY(i.isLongitud());
+            
+            //click crater
+            st.setOnMouseClicked(
+                    (MouseEvent ev)-> {
+            ev.consume();
+            datos.getChildren().clear();
+            
+            Label lnombre = new Label(i.getNombrecrater());
+            
+            String[] minerales = CraterData.cargarMinerales(i.getNombrecrater());                      
+
+            datos.getChildren().addAll(lnombre);
+            try{
+                for(String s:minerales){
+                Label min= new Label(s);
+                datos.getChildren().add(min);
+            }
+                
+            }catch(Exception ex){
+                Label min= new Label("No hay información");
+                datos.getChildren().add(min);
+            }
+            
+            
+            
+        });
             
         }
         // TODO

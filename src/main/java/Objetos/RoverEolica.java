@@ -13,8 +13,8 @@ import javafx.scene.control.Alert;
 public class RoverEolica extends Rovers {
 
 
-    public RoverEolica(String nombreRover, double ubicacionx, double ubicaciony) {
-        super(nombreRover, ubicacionx, ubicaciony);
+    public RoverEolica(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
+        super(nombreRover, ubicacionx, ubicaciony,grados);
     }
 
     @Override
