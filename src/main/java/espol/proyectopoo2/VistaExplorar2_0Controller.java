@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -50,7 +51,7 @@ public class VistaExplorar2_0Controller implements Initializable {
     @FXML
     private TextArea cajadeComandos;
     
-    private static double DELTA_MOVIMIENTO=20;
+    private static double DELTA_MOVIMIENTO=10;
     private static ImageView imgview;
     /**
      * Initializes the controller class.
@@ -145,76 +146,59 @@ public class VistaExplorar2_0Controller implements Initializable {
     }
     
     public static void moverobjeto(double ubicacionX, double ubicacionY){
-        double destinoX= rover.getUbicacionx();
-        double destinoY= rover.getUbicaciony();
         System.out.println("entre");
         
-        //HiloSencillo hilo= new HiloSencillo();
-        //hilo.setDaemon(true);
-        
-        int banderax=0;
-        int banderay=0;
-        //ubicacion en X 
-
-        
-        while(ubicacionX<destinoX){
-            ubicacionX= ubicacionX+DELTA_MOVIMIENTO;
-            imgview.setLayoutX(ubicacionX);
-            System.out.println("me movi");
-            //hilo.run();
-        }
-        while(ubicacionX > destinoX){ 
-            if(banderax==0){
-                banderax=1;
-                rover.girar(180);
-            }
-            ubicacionX= ubicacionX-DELTA_MOVIMIENTO;
-            imgview.setLayoutX(ubicacionX);
-            System.out.println("me movi");
-            //hilo.run();          
-            
-        
-        }
-        
-        
-        if(banderax==1){
-            rover.girar(180);
-        }
-        
-        //ubicacion en Y
-        
-        while(ubicacionY<destinoY){
-            
-            if(banderay==0){
-                rover.girar(90);
-            }
-            
-            ubicacionY= ubicacionY+DELTA_MOVIMIENTO;
-            imgview.setLayoutY(ubicacionY);
-            System.out.println("me movi");
-            //hilo.run();
-            
-        }
-        while(ubicacionY > destinoY){
-            if(banderay==0){
-                rover.girar(-90);
-            }
-            rover.girar(180);
-            ubicacionY= ubicacionY-DELTA_MOVIMIENTO;
-            imgview.setLayoutY(ubicacionY);
-            System.out.println("me movi");
-            //hilo.run();
-
-        }
-        
-        
+        MovRunnable movRunnable = new MovRunnable(ubicacionX, ubicacionY); //partida
+        Thread t1 = new Thread(movRunnable);
+        t1.setDaemon(true);
+        t1.start();
         
     }
     
-    public static void rotar(double grados){
+    public static class MovRunnable implements Runnable{
+        double ubicacionX;
+        double ubicacionY;
+        public MovRunnable(){}
+        public MovRunnable(double ubicacionX, double ubicacionY){
+            this.ubicacionX = ubicacionX;
+            this.ubicacionY = ubicacionY;
+        }
+        double destinoX = rover.getUbicacionx();
+        double destinoY = rover.getUbicaciony();
+         public void run(){
+            try {
+                while((ubicacionX < destinoX) && (ubicacionY < destinoY)){
+                    Platform.runLater( ()->{
+                        ubicacionX = ubicacionX + DELTA_MOVIMIENTO;
+                        ubicacionY = ubicacionY + DELTA_MOVIMIENTO;
+                        imgview.setLayoutX(ubicacionX);
+                        imgview.setLayoutY(ubicacionY);
+                    });
+                Thread.sleep(250);
+                }
+            }catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+                    
+                }
+                
+        } 
+    
+     
+      public static void rotar(double grados){
         imgview.setRotate(grados);
         
     }
+
+}
+    
+
+    
    
     
-}
+    
+    
+   
+   
+    
+

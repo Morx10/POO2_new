@@ -34,7 +34,7 @@ public class RoverSolar extends Rovers {
         super.setUbicacionx(100);
         super.setUbicaciony(100);
         
-        //VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
+        VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
         super.setBateria(100);
      
         
