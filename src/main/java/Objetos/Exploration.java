@@ -43,7 +43,10 @@ public class Exploration {
     public void setContenido(String mineral) {
         this.mineral = mineral;
     }
-
+        @Override
+    public String toString() {
+        return crater_name;
+    }
    
 
     
