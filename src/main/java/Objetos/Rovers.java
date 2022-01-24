@@ -15,7 +15,7 @@ public abstract class Rovers implements Acciones {
     public String nombreRover;
     private double ubicacionx;
     private double ubicaciony;
-    private int bateria;
+    private double bateria;
     private double grados;
 
     public Rovers(String nombreRover, double ubicacionx, double ubicaciony) {
@@ -29,6 +29,7 @@ public abstract class Rovers implements Acciones {
 
     @Override
     public void avanzar() {
+        bateria=bateria-1;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -41,6 +42,11 @@ public abstract class Rovers implements Acciones {
 
     @Override
     public void dirigirse(double x, double y) {
+        double dirX= x-ubicacionx;
+        double dirY= y-ubicaciony;
+       
+        double hypot = Math.hypot(dirX,dirY);
+        bateria= bateria - (hypot/20);
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -81,12 +87,16 @@ public abstract class Rovers implements Acciones {
         this.ubicaciony = ubicaciony;
     }
 
-    public int getBateria() {
+    public double getBateria() {
         return bateria;
     }
 
     public void setBateria(int bateria) {
         this.bateria = bateria;
+    }
+
+    public double getGrados() {
+        return grados;
     }
     
 }

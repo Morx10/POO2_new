@@ -57,9 +57,8 @@ public class VistaExplorar2_0Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            // TODO
-        List<Rovers> rovers = RoversData.cargarRovers();
-        cbrovers.getItems().addAll(rovers);
+
+        cbrovers.getItems().addAll(App.getRovers());
         
         List<Crater> crateres = CraterData.cargarCrateres();
         
@@ -82,6 +81,8 @@ public class VistaExplorar2_0Controller implements Initializable {
     private void cargarRovers(ActionEvent event) throws IOException {
         rover=cbrovers.getValue();
         
+        cajadeComandos.clear();
+        
         
         try{
                 InputStream input = App.class.getResource("rover.png").openStream();
@@ -99,6 +100,7 @@ public class VistaExplorar2_0Controller implements Initializable {
             
         imgview.setLayoutX(rover.getUbicacionx());
         imgview.setLayoutY(rover.getUbicaciony());
+        imgview.setRotate(rover.getGrados());
     }
 
     @FXML
@@ -147,8 +149,8 @@ public class VistaExplorar2_0Controller implements Initializable {
         double destinoY= rover.getUbicaciony();
         System.out.println("entre");
         
-        HiloSencillo hilo= new HiloSencillo();
-        hilo.setDaemon(true);
+        //HiloSencillo hilo= new HiloSencillo();
+        //hilo.setDaemon(true);
         
         int banderax=0;
         int banderay=0;
@@ -159,7 +161,7 @@ public class VistaExplorar2_0Controller implements Initializable {
             ubicacionX= ubicacionX+DELTA_MOVIMIENTO;
             imgview.setLayoutX(ubicacionX);
             System.out.println("me movi");
-            hilo.run();
+            //hilo.run();
         }
         while(ubicacionX > destinoX){ 
             if(banderax==0){
@@ -169,7 +171,7 @@ public class VistaExplorar2_0Controller implements Initializable {
             ubicacionX= ubicacionX-DELTA_MOVIMIENTO;
             imgview.setLayoutX(ubicacionX);
             System.out.println("me movi");
-            hilo.run();          
+            //hilo.run();          
             
         
         }
@@ -190,7 +192,7 @@ public class VistaExplorar2_0Controller implements Initializable {
             ubicacionY= ubicacionY+DELTA_MOVIMIENTO;
             imgview.setLayoutY(ubicacionY);
             System.out.println("me movi");
-            hilo.run();
+            //hilo.run();
             
         }
         while(ubicacionY > destinoY){
@@ -201,7 +203,7 @@ public class VistaExplorar2_0Controller implements Initializable {
             ubicacionY= ubicacionY-DELTA_MOVIMIENTO;
             imgview.setLayoutY(ubicacionY);
             System.out.println("me movi");
-            hilo.run();
+            //hilo.run();
 
         }
         
