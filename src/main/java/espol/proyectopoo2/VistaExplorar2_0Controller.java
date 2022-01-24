@@ -209,7 +209,7 @@ public class VistaExplorar2_0Controller implements Initializable {
         }
         double destinoX = rover.getUbicacionx();
         double destinoY = rover.getUbicaciony();
-         public void run(){
+        public void run(){
             try {
                 //CUARTO CUADRANTE
                 while((partidaX < destinoX) && (partidaY < destinoY)){

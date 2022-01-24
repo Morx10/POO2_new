@@ -70,11 +70,11 @@ public class VistaPlanificarController implements Initializable {
             List<Crater> crateres = CraterData.cargarCrateres();
             ArrayList<Crater> crateresPorExplorar = new ArrayList<>();
             String nombres = crateresTxt.getText();
-            String[] nombresCrateres = nombres.split(",");
+            String[] nombresCrateres = nombres.split(", ");
             for(String name: nombresCrateres){//falta manejar excepciones
                 for(Crater crater: crateres){
                     //Se verifica que el cráter estuvo escrito correctamente y que no ha sido visitado
-                    if(name.equals(crater.getNombrecrater())){//if(name.equals(crater.getNombrecrater()) && !(isExplored(crater)))
+                    if(name.toLowerCase().equals(crater.getNombrecrater().toLowerCase())){
                         crateresPorExplorar.add(crater);
                     }   
                 }
@@ -100,7 +100,7 @@ public class VistaPlanificarController implements Initializable {
                 i++;
             }
             Label titulo = new Label("Ruta sugerida de exploración");
-            titulo.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+            titulo.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
             paneRutas.setHgap(10);
             paneRutas.setAlignment(Pos.CENTER);
             paneRutas.setMaxHeight(100);
