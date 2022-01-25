@@ -96,12 +96,12 @@ public class VistaExplorar2_0Controller implements Initializable {
             
             Label lnombre = new Label(i.getNombrecrater());
             lnombre.setStyle("-fx-font-weight:bold");
-            
-            String[] minerales = CraterData.cargarMinerales(i.getNombrecrater());                      
+                              
 
             datos.getChildren().addAll(lnombre);
-            try{
-                for(String s:minerales){
+   
+             try{
+                for(String s:i.getMinerales()){
                 Label min= new Label(s);
                 datos.getChildren().add(min);
             }
@@ -109,8 +109,8 @@ public class VistaExplorar2_0Controller implements Initializable {
             }catch(Exception ex){
                 Label min= new Label("No hay información");
                 datos.getChildren().add(min);
-            }
-            
+            }   
+           
             
             
         });

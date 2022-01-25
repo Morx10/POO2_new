@@ -26,7 +26,13 @@ public class CraterData {
             String linea;
             while((linea = bf.readLine())!=null){
                 String[] p = linea.split(",");
+              
                 Crater crater = new Crater(p[0],p[1],Double.parseDouble(p[2]),Double.parseDouble(p[3]),Double.parseDouble(p[4]));
+                
+                String[] minerales= cargarMinerales(crater.getNombrecrater());
+                
+                crater.setMinerales(minerales);
+                
                 crateres.add(crater);
             }         
         }  catch (IOException ex) {
@@ -36,7 +42,7 @@ public class CraterData {
         return crateres;
     }
     
-    public static String[] cargarMinerales(String crater){
+    private static String[] cargarMinerales(String crater){
         String[] minerales = null;
         try( BufferedReader bf = 
                 new BufferedReader(new FileReader(ruta2)) ){

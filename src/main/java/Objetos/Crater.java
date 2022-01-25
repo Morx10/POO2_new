@@ -4,6 +4,8 @@
  */
 package Objetos;
 
+import java.util.List;
+
 /**
  *
  * @author marit
@@ -14,6 +16,7 @@ public class Crater {
     private double latitud;
     private double longitud;
     private double radiocrater;
+    private String[] minerales;
 
     public Crater(String idcrater, String nombrecrater, double latitud, double longitud, double radiocrater) {
         this.idcrater = idcrater;
@@ -21,6 +24,10 @@ public class Crater {
         this.latitud = latitud;
         this.longitud = longitud;
         this.radiocrater = radiocrater;
+    }
+
+    public void setMinerales(String[] minerales) {
+        this.minerales = minerales;
     }
 
     public String getIdcrater() {
@@ -82,5 +89,12 @@ public class Crater {
       }
       return false;
     }
+
+    public String[] getMinerales() {
+        return minerales;
+    }
+    
+    
+    
     
 }
