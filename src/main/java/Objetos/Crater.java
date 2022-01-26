@@ -4,6 +4,7 @@
  */
 package Objetos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class Crater {
     private double latitud;
     private double longitud;
     private double radiocrater;
-    private String[] minerales;
+    private List<String> minerales=new ArrayList<String>();
 
     public Crater(String idcrater, String nombrecrater, double latitud, double longitud, double radiocrater) {
         this.idcrater = idcrater;
@@ -26,7 +27,7 @@ public class Crater {
         this.radiocrater = radiocrater;
     }
 
-    public void setMinerales(String[] minerales) {
+    public void setMinerales(List<String> minerales) {
         this.minerales = minerales;
     }
 
@@ -90,9 +91,15 @@ public class Crater {
       return false;
     }
 
-    public String[] getMinerales() {
+    public List<String> getMinerales() {
         return minerales;
     }
+    
+    public void aniadirMinerales(String mineral){       
+        minerales.add(mineral);
+    }
+
+    
     
     
     

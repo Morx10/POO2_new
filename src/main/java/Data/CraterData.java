@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public class CraterData {
               
                 Crater crater = new Crater(p[0],p[1],Double.parseDouble(p[2]),Double.parseDouble(p[3]),Double.parseDouble(p[4]));
                 
-                String[] minerales= cargarMinerales(crater.getNombrecrater());
+                List<String> minerales= cargarMinerales(crater.getNombrecrater());
                 
                 crater.setMinerales(minerales);
                 
@@ -42,16 +43,19 @@ public class CraterData {
         return crateres;
     }
     
-    private static String[] cargarMinerales(String crater){
-        String[] minerales = null;
+    private static List<String> cargarMinerales(String crater){
+        List<String> minerales = null;
         try( BufferedReader bf = 
                 new BufferedReader(new FileReader(ruta2)) ){
             String linea;
             while((linea = bf.readLine())!=null){
                 String[] p = linea.split(";");
                 
+                
                 if(p[1].equals(crater)){
-                    minerales = p[2].split(",");
+                    String[] mineralesantes = p[2].split(",");
+                    minerales = new ArrayList<String>(Arrays.asList(mineralesantes));
+                  
                 }
             }         
         }  catch (Exception ex) {

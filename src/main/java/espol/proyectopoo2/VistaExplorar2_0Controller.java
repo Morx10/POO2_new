@@ -44,6 +44,7 @@ import javafx.scene.shape.Circle;
 public class VistaExplorar2_0Controller implements Initializable {
     
     private static Rovers rover;
+    private static List<Crater> crateres;
 
     @FXML
     private Pane marteimage;
@@ -66,7 +67,7 @@ public class VistaExplorar2_0Controller implements Initializable {
 
         cbrovers.getItems().addAll(App.getRovers());
         
-        List<Crater> crateres = CraterData.cargarCrateres();
+        crateres = CraterData.cargarCrateres();
         
         for(Crater i:crateres){
             Circle c= new Circle(i.isRadiocrater(),Color.TRANSPARENT);
@@ -101,7 +102,8 @@ public class VistaExplorar2_0Controller implements Initializable {
             datos.getChildren().addAll(lnombre);
    
              try{
-                for(String s:i.getMinerales()){
+                List<String> minerales= i.getMinerales();
+                for(String s:minerales){
                 Label min= new Label(s);
                 datos.getChildren().add(min);
             }
@@ -162,6 +164,8 @@ public class VistaExplorar2_0Controller implements Initializable {
                     rover.cargar();                
                 }else if(text.equals("avanzar")){
                     rover.avanzar();
+                }else if(text.equals("sensar")){
+                    rover.sensar();
                 }
                 
                 
@@ -330,6 +334,12 @@ public class VistaExplorar2_0Controller implements Initializable {
         imgview.setRotate(grados);
         
     }
+
+    public static List<Crater> getCrateres() {
+        return crateres;
+    }
+      
+      
 
 }
     

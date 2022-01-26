@@ -4,8 +4,11 @@
  */
 package Objetos;
 
+import Data.CONSTANTES;
+import Data.ExplorationData;
 import Data.RoversData;
 import espol.proyectopoo2.VistaExplorar2_0Controller;
+import java.util.List;
 
 /**
  *
@@ -74,7 +77,41 @@ public abstract class Rovers implements Acciones {
 
     @Override
     public String sensar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<Crater> crateres= VistaExplorar2_0Controller.getCrateres();
+        try{
+        for(Crater c:crateres){
+            if(((ubicacionx>=(c.getLongitud()-c.isRadiocrater()))|| 
+                    (ubicacionx<=(c.getLongitud()+c.isRadiocrater())))&&
+                    ((ubicaciony>=(c.getLatitud()-c.isRadiocrater()))||
+                    (ubicaciony<=(c.getLatitud()+c.isRadiocrater())))){                
+
+                List<String> minerales= CONSTANTES.minerales;
+                int numero = (int)(Math.random()*10+1);
+                
+                for(int i=0;i<=numero;i++){
+                    int index = (int)(Math.random() * minerales.size());
+                    System.out.println(index);
+                    
+                    String mineral= minerales.get(index);
+                    c.aniadirMinerales(mineral);
+                
+                }
+                ExplorationData.escribirExploracion(c);
+                
+
+
+            
+        }
+        }
+        }catch(Exception ex){
+            System.out.println("no hay");
+        }
+        
+        
+        
+        
+        return "hola"; 
     }
 
     @Override
