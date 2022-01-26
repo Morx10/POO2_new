@@ -79,8 +79,9 @@ public abstract class Rovers implements Acciones {
     public String sensar() {
         
         List<Crater> crateres= VistaExplorar2_0Controller.getCrateres();
-        try{
+        
         for(Crater c:crateres){
+            try{
             if(((ubicacionx>=(c.getLongitud()-c.isRadiocrater()))|| 
                     (ubicacionx<=(c.getLongitud()+c.isRadiocrater())))&&
                     ((ubicaciony>=(c.getLatitud()-c.isRadiocrater()))||
@@ -90,11 +91,10 @@ public abstract class Rovers implements Acciones {
                 int numero = (int)(Math.random()*10+1);
                 
                 for(int i=0;i<=numero;i++){
-                    int index = (int)(Math.random() * minerales.size());
-                    System.out.println(index);
-                    
+                    int index = (int)(Math.random() * minerales.size());                   
                     String mineral= minerales.get(index);
                     c.aniadirMinerales(mineral);
+                    System.out.println(c.getMinerales());
                 
                 }
                 ExplorationData.escribirExploracion(c);
@@ -103,10 +103,11 @@ public abstract class Rovers implements Acciones {
 
             
         }
-        }
-        }catch(Exception ex){
+            }catch(Exception ex){
             System.out.println("no hay");
         }
+        }
+        
         
         
         
