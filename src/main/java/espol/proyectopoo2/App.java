@@ -29,6 +29,7 @@ public class App extends Application {
         try{
             Parent root = loadFXML("VistaPrincipal");
             scene = new Scene(root, 1200, 720);
+            stage.setTitle("Exploración en Marte");
             stage.setScene(scene);
             stage.show();
         }catch(IOException ex){

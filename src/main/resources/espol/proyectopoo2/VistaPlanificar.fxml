@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaPlanificarController">
    <top>
       <VBox prefHeight="136.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
@@ -20,7 +19,7 @@
                   <ComboBox fx:id="roverExploracion" prefWidth="150.0" />
                </children>
             </HBox>
-            <Label text="Ingrese el nombre de los cráteres separados por una coma y un espacio:" />
+            <Label text="Ingrese el nombre de los cráteres (Ej: Mead, Andreianova, Baker):" />
             <TextField fx:id="crateresTxt" onKeyPressed="#generarRuta" prefHeight="26.0" prefWidth="579.0" />
          </children>
          <padding>

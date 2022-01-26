@@ -29,7 +29,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -49,9 +48,6 @@ public class VistaPlanificarController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Stage stage = new Stage();
-        stage.setResizable(true);
-        stage.setTitle("Planificador de rutas");
         vboxRutas.setVisible(false);
         List<Rovers> rovers = RoversData.cargarRovers();
         roverExploracion.getItems().addAll(rovers);
@@ -93,15 +89,10 @@ public class VistaPlanificarController implements Initializable {
                 //Se crea una lista de los nombres de los cráteres por explorar para verificar 
                 //los cráteres ingresados por el usuario que no han sido encontrados
                 ArrayList<String> nombresCrateresPorExplorar = new ArrayList();
-                System.out.println("Crateres por explorar");
                 for(Crater crater: crateresPorExplorar){
                     nombresCrateresPorExplorar.add(crater.getNombrecrater().toLowerCase());
-                    System.out.println(crater.getNombrecrater());
                 }
-                System.out.println("");
-                System.out.println("Crateres ingresados");
                 for(String crater: nombresCrateres){
-                    System.out.println(crater);
                     if(!nombresCrateresPorExplorar.contains(crater.toLowerCase()))
                         crateresFake.add(crater);
                 }
