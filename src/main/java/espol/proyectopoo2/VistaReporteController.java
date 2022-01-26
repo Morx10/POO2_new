@@ -50,9 +50,8 @@ public class VistaReporteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-
-
+        
+       
     }    
 
     @FXML
@@ -63,7 +62,6 @@ public class VistaReporteController implements Initializable {
 
     @FXML
     private void BuscarRegistro(MouseEvent event) {
-        
         List<Exploration> exploraciones = new ArrayList<Exploration>();
         exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
@@ -77,9 +75,6 @@ public class VistaReporteController implements Initializable {
         this.Nombre.setCellValueFactory(new PropertyValueFactory<Exploration, String>("crater_name"));
         this.Minerales.setCellValueFactory(new PropertyValueFactory<Exploration, String>("mineral"));
         this.TablaRegistro.setItems(datos);
-        
-
-        
     }}
     
 

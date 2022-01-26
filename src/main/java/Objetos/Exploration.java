@@ -6,6 +6,8 @@ package Objetos;
 
 import java.util.List;
 import java.util.stream.Stream;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  *
@@ -18,14 +20,14 @@ public class Exploration {
     public Exploration( String fecha, String crater_name,String mineral) {
         this.fecha = fecha;
         this.crater_name = crater_name;
-        this.mineral = mineral;
+        this.mineral =mineral;
     }
      public String getFecha() {
         return fecha;
     }
 
     public void setFecha(String fecha) {
-        this.fecha = fecha;
+        this.fecha=fecha;
     }
 
     public String getNameCrater() {
@@ -33,7 +35,7 @@ public class Exploration {
     }
 
     public void setNameCrater(String crater_name) {
-        this.crater_name = crater_name;
+        this.crater_name=crater_name;
     }
 
     public String getMineral() {
@@ -41,12 +43,11 @@ public class Exploration {
     }
 
     public void setContenido(String mineral) {
-        this.mineral = mineral;
+        this.mineral=mineral;
     }
         @Override
     public String toString() {
-        return crater_name;
-    }
+       return crater_name;}
    
 
     
