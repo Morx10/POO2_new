@@ -76,20 +76,31 @@ public class VistaPlanificarController implements Initializable {
                 String[] nombresCrateres = cadena.split(", ");
                 for(String name: nombresCrateres){
                     for(Crater crater: crateres){
-                        //Se verifica que el cráter estuvo escrito correctamente y que no ha sido sensado
+                        //Se verifica que el cráter estuvo escrito correctamente y que no esté repetido
                         if(name.toLowerCase().equals(crater.getNombrecrater().toLowerCase())){
                             if(!crateresPorExplorar.contains(crater))
                                 crateresPorExplorar.add(crater);
-                            else
+                            else if(!crateresRepetidos.contains(crater))
                                 crateresRepetidos.add(crater);
                         }
                     }   
-                }               
-
-                /*for(Crater crater: crateresPorExplorar){
-                    if(!nombresCrateres.contains(crater.getNombrecrater()))
-                        crateresFake.add(crater.getNombrecrater());
-                }*/
+                }  
+                
+                //Se crea una lista de los nombres de los cráteres por explorar para verificar 
+                //los cráteres ingresados por el usuario que no han sido encontrados
+                ArrayList<String> nombresCrateresPorExplorar = new ArrayList();
+                System.out.println("Crateres por explorar");
+                for(Crater crater: crateresPorExplorar){
+                    nombresCrateresPorExplorar.add(crater.getNombrecrater().toLowerCase());
+                    System.out.println(crater.getNombrecrater());
+                }
+                System.out.println("");
+                System.out.println("Crateres ingresados");
+                for(String crater: nombresCrateres){
+                    System.out.println(crater);
+                    if(!nombresCrateresPorExplorar.contains(crater.toLowerCase()))
+                        crateresFake.add(crater);
+                }
                 
                 
                 List<Crater> rutaCrateres = new ArrayList<>(crateresPorExplorar);
@@ -170,7 +181,7 @@ public class VistaPlanificarController implements Initializable {
                 if(rutaCrateres.isEmpty()){
                     vboxRutas.setVisible(false);
                     Alert a = new Alert(Alert.AlertType.ERROR);
-                    a.setContentText("Escribir el nombre de los cráteres correctamente");
+                    a.setContentText("Ingresar correctamente el nombre de los cráteres");
                     a.showAndWait();
                 }
             }
