@@ -12,7 +12,6 @@ import Objetos.Rovers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -20,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -65,48 +65,99 @@ public class VistaPlanificarController implements Initializable {
         KeyCode tecla = event.getCode(); 
         vboxRutas.getChildren().clear();
         vboxRutas.setSpacing(10);
-        if(tecla == tecla.ENTER){
-            //Crear una lista con los cráteres que se quieren visitar
-            List<Crater> crateres = CraterData.cargarCrateres();
-            ArrayList<Crater> crateresPorExplorar = new ArrayList<>();
-            String nombres = crateresTxt.getText();
-            String[] nombresCrateres = nombres.split(", ");
-            for(String name: nombresCrateres){//falta manejar excepciones
-                for(Crater crater: crateres){
-                    //Se verifica que el cráter estuvo escrito correctamente y que no ha sido visitado
-                    if(name.toLowerCase().equals(crater.getNombrecrater().toLowerCase())){
-                        crateresPorExplorar.add(crater);
-                    }   
+        try{ 
+            if(tecla == tecla.ENTER){
+                //Crear una lista con los cráteres que se quieren visitar
+                List<Crater> crateres = CraterData.cargarCrateres();
+                ArrayList<Crater> crateresPorExplorar = new ArrayList<>();
+                ArrayList<String> crateresFake = new ArrayList<>();
+                ArrayList<Crater> crateresRepetidos = new ArrayList<>();
+                String cadena = crateresTxt.getText();
+                String[] nombresCrateres = cadena.split(", ");
+                for(String name: nombresCrateres){//falta manejar excepciones
+                    for(Crater crater: crateres){
+                        //Se verifica que el cráter estuvo escrito correctamente y que no ha sido visitado
+                        if(name.toLowerCase().equals(crater.getNombrecrater().toLowerCase())
+                                && !crateresPorExplorar.contains(crater)){
+                            crateresPorExplorar.add(crater);
+                        }
+                        /*else if(crateresPorExplorar.contains(crater)){
+                            crateresRepetidos.add(crater);
+                        }
+                        else{
+                            crateresFake.add(name);
+                        }*/
+                    }
                 }
-            }
-            List<Crater> rutaCrateres = new ArrayList<>(crateresPorExplorar);
-            System.out.println(rutaCrateres.size());
-            for(int i=0;i<rutaCrateres.size();i++){
-                Crater craterCercano = getCraterMasCercano(crateresPorExplorar,
+                List<Crater> rutaCrateres = new ArrayList<>(crateresPorExplorar);
+                for(int i=0;i<rutaCrateres.size();i++){
+                    Crater craterCercano = getCraterMasCercano(crateresPorExplorar,
                                         roverExploracion.getValue());
-                rutaCrateres.set(i,craterCercano);
-                crateresPorExplorar.remove(craterCercano);
-                roverExploracion.getValue().setUbicacionx(craterCercano.getLatitud());
-                roverExploracion.getValue().setUbicaciony(craterCercano.getLongitud());
-                System.out.println(rutaCrateres.size());
-            }
+                    rutaCrateres.set(i,craterCercano);
+                    crateresPorExplorar.remove(craterCercano);
+                    roverExploracion.getValue().setUbicacionx(craterCercano.getLatitud());
+                    roverExploracion.getValue().setUbicaciony(craterCercano.getLongitud());
+                }
             
-            //Se muestra en pantalla la lista final
-            GridPane paneRutas = new GridPane();
-            paneRutas.setGridLinesVisible(true);
-            int i=0;
-            for(Crater c: rutaCrateres){
-                paneRutas.add(new Label((i+1)+".- "+c.getNombrecrater()),0,i);
-                i++;
+                //Se muestran en pantalla las listas finales
+            
+                //Rutas por explorar
+                Label tituloRuta = new Label("Ruta sugerida de exploración");
+                tituloRuta.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                GridPane paneRutas = new GridPane();
+                paneRutas.setGridLinesVisible(true);
+                int i=1;
+                for(Crater c: rutaCrateres){
+                    paneRutas.add(new Label(i+".- "+c.getNombrecrater()),0,i);
+                    i++;
+                }
+                paneRutas.setHgap(10);
+                paneRutas.setAlignment(Pos.CENTER);
+                paneRutas.setMaxHeight(100);
+                paneRutas.setMaxWidth(2000);
+
+                //Crateres repetidos
+                /*Label tituloRepetidos = new Label("Cráteres repetidos");
+                tituloRuta.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                GridPane paneRepetidos = new GridPane();
+                paneRepetidos.setGridLinesVisible(true);
+                int j=1;
+                for(Crater c: crateresRepetidos){
+                    paneRepetidos.add(new Label(j+".- "+c.getNombrecrater()),0,j);
+                    j++;
+                }
+                paneRepetidos.setHgap(10);
+                paneRepetidos.setAlignment(Pos.CENTER);
+                paneRepetidos.setMaxHeight(100);
+                paneRepetidos.setMaxWidth(2000);
+
+                //Cráteres no encontrados
+                Label tituloFalsos = new Label("Cráteres no encontrados");
+                tituloRuta.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                GridPane paneFalsos = new GridPane();
+                paneFalsos.setGridLinesVisible(true);
+                int k=1;
+                for(String c: crateresFake){
+                    paneFalsos.add(new Label(k+".- "+c),0,k);
+                    k++;
+                }
+                paneFalsos.setHgap(10);
+                paneFalsos.setAlignment(Pos.CENTER);
+                paneFalsos.setMaxHeight(100);
+                paneFalsos.setMaxWidth(2000);*/
+
+                vboxRutas.getChildren().addAll(tituloRuta,paneRutas);
+                /*vboxRutas.getChildren().addAll(tituloRuta,paneRutas,tituloRepetidos,
+                        paneRepetidos,tituloFalsos,paneFalsos);*/
+                vboxRutas.setVisible(true);
             }
-            Label titulo = new Label("Ruta sugerida de exploración");
-            titulo.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
-            paneRutas.setHgap(10);
-            paneRutas.setAlignment(Pos.CENTER);
-            paneRutas.setMaxHeight(100);
-            paneRutas.setMaxWidth(2000);
-            vboxRutas.getChildren().addAll(titulo,paneRutas);
-            vboxRutas.setVisible(true);
+        }catch(NullPointerException ex){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            if(roverExploracion.getValue()==null) 
+                a.setContentText("Debe elegir un rover");
+            else if(crateresTxt.getText()==null)
+                a.setContentText("Escriba el nombre de los cráteres");
+            a.showAndWait();
         }
     }
     
