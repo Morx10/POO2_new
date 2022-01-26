@@ -63,6 +63,7 @@ public class VistaPlanificarController implements Initializable {
     private void generarRuta(KeyEvent event) {
         KeyCode tecla = event.getCode();         
         vboxRutas.setSpacing(10);
+        vboxRutas.setAlignment(Pos.TOP_CENTER);
         try{ 
             if(tecla == tecla.ENTER){
                 vboxRutas.getChildren().clear();
@@ -106,6 +107,7 @@ public class VistaPlanificarController implements Initializable {
                 //Rutas por explorar
                 Label tituloRuta = new Label("Ruta sugerida de exploración");
                 tituloRuta.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                tituloRuta.setAlignment(Pos.CENTER);
                 GridPane paneRutas = new GridPane();
                 paneRutas.setGridLinesVisible(true);
                 int i=1;
@@ -119,6 +121,7 @@ public class VistaPlanificarController implements Initializable {
                 //Crateres repetidos
                 Label tituloRepetidos = new Label("Cráteres repetidos");
                 tituloRepetidos.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                tituloRepetidos.setAlignment(Pos.CENTER);
                 GridPane paneRepetidos = new GridPane();
                 paneRepetidos.setGridLinesVisible(true);
                 if(crateresRepetidos.size()>0){
@@ -140,6 +143,7 @@ public class VistaPlanificarController implements Initializable {
                 //Cráteres no encontrados
                 Label tituloFalsos = new Label("Cráteres no encontrados");
                 tituloFalsos.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                tituloFalsos.setAlignment(Pos.CENTER);
                 GridPane paneFalsos = new GridPane();
                 paneFalsos.setGridLinesVisible(true);
                 if(crateresFake.size()>0){
@@ -163,7 +167,7 @@ public class VistaPlanificarController implements Initializable {
                         paneRepetidos,tituloFalsos,paneFalsos);
                 vboxRutas.setVisible(true);
                 
-                if(cadena.equals("") || rutaCrateres.isEmpty()){
+                if(rutaCrateres.isEmpty()){
                     vboxRutas.setVisible(false);
                     Alert a = new Alert(Alert.AlertType.ERROR);
                     a.setContentText("Escribir el nombre de los cráteres correctamente");

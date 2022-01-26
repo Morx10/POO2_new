@@ -11,6 +11,8 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 /**
  *
@@ -52,41 +55,37 @@ public class ExplorationData {
         }
     }
      private static LocalDate TransformarFecha(String fecha){
-        int posicion =fecha.indexOf("-");
-        String dia= fecha.substring(0,posicion);
-        fecha= fecha.substring(posicion+1);
-        posicion=fecha.indexOf("-");
-        String mes=fecha.substring(0,posicion);
-        fecha= fecha.substring(posicion+1);
-        String anyo=fecha;
-        
-        int datodia = Integer.parseInt(dia);
-        int datomes = Integer.parseInt(mes);
-        int datoanyo = Integer.parseInt(anyo);
-        
-        //Validacion de que la fecha ingresada se encuentre dentro del rango
-        if(1>datodia||datodia>31||1>datomes||datomes>12||1900>datoanyo||datoanyo>2026){
-            System.out.println("Fecha incorrecta");
-            LocalDate fechafin= LocalDate.now();
-            return fechafin;
+        LocalDate fechafin=LocalDate.now();
+        if(validarFecha(fecha)){
+            int posicion =fecha.indexOf("-");
+            String dia= fecha.substring(0,posicion);
+            fecha= fecha.substring(posicion+1);
+            posicion=fecha.indexOf("-");
+            String mes=fecha.substring(0,posicion);
+            fecha= fecha.substring(posicion+1);
+            String anyo=fecha;
+            int datodia = Integer.parseInt(dia);
+            int datomes = Integer.parseInt(mes);
+            int datoanyo = Integer.parseInt(anyo);
+            fechafin=  LocalDate.of(datoanyo,datomes,datodia); 
         }
-        else{
-            LocalDate fechafin=  LocalDate.of(datoanyo,datomes,datodia);
-            return fechafin;
-        }}
+     return fechafin;}
      
      
      
-     public static boolean ValidationFecha(String FInicio,String Ffin,Exploration exp){
+    public static boolean ValidationFecha(String FInicio,String Ffin,Exploration exp){
          LocalDate FechaIni=TransformarFecha(FInicio);
          LocalDate FechaFin=TransformarFecha(Ffin);
          LocalDate fecha=TransformarFecha(exp.getFecha());
          if((fecha.isBefore(FechaFin)||fecha.isEqual(FechaFin))&&(fecha.isAfter(FechaIni)||fecha.isEqual(FechaIni))){
                 return true;}
+         Alert a=new Alert(Alert.AlertType.ERROR);
+         a.setContentText("El rango de la fecha no es válido");
+         a.show();
          return false;}
      
      
-     public static boolean ValidarMinerales(Exploration exp,String minel){
+    public static boolean ValidarMinerales(Exploration exp,String minel){
             String minerales=exp.getMineral();
             String [] parts=minerales.split(",");
             for(int i = 0; i < parts.length; i++){
@@ -94,7 +93,20 @@ public class ExplorationData {
                     return true;}}
          return false;}
      
-     
+    private static boolean validarFecha(String fecha) {
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            formatoFecha.setLenient(false);
+            formatoFecha.parse(fecha);
+        } catch (ParseException e) {
+            Alert a=new Alert(Alert.AlertType.ERROR);
+            e.printStackTrace();
+            a.setContentText("Ingrese correctamente la fecha");
+            a.show();
+            return false;
+        }
+        return true;
+    }
      
      
      public static ObservableList<Exploration>  FiltradoFecha(String FInicio,String Ffin,List<Exploration> explorations, String mineral){
