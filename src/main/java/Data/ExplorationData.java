@@ -32,19 +32,19 @@ public class ExplorationData {
     
     public static void escribirExploracion(Crater c) throws IOException{
         try(BufferedWriter bf = 
-                new BufferedWriter(new FileWriter(archivoExploration,true))){
+                new BufferedWriter(new FileWriter(archivoExploration))){
             List<String> minerales =c.getMinerales();
             String str = "";
             for (String min : minerales) {
 			str+= min+",";}
             String linea=LocalDate.now().toString()+";"+c.getNombrecrater()+";"+str;
-            bf.write(linea);
+            bf.write(linea.substring(0, linea.length()-1));
             bf.newLine();
             bf.flush();//para que se escriba inmediatamente en el archivo
             bf.close();
         }
 }
-    public static List<Exploration> obtenerExploracion() throws IOException{
+    public static List<Exploration> obtenerExploracion(){
         List<Exploration> exploraciones= new ArrayList<Exploration>();
         try(BufferedReader bf = 
                 new BufferedReader(new FileReader(archivoExploration))){
@@ -53,9 +53,14 @@ public class ExplorationData {
                 String[] partes = linea.split(";");
                 
                 exploraciones.add(new Exploration(partes[0],partes[1],partes[2]));
-            }
-            return exploraciones;
+            } }catch (Exception ex) {
+             ex.printStackTrace();
+             Alert a=new Alert(Alert.AlertType.INFORMATION);
+             a.setContentText("No hay exploraciones que mostrar");
+             a.show();
         }
+            return exploraciones;
+        
     }
      private static LocalDate TransformarFecha(String fecha){
         LocalDate fechafin=LocalDate.now();

@@ -1,6 +1,1 @@
-<<<<<<< Updated upstream
-
-
-=======
 2022-01-23;Mead;Aluminio,Sodio,Cobre
->>>>>>> Stashed changes
