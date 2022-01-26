@@ -33,13 +33,16 @@ public class ExplorationData {
     public static void escribirExploracion(Crater c) throws IOException{
         try(BufferedWriter bf = 
                 new BufferedWriter(new FileWriter(archivoExploration,true))){
-            String linea=LocalDate.now().toString()+";"+c.getNombrecrater()+c.getMinerales();
+            List<String> minerales =c.getMinerales();
+            String str = "";
+            for (String min : minerales) {
+			str+= min+",";}
+            String linea=LocalDate.now().toString()+";"+c.getNombrecrater()+str;
             bf.write(linea);
             bf.newLine();
             bf.flush();//para que se escriba inmediatamente en el archivo
             bf.close();
         }
-        
 }
     public static List<Exploration> obtenerExploracion() throws IOException{
         List<Exploration> exploraciones= new ArrayList<Exploration>();
@@ -49,7 +52,7 @@ public class ExplorationData {
             while((linea=bf.readLine())!=null){
                 String[] partes = linea.split(";");
                 
-                exploraciones.add(new Exploration(partes[0],partes[1],"Aluminio,Sodio,Magnesio"));
+                exploraciones.add(new Exploration(partes[0],partes[1],partes[2]));
             }
             return exploraciones;
         }
