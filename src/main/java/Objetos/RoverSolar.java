@@ -4,6 +4,7 @@
  */
 package Objetos;
 
+import Data.RoversData;
 import espol.proyectopoo2.VistaExplorar2_0Controller;
 import java.util.HashSet;
 import javafx.scene.control.Alert;
@@ -52,6 +53,7 @@ public class RoverSolar extends Rovers {
         
         VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
         super.setBateria(100);
+        RoversData.escribirRover();
         
      
         

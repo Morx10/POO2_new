@@ -61,7 +61,15 @@ public abstract class Rovers implements Acciones {
        
         double hypot = Math.hypot(dirX,dirY);
         bateria= bateria - (hypot/20 );
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        double ubicacionX= ubicacionx;
+        double ubicacionY= ubicacionx;
+        
+        ubicacionx=x;
+        ubicaciony=y;
+     
+        VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
+        RoversData.escribirRover();
     }
 
     @Override

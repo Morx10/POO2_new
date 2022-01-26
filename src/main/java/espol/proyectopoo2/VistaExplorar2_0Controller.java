@@ -160,11 +160,12 @@ public class VistaExplorar2_0Controller implements Initializable {
                 //FUNCION CARGAR ROVER
                 if(text.equals("cargar")){                    
                     rover.cargar();                
-                }
-                
-                if(text.equals("avanzar")){
+                }else if(text.equals("avanzar")){
                     rover.avanzar();
                 }
+                
+                
+                
                 
                 String[] p= text.split(":");
                 if(p[0].equals("girar")){
@@ -177,6 +178,16 @@ public class VistaExplorar2_0Controller implements Initializable {
                         alert.showAndWait();
                     }
                     
+                }else if(p[0].equals("dirigirse")){
+                    try{
+                        String[] f=p[1].split(",");
+                        rover.dirigirse(Double.parseDouble(f[0]),Double.parseDouble(f[1]));
+                    }catch(Exception ex){
+                        Alert alert= new Alert(Alert.AlertType.WARNING);
+                        alert.setContentText("ingrese una cantidad correcta");
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                    }
                 }
                 
                 

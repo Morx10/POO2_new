@@ -4,6 +4,7 @@
  */
 package Objetos;
 
+import Data.RoversData;
 import javafx.scene.control.Alert;
 
 /**
@@ -24,6 +25,8 @@ public class RoverEolica extends Rovers {
         alert.setHeaderText(null);
         alert.showAndWait();
         super.girar(-90);
+        RoversData.escribirRover();
+        super.setBateria(100);
     }
     
 }
