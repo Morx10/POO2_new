@@ -37,7 +37,7 @@ public class ExplorationData {
             String str = "";
             for (String min : minerales) {
 			str+= min+",";}
-            String linea=LocalDate.now().toString()+";"+c.getNombrecrater()+str;
+            String linea=LocalDate.now().toString()+";"+c.getNombrecrater()+";"+str;
             bf.write(linea);
             bf.newLine();
             bf.flush();//para que se escriba inmediatamente en el archivo

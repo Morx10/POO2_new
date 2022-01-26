@@ -1,2 +1,2 @@
-2022-01-23;Mead;Aluminio,Sodio,Cobre
-2022-01-26;Mead[Aluminio, Sodio, Cobre, Hierro, Plomo, Cobre, Carbono, Titanio, Vanadio]
+
+
