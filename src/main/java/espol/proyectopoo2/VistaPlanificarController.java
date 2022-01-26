@@ -29,6 +29,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -48,6 +49,9 @@ public class VistaPlanificarController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Stage stage = new Stage();
+        stage.setResizable(true);
+        stage.setTitle("Planificador de rutas");
         vboxRutas.setVisible(false);
         List<Rovers> rovers = RoversData.cargarRovers();
         roverExploracion.getItems().addAll(rovers);
