@@ -82,10 +82,9 @@ public abstract class Rovers implements Acciones {
         
         for(Crater c:crateres){
             try{
-            if(((ubicacionx>=(c.getLongitud()-c.isRadiocrater()))|| 
-                    (ubicacionx<=(c.getLongitud()+c.isRadiocrater())))&&
-                    ((ubicaciony>=(c.getLatitud()-c.isRadiocrater()))||
-                    (ubicaciony<=(c.getLatitud()+c.isRadiocrater())))){                
+            if(((ubicacionx>=(c.getLatitud()-c.isRadiocrater()))|| (ubicacionx<=(c.getLatitud()+c.isRadiocrater())))&&
+                    ((ubicaciony>=(c.getLongitud()-c.isRadiocrater()))||(ubicaciony<=(c.getLongitud()+c.isRadiocrater())))){        
+                System.out.println(c.getNombrecrater());
 
                 List<String> minerales= CONSTANTES.minerales;
                 int numero = (int)(Math.random()*10+1);
@@ -94,7 +93,6 @@ public abstract class Rovers implements Acciones {
                     int index = (int)(Math.random() * minerales.size());                   
                     String mineral= minerales.get(index);
                     c.aniadirMinerales(mineral);
-                    System.out.println(c.getMinerales());
                 
                 }
                 ExplorationData.escribirExploracion(c);
@@ -104,7 +102,7 @@ public abstract class Rovers implements Acciones {
             
         }
             }catch(Exception ex){
-            System.out.println("no hay");
+            
         }
         }
         
