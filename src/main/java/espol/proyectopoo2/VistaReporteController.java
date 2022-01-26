@@ -63,22 +63,23 @@ public class VistaReporteController implements Initializable {
 
     @FXML
     private void BuscarRegistro(MouseEvent event) {
-        try{
+        
         List<Exploration> exploraciones = new ArrayList<Exploration>();
         exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
         exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
-        String FechaI=fIniciotxt.getText();
-        String FechaF=ffintxt.getText();
-        String minerales=mineralestxt.getText();
-        Fecha.setCellValueFactory(new PropertyValueFactory<Exploration, String>("fecha"));
-        Nombre.setCellValueFactory(new PropertyValueFactory<Exploration, String>("crater_name"));
-        Minerales.setCellValueFactory(new PropertyValueFactory<Exploration, String>("mineral"));
-        datos=ExplorationData.FiltradoFecha(FechaI,FechaF,datos,minerales);
-        TablaRegistro.setItems(datos);}
-        catch(RuntimeException ex){ }
+        String FechaI=this.fIniciotxt.getText();
+        String FechaF=this.ffintxt.getText();
+        String minerales=this.mineralestxt.getText();
+        datos=ExplorationData.FiltradoFecha(FechaI,FechaF,exploraciones,minerales);
+        System.out.println(datos);
+        this.Fecha.setCellValueFactory(new PropertyValueFactory<Exploration, String>("fecha"));
+        this.Nombre.setCellValueFactory(new PropertyValueFactory<Exploration, String>("crater_name"));
+        this.Minerales.setCellValueFactory(new PropertyValueFactory<Exploration, String>("mineral"));
+        this.TablaRegistro.setItems(datos);
+        
 
         
-    }
+    }}
     
-}
+

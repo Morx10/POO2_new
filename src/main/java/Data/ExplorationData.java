@@ -30,7 +30,7 @@ public class ExplorationData {
     public static void escribirExploracion(Crater c) throws IOException{
         try(BufferedWriter bf = 
                 new BufferedWriter(new FileWriter(archivoExploration,true))){
-            String linea=LocalDate.now().toString()+";"+c.getNombrecrater();//Falta agregar los minerales
+            String linea=LocalDate.now().toString()+";"+c.getNombrecrater()+c.getMinerales();
             bf.write(linea);
             bf.newLine();
             bf.flush();//para que se escriba inmediatamente en el archivo
@@ -107,17 +107,13 @@ public class ExplorationData {
         return datos;
      }
      
-     
      public static void main(String[] args) {
-        //Crater c= new Crater("1","Mead",466.51,491.53,33.36);
-        //ExplorationData.escribirExploracion(c);
-        //System.out.println(ExplorationData.obtenerExploracion());
         
         List<Exploration> exploraciones = new ArrayList<Exploration>();
         exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
         exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
-        System.out.println(FiltradoFecha("10-01-2020","11-01-2022",exploraciones,"Sodio"));  
+        System.out.println(FiltradoFecha("10-01-2020","11-10-2021",exploraciones,"Sodio"));  
   
 }
 }

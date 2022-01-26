@@ -21,9 +21,6 @@
          </padding>
       </HBox>
    </bottom>
-   <top>
-      <TextField alignment="TOP_CENTER" text="Registro de las exploraciones realizadas" BorderPane.alignment="CENTER" />
-   </top>
    <left>
       <HBox prefHeight="469.0" prefWidth="294.0" BorderPane.alignment="CENTER">
          <children>
@@ -54,4 +51,7 @@
         </columns>
       </TableView>
    </right>
+   <top>
+      <Label text="Registro de las exploraciones realizadas" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>
