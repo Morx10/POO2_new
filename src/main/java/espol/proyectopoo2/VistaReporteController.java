@@ -53,9 +53,6 @@ public class VistaReporteController implements Initializable {
         // TODO
 
 
-        Fecha.setCellValueFactory(new PropertyValueFactory<Exploration, String>("fecha"));
-        Nombre.setCellValueFactory(new PropertyValueFactory<Exploration, String>("crater_name"));
-        Minerales.setCellValueFactory(new PropertyValueFactory<Exploration, String>("mineral"));
     }    
 
     @FXML
@@ -74,6 +71,9 @@ public class VistaReporteController implements Initializable {
         String FechaI=fIniciotxt.getText();
         String FechaF=ffintxt.getText();
         String minerales=mineralestxt.getText();
+        Fecha.setCellValueFactory(new PropertyValueFactory<Exploration, String>("fecha"));
+        Nombre.setCellValueFactory(new PropertyValueFactory<Exploration, String>("crater_name"));
+        Minerales.setCellValueFactory(new PropertyValueFactory<Exploration, String>("mineral"));
         datos=ExplorationData.FiltradoFecha(FechaI,FechaF,datos,minerales);
         TablaRegistro.setItems(datos);}
         catch(RuntimeException ex){ }
