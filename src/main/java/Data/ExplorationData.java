@@ -85,11 +85,8 @@ public class ExplorationData {
          LocalDate FechaIni=TransformarFecha(FInicio);
          LocalDate FechaFin=TransformarFecha(Ffin);
          LocalDate fecha=TransformarFecha(exp.getFecha());
-         if((fecha.isBefore(FechaFin)||fecha.isEqual(FechaFin))&&(fecha.isAfter(FechaIni)||fecha.isEqual(FechaIni))){
+         if((fecha.isBefore(FechaFin)||fecha.isEqual(FechaFin))&&(fecha.isAfter(FechaIni)||fecha.isEqual(FechaIni))&&(FechaIni.isBefore(FechaFin))){
                 return true;}
-         Alert a=new Alert(Alert.AlertType.ERROR);
-         a.setContentText("El rango de la fecha no es válido");
-         a.show();
          return false;}
      
      
@@ -100,7 +97,7 @@ public class ExplorationData {
                 if(parts[i].equals(minel)){
                     return true;}}
          return false;}
-     
+    
     private static boolean validarFecha(String fecha) {
         try {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
@@ -122,18 +119,23 @@ public class ExplorationData {
          Collections.sort(filtrado, (j1, j2) -> (j1.getNameCrater()).compareTo((j2.getNameCrater())));
          ObservableList<Exploration>  datos=FXCollections.observableArrayList();
          for(Exploration ex:filtrado){
-             datos.add(ex);
+             datos.add(ex);}
+         if(datos.isEmpty()){
+            Alert a=new Alert(Alert.AlertType.ERROR);
+            a.setContentText("No existe información con datos ingresados");
+            a.show();
          }
+   
         return datos;
      }
      
      public static void main(String[] args) {
-        
+        /**
         List<Exploration> exploraciones = new ArrayList<Exploration>();
         exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
         exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
-        System.out.println(FiltradoFecha("10-01-2020","11-10-2021",exploraciones,"Sodio"));  
+        System.out.println(FiltradoFecha("10-01-2020","11-10-2021",exploraciones,"Aluminio")); */
   
 }
 }

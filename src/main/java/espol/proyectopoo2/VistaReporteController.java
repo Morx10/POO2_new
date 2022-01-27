@@ -71,20 +71,20 @@ public class VistaReporteController implements Initializable {
         String FechaI=this.fIniciotxt.getText();
         String FechaF=this.ffintxt.getText();
         String minerales=this.mineralestxt.getText();
-        datos=ExplorationData.FiltradoFecha(FechaI,FechaF,exploraciones,capitalizeFirstLetter(minerales));
+        // Obtener primera letra y convertirla a mayúscula
+        String primeraLetra = minerales.substring(0, 1).toUpperCase();
+        // Obtener el resto de la cadena, intacta.
+        // Y convertir a minúscula
+        String restoDeLaCadena = minerales.substring(1).toLowerCase();
+        // Concatenar
+        String m = primeraLetra + restoDeLaCadena;
+        datos=ExplorationData.FiltradoFecha(FechaI,FechaF,exploraciones,m);
         System.out.println(datos);
         this.Fecha.setCellValueFactory(new PropertyValueFactory<Exploration, String>("fecha"));
         this.Nombre.setCellValueFactory(new PropertyValueFactory<Exploration, String>("crater_name"));
         this.Minerales.setCellValueFactory(new PropertyValueFactory<Exploration, String>("mineral"));
         this.TablaRegistro.setItems(datos);
     }
-
-    private  static String capitalizeFirstLetter(String str) {
-        char[] arr = str.toCharArray();
-        arr[0] = Character.toUpperCase(arr[0]);
-      return new String(arr);
-}
-
 }
 
     
