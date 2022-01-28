@@ -12,7 +12,7 @@ public interface Acciones {
     public void avanzar();
     public void girar(double grados);
     public void dirigirse( double x, double y);
-    public String sensar();
+    public void sensar(Crater c);
     public void cargar();
        
 }

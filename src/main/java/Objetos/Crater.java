@@ -19,7 +19,7 @@ public class Crater {
     private double radiocrater;
     private List<String> minerales=new ArrayList<String>();
 
-    public Crater(String idcrater, String nombrecrater, double latitud, double longitud, double radiocrater) {
+    public Crater(String idcrater, String nombrecrater, double longitud, double latitud, double radiocrater) {
         this.idcrater = idcrater;
         this.nombrecrater = nombrecrater;
         this.latitud = latitud;
