@@ -17,7 +17,7 @@ public class Crater {
     private double latitud;
     private double longitud;
     private double radiocrater;
-    private List<String> minerales=new ArrayList<String>();
+    private ArrayList<String> minerales;
 
     public Crater(String idcrater, String nombrecrater, double longitud, double latitud, double radiocrater) {
         this.idcrater = idcrater;
@@ -25,10 +25,11 @@ public class Crater {
         this.latitud = latitud;
         this.longitud = longitud;
         this.radiocrater = radiocrater;
+        this.minerales=new ArrayList<String>();
     }
 
-    public void setMinerales(List<String> minerales) {
-        this.minerales = minerales;
+    public void setMinerales(ArrayList<String> minerales) {  
+        this.minerales=minerales;      
     }
 
     public String getIdcrater() {
@@ -94,12 +95,10 @@ public class Crater {
     public List<String> getMinerales() {
         return minerales;
     }
-    
-    public void aniadirMinerales(String mineral){       
-        minerales.add(mineral);
-    }
 
-    
+    public void aniadirMinerales(ArrayList<String> minerales) {  
+        this.minerales.addAll(minerales);      
+    }
     
     
     
