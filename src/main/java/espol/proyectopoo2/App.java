@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
@@ -30,6 +31,8 @@ public class App extends Application {
             Parent root = loadFXML("VistaPrincipal");
             scene = new Scene(root, 1200, 720);
             stage.setTitle("Exploración en Marte");
+            Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+            stage.getIcons().add(icon);
             stage.setResizable(true);
             stage.setScene(scene);
             stage.show();
