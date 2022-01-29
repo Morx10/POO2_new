@@ -1,1 +1,1 @@
-2022-01-23;Mead;Aluminio,Sodio,Cobre
+2022-01-28;Mead;Aluminio,Sodio,Cobre,Oro,Aluminio,Plata,Plata,Carbono,Titanio,Carbono,Oro,Cobre,Aluminio,Calcio,Aluminio,Aluminio,Plomo

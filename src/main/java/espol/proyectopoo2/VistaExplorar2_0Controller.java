@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -73,12 +74,13 @@ public class VistaExplorar2_0Controller implements Initializable {
             Circle c= new Circle(i.isRadiocrater(),Color.TRANSPARENT);
             c.setStrokeWidth(2);
             c.setStroke(Color.BLUE);
+            
             StackPane st= new StackPane();
-            st.getChildren().addAll(c);
+            st.getChildren().add(c);
             marteimage.getChildren().addAll(st);
             
-            st.setLayoutX(i.isLatitud());
-            st.setLayoutY(i.isLongitud());
+            st.setLayoutX(i.isLongitud());
+            st.setLayoutY(i.isLatitud());
             
             List<String> crateresSensados= CraterData.crateresSensados();
             
@@ -164,13 +166,21 @@ public class VistaExplorar2_0Controller implements Initializable {
                     rover.cargar();                
                 }else if(text.equals("avanzar")){
                     rover.avanzar();
-                }else if(text.equals("sensar")){
-                    rover.sensar();
+                }else if(text.equals("sensar")){ 
+                    System.out.println(imgview.getLayoutX()+" "+imgview.getLayoutY());
+                    for(Crater c:crateres){
+                        if(rover.getUbicacionx()>=(c.getLongitud()-c.isRadiocrater())&&(rover.getUbicacionx()<=c.getLongitud()+c.isRadiocrater())){
+                            if(rover.getUbicaciony()>=(c.getLatitud()-c.isRadiocrater())&&(rover.getUbicaciony()<=c.getLatitud()+c.isRadiocrater())){
+                                rover.sensar(c);
+                            }
+                            
+                        }
+                                              
                 }
-                
-                
-                
-                
+                }
+                        
+                    
+          
                 String[] p= text.split(":");
                 if(p[0].equals("girar")){
                     try{
