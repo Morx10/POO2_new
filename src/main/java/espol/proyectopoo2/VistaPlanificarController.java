@@ -48,6 +48,7 @@ public class VistaPlanificarController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        crateresTxt.setPromptText("xxxx, yyyy, zzzz");
         vboxRutas.setVisible(false);
         List<Rovers> rovers = RoversData.cargarRovers();
         roverExploracion.getItems().addAll(rovers);
