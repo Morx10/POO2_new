@@ -66,12 +66,6 @@ public class VistaExplorar2_0Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cbrovers.getItems().addAll(App.getRovers());
-        pintarCrateres();
-        
-    } 
-    
-    private void pintarCrateres(){       
-        
         crateres = CraterData.cargarCrateres();
         
         for(Crater i:crateres){
@@ -81,10 +75,11 @@ public class VistaExplorar2_0Controller implements Initializable {
             
             StackPane st= new StackPane();
             st.getChildren().add(c);
-            marteimage.getChildren().addAll(st);
+            
             
             st.setLayoutX(i.isLongitud());
             st.setLayoutY(i.isLatitud());
+            marteimage.getChildren().addAll(st);
             
             List<String> crateresSensados= CraterData.crateresSensados();
             
@@ -126,6 +121,8 @@ public class VistaExplorar2_0Controller implements Initializable {
         
     }
     
+    
+    
     @FXML
     private void cargarRovers(ActionEvent event) throws IOException {
         rover=cbrovers.getValue();
@@ -150,6 +147,53 @@ public class VistaExplorar2_0Controller implements Initializable {
         imgview.setLayoutX(rover.getUbicacionx());
         imgview.setLayoutY(rover.getUbicaciony());
         imgview.setRotate(rover.getGrados());
+        
+    } 
+    
+    private void pintarCrateres(Crater i){       
+        for(Object n:marteimage.getChildren()){
+            if(n instanceof StackPane){
+            if(((StackPane) n).getLayoutX()==i.getLongitud()&& ((StackPane) n).getLayoutY()==i.getLatitud()){
+                int index= marteimage.getChildren().indexOf(n);
+               Circle circulo=(Circle)((StackPane) n).getChildren().get(0);
+                circulo.setFill(Color.BLUE);
+                circulo.setOpacity(0.5);
+                
+                StackPane st=new StackPane(circulo);
+                st.setLayoutX(i.getLongitud());
+                st.setLayoutY(i.getLatitud());
+                
+                
+                marteimage.getChildren().set(index, st);
+                st.setOnMouseClicked(
+                    (MouseEvent ev)-> {
+            ev.consume();
+            datos.getChildren().clear();
+            
+            Label lnombre = new Label(i.getNombrecrater());
+            lnombre.setStyle("-fx-font-weight:bold");
+                              
+
+            datos.getChildren().addAll(lnombre);
+   
+            try{
+                List<String> minerales= i.getMinerales();
+                for(String s:minerales){
+                Label min= new Label(s);
+                datos.getChildren().add(min);
+            }                
+            }catch(Exception ex){
+                Label min= new Label("No hay información");
+                datos.getChildren().add(min);
+            }
+           
+            
+            
+        });
+            }
+        }
+        }
+        
     }
 
     @FXML
@@ -175,7 +219,7 @@ public class VistaExplorar2_0Controller implements Initializable {
                         if(rover.getUbicacionx()>=(c.getLongitud()-c.isRadiocrater())&&(rover.getUbicacionx()<=c.getLongitud()+c.isRadiocrater())){
                             if(rover.getUbicaciony()>=(c.getLatitud()-c.isRadiocrater())&&(rover.getUbicaciony()<=c.getLatitud()+c.isRadiocrater())){
                                 rover.sensar(c);
-                                pintarCrateres();
+                                pintarCrateres(c);
                               
                             }
                             
