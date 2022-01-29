@@ -9,8 +9,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="537.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaReporteController">
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaReporteController">
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="838.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,18 +23,27 @@
       </HBox>
    </bottom>
    <left>
-      <HBox prefHeight="469.0" prefWidth="294.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="472.0" prefWidth="405.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="454.0" prefWidth="122.0">
+            <VBox alignment="TOP_RIGHT" prefHeight="465.0" prefWidth="210.0">
                <children>
-                  <Label prefHeight="26.0" prefWidth="122.0" text="Fecha Inicio:" />
-                  <Label prefHeight="24.0" prefWidth="122.0" text="Fecha Fin:" />
-                  <Label prefHeight="30.0" prefWidth="122.0" text="Mineral:" />
+                  <Label contentDisplay="TOP" prefHeight="27.0" prefWidth="126.0" text="       Fecha Inicio:" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font name="Cooper Black" size="14.0" />
+                     </font></Label>
+                  <Label prefHeight="27.0" prefWidth="128.0" text="       Fecha Fin:">
+                     <font>
+                        <Font name="Cooper Black" size="14.0" />
+                     </font></Label>
+                  <Label prefHeight="30.0" prefWidth="128.0" text="       Mineral:">
+                     <font>
+                        <Font name="Cooper Black" size="14.0" />
+                     </font></Label>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="469.0" prefWidth="173.0">
+            <VBox alignment="TOP_CENTER" prefHeight="468.0" prefWidth="222.0">
                <children>
-                  <TextField fx:id="fIniciotxt" prefHeight="26.0" prefWidth="122.0" />
+                  <TextField fx:id="fIniciotxt" prefHeight="26.0" prefWidth="230.0" />
                   <TextField fx:id="ffintxt" prefHeight="26.0" prefWidth="130.0" />
                   <TextField fx:id="mineralestxt" />
                   <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#BuscarRegistro" text="Buscar" />
@@ -43,7 +53,7 @@
       </HBox>
    </left>
    <right>
-      <TableView fx:id="TablaRegistro" prefHeight="469.0" prefWidth="508.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="TablaRegistro" prefHeight="479.0" prefWidth="534.0" BorderPane.alignment="CENTER_RIGHT">
         <columns>
           <TableColumn fx:id="Fecha" prefWidth="156.80004727840424" text="Fecha de Exploración" />
           <TableColumn fx:id="Nombre" minWidth="7.20001220703125" prefWidth="161.60003662109375" text="Nombre del cráter" />
@@ -52,6 +62,9 @@
       </TableView>
    </right>
    <top>
-      <Label text="Registro de las exploraciones realizadas" BorderPane.alignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="66.0" prefWidth="900.0" text="Registro de las exploraciones realizadas" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" BorderPane.alignment="TOP_CENTER">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font></Label>
    </top>
 </BorderPane>
