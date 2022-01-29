@@ -14,12 +14,12 @@ import javafx.beans.property.StringProperty;
  * @author Grace
  */
 public class Exploration {
-    private String fecha;
-    private String crater_name;
+    private  String fecha;
+    private String nameCrater;
     private String mineral;
     public Exploration( String fecha, String crater_name,String mineral) {
         this.fecha = fecha;
-        this.crater_name = crater_name;
+        this.nameCrater = crater_name;
         this.mineral =mineral;
     }
      public String getFecha() {
@@ -31,11 +31,11 @@ public class Exploration {
     }
 
     public String getNameCrater() {
-        return crater_name;
+        return nameCrater;
     }
 
     public void setNameCrater(String crater_name) {
-        this.crater_name=crater_name;
+        this.nameCrater=crater_name;
     }
 
     public String getMineral() {
@@ -47,7 +47,7 @@ public class Exploration {
     }
       @Override
     public String toString() {
-       return crater_name;}
+       return nameCrater;}
    
 
     

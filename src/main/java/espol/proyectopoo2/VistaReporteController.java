@@ -64,7 +64,7 @@ public class VistaReporteController implements Initializable {
 
     @FXML
     private void BuscarRegistro(MouseEvent event) {
-        List<Exploration> exploraciones = new ArrayList<Exploration>();
+        List<Exploration> exploraciones = new ArrayList<>();
         exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
         exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
@@ -76,9 +76,9 @@ public class VistaReporteController implements Initializable {
         String m = primeraLetra + restoDeLaCadena;
         datos=ExplorationData.FiltradoFecha(FechaI,FechaF,exploraciones,m);
         System.out.println(datos);
-        this.Fecha.setCellValueFactory(new PropertyValueFactory<Exploration, String>("fecha"));
-        this.Nombre.setCellValueFactory(new PropertyValueFactory<Exploration, String>("crater_name"));
-        this.Minerales.setCellValueFactory(new PropertyValueFactory<Exploration, String>("mineral"));
+        this.Fecha.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
+        this.Nombre.setCellValueFactory(new PropertyValueFactory<>("NameCrater"));
+        this.Minerales.setCellValueFactory(new PropertyValueFactory<>("Mineral"));
         this.TablaRegistro.setItems(datos);
     }
 }
