@@ -1,0 +1,12 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 29 ene. 2022, 12:43:16
+    Author     : sanch
+*/
+#marte_fondo{
+    -fx-background-image: url('marte_fondo.jpg');
+    -fx-background-size: 100% 100%;
+}

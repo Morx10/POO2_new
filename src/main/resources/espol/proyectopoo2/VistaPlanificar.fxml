@@ -19,7 +19,7 @@
                   <ComboBox fx:id="roverExploracion" prefWidth="150.0" />
                </children>
             </HBox>
-            <Label text="Ingrese el nombre de los cráteres (Ej: Mead, Andreianova, Baker):" />
+            <Label text="Ingrese el nombre de los cráteres separados por una coma y un espacio (Ej: Mead, Andreianova, Baker):" />
             <TextField fx:id="crateresTxt" onKeyPressed="#generarRuta" prefHeight="26.0" prefWidth="579.0" />
          </children>
          <padding>

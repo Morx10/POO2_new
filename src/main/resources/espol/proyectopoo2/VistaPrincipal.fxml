@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="450.0" prefWidth="700.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaPrincipalController">
+<StackPane fx:id="marte_fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@fondo.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaPrincipalController">
    <children>
-      <Button mnemonicParsing="false" onMouseClicked="#Explorar" text="Explorar" />
-      <Button mnemonicParsing="false" onMouseClicked="#planificarRutas" text="Planificar rutas" />
-      <Button mnemonicParsing="false" onMouseClicked="#verReportes" text="Ver reportes" />
-      <Button mnemonicParsing="false" onMouseClicked="#Salir" text="Salir" />
+      <VBox fx:id="vboxOpciones" alignment="CENTER" prefHeight="450.0" prefWidth="700.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#Explorar" text="Explorar" />
+            <Button mnemonicParsing="false" onMouseClicked="#planificarRutas" text="Planificar rutas" />
+            <Button mnemonicParsing="false" onMouseClicked="#verReportes" text="Ver reportes" />
+            <Button mnemonicParsing="false" onMouseClicked="#Salir" text="Salir" />
+         </children>
+      </VBox>
    </children>
-</VBox>
+</StackPane>

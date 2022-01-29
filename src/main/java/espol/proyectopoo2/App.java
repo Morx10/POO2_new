@@ -19,7 +19,7 @@ public class App extends Application {
     private static Scene scene;
     
     private static List<Rovers> rovers;
-
+    
     public static List<Rovers> getRovers() {
         return rovers;
     }
@@ -34,9 +34,9 @@ public class App extends Application {
             stage.setScene(scene);
             stage.show();
         }catch(IOException ex){
-            ex.printStackTrace();
+                //no hay la imagen buscada
+                System.out.println("archivo no encontrado");               
         }
-        
          rovers = RoversData.cargarRovers();
     }
     /**
