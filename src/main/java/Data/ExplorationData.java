@@ -62,7 +62,7 @@ public class ExplorationData {
             return exploraciones;
         
     }
-     private static LocalDate TransformarFecha(String fecha){
+     public static LocalDate TransformarFecha(String fecha){
         LocalDate fechafin=LocalDate.now();
         if(validarFecha(fecha)){
             int posicion =fecha.indexOf("-");
@@ -98,7 +98,7 @@ public class ExplorationData {
                     return true;}}
          return false;}
     
-    private static boolean validarFecha(String fecha) {
+    public static boolean validarFecha(String fecha) {
         try {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
             formatoFecha.setLenient(false);
