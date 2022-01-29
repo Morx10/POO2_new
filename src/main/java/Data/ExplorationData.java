@@ -28,24 +28,24 @@ import javafx.scene.control.Alert;
  */
 public class ExplorationData {
     
-    private static String archivoExploration = CONSTANTES.ARCHIVOS+"/exploraciones.txt";
+    private static final String archivoExploration = CONSTANTES.ARCHIVOS+"/exploraciones.txt";
     
     public static void escribirExploracion(Crater c) throws IOException{
         try(BufferedWriter bf = 
                 new BufferedWriter(new FileWriter(archivoExploration))){
             List<String> minerales =c.getMinerales();
             String str = "";
+          
             for (String min : minerales) {
 			str+= min+",";}
             String linea=LocalDate.now().toString()+";"+c.getNombrecrater()+";"+str;
             bf.write(linea.substring(0, linea.length()-1));
             bf.newLine();
-            bf.flush();//para que se escriba inmediatamente en el archivo
-            bf.close();
+            //para que se escriba inmediatamente en el archivo   
         }
 }
     public static List<Exploration> obtenerExploracion(){
-        List<Exploration> exploraciones= new ArrayList<Exploration>();
+        List<Exploration> exploraciones= new ArrayList<>();
         try(BufferedReader bf = 
                 new BufferedReader(new FileReader(archivoExploration))){
             String linea;
@@ -53,8 +53,8 @@ public class ExplorationData {
                 String[] partes = linea.split(";");
                 
                 exploraciones.add(new Exploration(partes[0],partes[1],partes[2]));
-            } }catch (Exception ex) {
-             ex.printStackTrace();
+            } 
+            }catch (Exception ex) {
              Alert a=new Alert(Alert.AlertType.INFORMATION);
              a.setContentText("No hay exploraciones que mostrar");
              a.show();
@@ -81,21 +81,19 @@ public class ExplorationData {
      
      
      
-    public static boolean ValidationFecha(String FInicio,String Ffin,Exploration exp){
-         LocalDate FechaIni=TransformarFecha(FInicio);
-         LocalDate FechaFin=TransformarFecha(Ffin);
+    public static boolean ValidationFecha(LocalDate FInicio,LocalDate Ffin,Exploration exp){
          LocalDate fecha=TransformarFecha(exp.getFecha());
-         if((fecha.isBefore(FechaFin)||fecha.isEqual(FechaFin))&&(fecha.isAfter(FechaIni)||fecha.isEqual(FechaIni))&&(FechaIni.isBefore(FechaFin))){
-                return true;}
-         return false;}
+         return (fecha.isBefore( Ffin)||fecha.isEqual( Ffin))&&(fecha.isAfter(FInicio)||fecha.isEqual(FInicio))&&(FInicio.isBefore( Ffin));}
      
      
     public static boolean ValidarMinerales(Exploration exp,String minel){
+         while(minel!=null){
             String minerales=exp.getMineral();
             String [] parts=minerales.split(",");
-            for(int i = 0; i < parts.length; i++){
-                if(parts[i].equals(minel)){
-                    return true;}}
+             for (String part : parts) {
+                 if (part.equals(minel)) {
+                     return true;}
+           }} 
          return false;}
     
     public static boolean validarFecha(String fecha) {
@@ -103,29 +101,22 @@ public class ExplorationData {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
             formatoFecha.setLenient(false);
             formatoFecha.parse(fecha);
-        } catch (ParseException e) {
-            Alert a=new Alert(Alert.AlertType.ERROR);
-            e.printStackTrace();
-            a.setContentText("Ingrese correctamente la fecha");
-            a.show();
-            return false;
-        }
+        } 
+          catch (ParseException e) {
+            Alert a=new Alert(Alert.AlertType.INFORMATION);
+             a.setContentText("Formato de Fecha no válido");
+             a.show();
+            return false;}
         return true;
     }
      
      
-     public static ObservableList<Exploration>  FiltradoFecha(String FInicio,String Ffin,List<Exploration> explorations, String mineral){
+     public static ObservableList<Exploration>  FiltradoFecha(LocalDate FInicio,LocalDate Ffin,List<Exploration> explorations, String mineral){
          List<Exploration>  filtrado=explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
          Collections.sort(filtrado, (j1, j2) -> (j1.getNameCrater()).compareTo((j2.getNameCrater())));
          ObservableList<Exploration>  datos=FXCollections.observableArrayList();
          for(Exploration ex:filtrado){
              datos.add(ex);}
-         if(datos.isEmpty()){
-            Alert a=new Alert(Alert.AlertType.ERROR);
-            a.setContentText("No existe información con datos ingresados");
-            a.show();
-         }
-   
         return datos;
      }
      

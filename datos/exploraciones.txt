@@ -1,1 +1,1 @@
-2022-01-29;Nevelson;Hierro,Aluminio,Sodio
+2022-01-29;Markham;Sodio,Titanio,Hierro,Hierro,Carbono,Aluminio,Oro,Plata,Carbono

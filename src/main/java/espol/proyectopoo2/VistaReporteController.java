@@ -8,6 +8,7 @@ import Data.ExplorationData;
 import Objetos.Exploration;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -16,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -64,22 +66,32 @@ public class VistaReporteController implements Initializable {
 
     @FXML
     private void BuscarRegistro(MouseEvent event) {
-        List<Exploration> exploraciones = ExplorationData.obtenerExploracion();
-        /**exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
+        try{
+            //List<Exploration> exploraciones = ExplorationData.obtenerExploracion();
+        List<Exploration> exploraciones =new ArrayList<>();
+        exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
-        exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));*/
+        exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
         String FechaI=this.fIniciotxt.getText();
         String FechaF=this.ffintxt.getText();
         String minerales=this.mineralestxt.getText();
         String primeraLetra = minerales.substring(0, 1).toUpperCase();
         String restoDeLaCadena = minerales.substring(1).toLowerCase();
         String m = primeraLetra + restoDeLaCadena;
-        datos=ExplorationData.FiltradoFecha(FechaI,FechaF,exploraciones,m);
+        LocalDate fechafin=ExplorationData.TransformarFecha(FechaF);
+        LocalDate fechaini=ExplorationData.TransformarFecha(FechaI);
+        datos=ExplorationData.FiltradoFecha(fechaini,fechafin,exploraciones,m);
         System.out.println(datos);
         this.Fecha.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
         this.Nombre.setCellValueFactory(new PropertyValueFactory<>("NameCrater"));
         this.Minerales.setCellValueFactory(new PropertyValueFactory<>("Mineral"));
-        this.TablaRegistro.setItems(datos);
+        this.TablaRegistro.setItems(datos);}
+        catch(NullPointerException ex){
+           Alert a = new Alert(Alert.AlertType.ERROR);
+           a.setContentText("Por favor llenar todos los campos");
+           a.show();
+                }
+            
     }
 }
 
