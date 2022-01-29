@@ -65,8 +65,12 @@ public class VistaExplorar2_0Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         cbrovers.getItems().addAll(App.getRovers());
+        pintarCrateres();
+        
+    } 
+    
+    private void pintarCrateres(){       
         
         crateres = CraterData.cargarCrateres();
         
@@ -103,17 +107,16 @@ public class VistaExplorar2_0Controller implements Initializable {
 
             datos.getChildren().addAll(lnombre);
    
-             try{
+            try{
                 List<String> minerales= i.getMinerales();
                 for(String s:minerales){
                 Label min= new Label(s);
                 datos.getChildren().add(min);
-            }
-                
+            }                
             }catch(Exception ex){
                 Label min= new Label("No hay información");
                 datos.getChildren().add(min);
-            }   
+            }
            
             
             
@@ -121,7 +124,7 @@ public class VistaExplorar2_0Controller implements Initializable {
             
         }
         
-    }    
+    }
     
     @FXML
     private void cargarRovers(ActionEvent event) throws IOException {
@@ -164,14 +167,16 @@ public class VistaExplorar2_0Controller implements Initializable {
                 //FUNCION CARGAR ROVER
                 if(text.equals("cargar")){                    
                     rover.cargar();                
-                }else if(text.equals("avanzar")){
+                }else if(text.equals("avanzar")){//FUNCION AVANZAR ROVER
                     rover.avanzar();
-                }else if(text.equals("sensar")){ 
+                }else if(text.equals("sensar")){ //FUNCION SENSAR ROVER
                     System.out.println(imgview.getLayoutX()+" "+imgview.getLayoutY());
                     for(Crater c:crateres){
                         if(rover.getUbicacionx()>=(c.getLongitud()-c.isRadiocrater())&&(rover.getUbicacionx()<=c.getLongitud()+c.isRadiocrater())){
                             if(rover.getUbicaciony()>=(c.getLatitud()-c.isRadiocrater())&&(rover.getUbicaciony()<=c.getLatitud()+c.isRadiocrater())){
                                 rover.sensar(c);
+                                pintarCrateres();
+                              
                             }
                             
                         }

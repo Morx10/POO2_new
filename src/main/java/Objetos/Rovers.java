@@ -8,6 +8,7 @@ import Data.CONSTANTES;
 import Data.ExplorationData;
 import Data.RoversData;
 import espol.proyectopoo2.VistaExplorar2_0Controller;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -80,15 +81,21 @@ public abstract class Rovers implements Acciones {
         try{          
                 System.out.println(c.getNombrecrater());
                 List<String> minerales= CONSTANTES.minerales;
+                ArrayList<String> aniadir= new ArrayList<>();
                 int numero = (int)(Math.random()*10+1);
                 
                 for(int i=0;i<=numero;i++){
                     int index = (int)(Math.random() * minerales.size());                   
                     String mineral= minerales.get(index);
                     System.out.println(mineral);
-                    c.aniadirMinerales(mineral);
-              
+                    aniadir.add(mineral);             
                 }
+                if(c.getMinerales()==null){                   
+                    c.setMinerales(aniadir);
+                }else{
+                    c.aniadirMinerales(aniadir);
+                }
+                
                 ExplorationData.escribirExploracion(c);
        
         }catch(Exception ex){

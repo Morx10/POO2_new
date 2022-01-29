@@ -30,9 +30,10 @@ public class CraterData {
               
                 Crater crater = new Crater(p[0],p[1],Double.parseDouble(p[2]),Double.parseDouble(p[3]),Double.parseDouble(p[4]));
                 
-                List<String> minerales= cargarMinerales(crater.getNombrecrater());
-                
+                ArrayList<String> minerales= cargarMinerales(crater.getNombrecrater());
                 crater.setMinerales(minerales);
+                
+                
                 
                 crateres.add(crater);
             }         
@@ -43,8 +44,8 @@ public class CraterData {
         return crateres;
     }
     
-    private static List<String> cargarMinerales(String crater){
-        List<String> minerales = null;
+    private static ArrayList<String> cargarMinerales(String crater){
+        ArrayList<String> minerales = null;
         try( BufferedReader bf = 
                 new BufferedReader(new FileReader(ruta2)) ){
             String linea;
@@ -60,7 +61,6 @@ public class CraterData {
             }         
         }  catch (Exception ex) {
             System.out.println("No hay informacion");
-            ex.printStackTrace();
         }
         return minerales;
     }
@@ -77,7 +77,6 @@ public class CraterData {
             }         
         }  catch (Exception ex) {
             System.out.println("No hay informacion");
-            ex.printStackTrace();
         }
         return crateres;
     }
