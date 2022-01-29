@@ -35,13 +35,13 @@ public class ExplorationData {
                 new BufferedWriter(new FileWriter(archivoExploration))){
             List<String> minerales =c.getMinerales();
             String str = "";
+          
             for (String min : minerales) {
 			str+= min+",";}
             String linea=LocalDate.now().toString()+";"+c.getNombrecrater()+";"+str;
             bf.write(linea.substring(0, linea.length()-1));
             bf.newLine();
-            bf.flush();//para que se escriba inmediatamente en el archivo
-            
+            //para que se escriba inmediatamente en el archivo   
         }
 }
     public static List<Exploration> obtenerExploracion(){
