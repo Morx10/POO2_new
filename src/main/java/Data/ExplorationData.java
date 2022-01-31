@@ -23,7 +23,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 /**
- **Clase  que representa los métodos de las diferentes exploraciones 
+ *Clase  que representa los métodos de las diferentes exploraciones 
  * @author Grupo#1 Paralelo#3 POO
  */
 public class ExplorationData {

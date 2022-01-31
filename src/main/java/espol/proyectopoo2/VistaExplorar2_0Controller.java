@@ -299,7 +299,6 @@ public class VistaExplorar2_0Controller implements Initializable {
     public static class MovRunnable implements Runnable{
         double partidaX;
         double partidaY;
-
         /**
          *
          */
