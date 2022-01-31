@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Informacion del crater a ser explorado
+ * Informacion y métodos del crater a ser explorado
  * @author Grupo#1 Paralelo#3 POO
  */
 public class Crater {
@@ -21,11 +21,11 @@ public class Crater {
     
     /**
      * Constructor del crater
-     * @param string
-     * @param string1
-     * @param d
-     * @param d1
-     * @param d2
+     * @param idcrater Código del cráter
+     * @param nombrecrater Nombre del cráter
+     * @param longitud Coordenada x del cráter
+     * @param latitud Coordenada y del cráter
+     * @param radiocrater Radio del cráter
      */
     public Crater(String idcrater, String nombrecrater, double longitud, double latitud, double radiocrater) {
         this.idcrater = idcrater;
