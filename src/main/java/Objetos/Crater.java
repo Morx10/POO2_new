@@ -21,11 +21,11 @@ public class Crater {
     
     /**
      * Constructor del crater
-     * @param idcrater Codigo del crater
-     * @param nombrecrater Nombre del crater
-     * @param longitud Coordenada x (longitud) del crater
-     * @param latitud Coordenada y (latitud) del crater
-     * @param radiocrater Radio del crater
+     * @param string
+     * @param string1
+     * @param d
+     * @param d1
+     * @param d2
      */
     public Crater(String idcrater, String nombrecrater, double longitud, double latitud, double radiocrater) {
         this.idcrater = idcrater;

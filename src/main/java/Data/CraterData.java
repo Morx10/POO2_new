@@ -17,7 +17,15 @@ import java.util.List;
  * @author Grupo#1 Paralelo#3 POO
  */
 public class CraterData {
+
+    /**
+     *
+     */
     public static String ruta=CONSTANTES.ARCHIVOS+"/crateres_info.txt";
+
+    /**
+     *
+     */
     public static String ruta2=CONSTANTES.ARCHIVOS+"/exploraciones.txt";
     /**
      * Lee archivo y carga los crateres en una lista

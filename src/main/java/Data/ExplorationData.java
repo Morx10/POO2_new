@@ -33,6 +33,7 @@ public class ExplorationData {
     /**
      * Agrega una exploración al archivo de exploraciones del sistema
      * @param c : cráter que se sensó el rover
+     * @throws java.io.IOException
      */
     public static void escribirExploracion(Crater c) throws IOException{
         try(BufferedWriter bf = 

@@ -59,6 +59,8 @@ public class VistaExplorar2_0Controller implements Initializable {
     private VBox datos;
     /**
      * Inicializa la clase Explorar.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -289,11 +291,25 @@ public class VistaExplorar2_0Controller implements Initializable {
     
     
     //NO SE TOCA
+
+    /**
+     *
+     */
     
     public static class MovRunnable implements Runnable{
         double partidaX;
         double partidaY;
+
+        /**
+         *
+         */
         public MovRunnable(){}
+
+        /**
+         *
+         * @param partidaX
+         * @param partidaY
+         */
         public MovRunnable(double partidaX, double partidaY){
             this.partidaX = partidaX;
             this.partidaY = partidaY;
@@ -396,12 +412,19 @@ public class VistaExplorar2_0Controller implements Initializable {
                 
         } 
     
-     
-      public static void rotar(double grados){
+    /**
+     *
+     * @param grados
+     */
+    public static void rotar(double grados){
         imgview.setRotate(grados);
         
     }
 
+    /**
+     *
+     * @return
+     */
     public static List<Crater> getCrateres() {
         return crateres;
     }

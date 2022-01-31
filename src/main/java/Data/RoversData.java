@@ -19,6 +19,10 @@ import java.io.FileWriter;
  * @author Grupo#1 Paralelo#3 POO
  */
 public class RoversData {
+
+    /**
+     *
+     */
     public static String ruta=CONSTANTES.ARCHIVOS+"/rovers-1.txt";
     /**
      * Lee archivo en donde se guarda la información de los rovers

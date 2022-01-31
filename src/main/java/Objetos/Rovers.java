@@ -18,6 +18,9 @@ import javafx.scene.control.Alert;
  */
 public abstract class Rovers implements Acciones {
     
+    /**
+     *
+     */
     public String nombreRover;
     private double ubicacionx;
     private double ubicaciony;
@@ -26,10 +29,10 @@ public abstract class Rovers implements Acciones {
     
     /**
      * Constructor del rover
-     * @param nombreRover Nombre del rover
-     * @param ubicacionx Coordenada x (longitud) del rover
-     * @param ubicaciony Coordenada y (latitud) del rover
-     * @param grados Cantidad de grados por rotar del rover
+     * @param string
+     * @param d
+     * @param d1
+     * @param d2
      */
     public Rovers(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
         this.nombreRover = nombreRover;
@@ -139,46 +142,89 @@ public abstract class Rovers implements Acciones {
         return "Rover=" + nombreRover ;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombreRover() {
         return nombreRover;
     }
 
+    /**
+     *
+     * @param nombreRover
+     */
     public void setNombreRover(String nombreRover) {
         this.nombreRover = nombreRover;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getUbicacionx() {
         return ubicacionx;
     }
 
+    /**
+     *
+     * @param ubicacionx
+     */
     public void setUbicacionx(double ubicacionx) {
         this.ubicacionx = ubicacionx;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getUbicaciony() {
         return ubicaciony;
     }
 
+    /**
+     *
+     * @param ubicaciony
+     */
     public void setUbicaciony(double ubicaciony) {
         this.ubicaciony = ubicaciony;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getBateria() {
         return bateria;
     }
 
+    /**
+     *
+     * @param bateria
+     */
     public void setBateria(int bateria) {
         this.bateria = bateria;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getGrados() {
         return grados;
     }
 
+    /**
+     *
+     * @param grados
+     */
     public void setGrados(double grados) {
         this.grados = grados;
     }
     
+    /**
+     *
+     */
     public void resetGrados(){
         this.grados=0;
     }

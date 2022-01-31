@@ -4,11 +4,17 @@
  */
 package espol.proyectopoo2;
 
+
 /**
  * Llama al App
  * @author Grupo#1 Paralelo#3 POO 
  */
 public class Launcher {
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args){
         App.main(args);
     }

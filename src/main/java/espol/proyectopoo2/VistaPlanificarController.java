@@ -49,6 +49,8 @@ public class VistaPlanificarController implements Initializable {
     private List<Crater> crateres = CraterData.cargarCrateres();
     /**
      * Inicializa la clase controladora y crea los distintos nodos dentro de la vista
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

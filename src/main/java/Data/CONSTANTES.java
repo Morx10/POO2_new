@@ -13,7 +13,15 @@ import java.util.List;
  * @author Grupo#1 Paralelo#3 POO
  */
 public abstract class CONSTANTES {    
+
+    /**
+     *constante de la ruta de los archivos
+     */
     public static final String ARCHIVOS = "datos";
+
+    /**
+     *lista de minerales disponibles
+     */
     public static final List<String> minerales= new ArrayList<String>(Arrays.asList("Aluminio","Sodio","Cobre","Hierro","Titanio","Vanadio","Carbono","Calcio","Oro","Plata","Plomo"));
     
 }

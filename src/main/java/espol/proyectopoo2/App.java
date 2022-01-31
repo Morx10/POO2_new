@@ -21,10 +21,18 @@ public class App extends Application {
     
     private static List<Rovers> rovers;
     
+    /**
+     *
+     * @return
+     */
     public static List<Rovers> getRovers() {
         return rovers;
     }
 
+    /**
+     *
+     * @param stage
+     */
     @Override
     public void start(Stage stage){
         try{
@@ -51,11 +59,21 @@ public class App extends Application {
         scene.setRoot(root);
     }
 
+    /**
+     *
+     * @param fxmlfile
+     * @return
+     * @throws IOException
+     */
     public static Parent loadFXML(String fxmlfile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxmlfile + ".fxml"));
         return fxmlLoader.load();
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch();      
     }

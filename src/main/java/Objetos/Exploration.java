@@ -20,9 +20,10 @@ public class Exploration {
     
     /**
      * Constructor de la Exploración
-     * @param fecha String fecha que se realiza la exploración
-     * @param carter_name String nombre del cráter
+     * @param string
      * @param mineral String minerales encontrados en el cráter
+     * @param string2
+     * @param string1
      */
     public Exploration( String fecha, String crater_name,String mineral) {
         this.fecha = fecha;
