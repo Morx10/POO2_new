@@ -15,10 +15,10 @@ public class RoverEolica extends Rovers {
 
     /**
      * Constructor del rover eólico
-     * @param string
-     * @param d
-     * @param d1
-     * @param d2
+     * @param nombreRover Nombre del rover
+     * @param ubicacionx Coordenada x (longitud) del rover eólico
+     * @param ubicaciony Coordenada y (longitu) del rover eólico
+     * @param grados Cantidad de grados por rotar del rover eólico
      */
     public RoverEolica(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
         super(nombreRover, ubicacionx, ubicaciony,grados);

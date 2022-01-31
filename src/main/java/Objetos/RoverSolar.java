@@ -16,17 +16,14 @@ public class RoverSolar extends Rovers {
     
     /**
      * Constructor del rover solar
-     * @param d
      * @param nombreRover Nombre del rover solar
-     * @param d2
-     * @param d1
+     * @param ubicacionx Coordenada x (longitud) del rover solar
+     * @param ubicaciony Coordenada y (latitud) del rover solar
      * @param grados Cantidad de grados por rotar del rover solar
      */
     public RoverSolar(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
         super(nombreRover, ubicacionx, ubicaciony, grados);
     }
-
-
 
     /**
      * Inicio de la operación de recarga del rover solar

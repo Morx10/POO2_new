@@ -4,10 +4,6 @@
  */
 package Objetos;
 
-import java.util.List;
-import java.util.stream.Stream;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 /**
  *Clase  que representa los datos y métodos de las diferentes exploraciones
@@ -21,7 +17,7 @@ public class Exploration {
     /**
      * Constructor de la Exploración
      * @param fecha String fecha que se realizó la exploración
-     * @param carter_name String nombre del cráter que se exploró
+     * @param crater_name String nombre del cráter que se exploró
      * @param mineral String minerales encontrados en el cráter
      */
     public Exploration( String fecha, String crater_name,String mineral) {
