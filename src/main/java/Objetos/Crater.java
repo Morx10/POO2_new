@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author marit
+ * 
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class Crater {
     private String idcrater;

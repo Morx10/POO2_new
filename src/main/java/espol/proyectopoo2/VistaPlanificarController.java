@@ -32,9 +32,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 /**
- * FXML Controller class
+ * Clase controladora FXML para la Vista Planificar
  *
- * @author sanch
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class VistaPlanificarController implements Initializable {
     
@@ -49,7 +49,7 @@ public class VistaPlanificarController implements Initializable {
     
     private List<Crater> crateres = CraterData.cargarCrateres();
     /**
-     * Initializes the controller class.
+     * Inicializa la clase controladora y crea los distintos nodos dentro de la vista
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,13 +77,22 @@ public class VistaPlanificarController implements Initializable {
         vboxCrateres.getChildren().addAll(tituloCrateres, paneCrateres);
         roverExploracion.getItems().addAll(rovers);
     }    
-
+    
+    /**
+     * Retorna a la vista del Menu Principal
+     * @param event Evento de tipo OnMouseClicked
+     * @throws IOException Excepción si no se encuentra el archivo
+     */
     @FXML
     private void volverMenuPrincipal(MouseEvent event) throws IOException {
         Parent root = App.loadFXML("VistaPrincipal");
         App.setRoot(root);
     }
     
+    /**
+     * Genera la lista de crateres por explorar en orden del mas cercano al mas lejano
+     * @param event Evento de tipo OnKeyPressed
+     */
     @FXML
     private void generarRuta(KeyEvent event) {
         KeyCode tecla = event.getCode();         
@@ -110,8 +119,8 @@ public class VistaPlanificarController implements Initializable {
                     }   
                 }  
                 
-                //Se crea una lista de los nombres de los cráteres por explorar para verificar 
-                //los cráteres ingresados por el usuario que no han sido encontrados
+                /*Se crea una lista de los nombres de los cráteres por explorar para verificar 
+                los cráteres ingresados por el usuario que no han sido encontrados*/
                 ArrayList<String> nombresCrateresPorExplorar = new ArrayList();
                 for(Crater crater: crateresPorExplorar){
                     nombresCrateresPorExplorar.add(crater.getNombrecrater().toLowerCase());
@@ -215,6 +224,13 @@ public class VistaPlanificarController implements Initializable {
         }
     }
     
+    /**
+     * Calcula la distancia entre un crater y un rover
+     * @param x1 Posición en x del rover
+     * @param y1 Posición en y del rover
+     * @param crater Crater del que se conocerá su ubicacion
+     * @return distancia Distancia entre el crater y un rover
+     */
     public double calcularDistancia(double x1, double y1, Crater crater){
         double x2 = crater.getLongitud();
         double y2 = crater.getLatitud();
@@ -222,6 +238,13 @@ public class VistaPlanificarController implements Initializable {
         return distancia;
     }
     
+    /**
+     * Extrae el crater mas cercano que hay en un grupo de crateres
+     * @param crateres ArrayList de crateres por analizar
+     * @param x Posicion x del rover
+     * @param y Posicion y del rover
+     * @return Crater mas cercano con respecto a la ubicacion del rover
+     */
     public Crater getCraterMasCercano(ArrayList<Crater> crateres, double x, double y){
         ArrayList<Double> distancias = new ArrayList<>();
         for(Crater crater: crateres){
