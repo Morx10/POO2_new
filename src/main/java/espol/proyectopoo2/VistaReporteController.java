@@ -27,7 +27,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author sanch & Grace
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class VistaReporteController implements Initializable {
 

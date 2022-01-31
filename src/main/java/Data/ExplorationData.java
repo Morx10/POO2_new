@@ -24,7 +24,7 @@ import javafx.scene.control.Alert;
 
 /**
  **Clase  que representa los métodos de las diferentes exploraciones 
- * @author Grace
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class ExplorationData {
     
