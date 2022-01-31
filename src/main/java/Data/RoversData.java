@@ -42,15 +42,11 @@ public class RoversData {
         }
         return rovers;
     }
-    
+  
     public static void escribirRover(){   
         try(BufferedWriter write 
                 = new BufferedWriter(new FileWriter(ruta));){
-           
-       
        List<Rovers> rovers= App.getRovers();
-       
-       
        for(Rovers r: rovers){
            String nombre= r.getNombreRover();
            double ubicacionx= r.getUbicacionx();
@@ -63,8 +59,6 @@ public class RoversData {
            }else{
                tipo="solar";
            }
-           
-           
            String line= nombre+","+ubicacionx+","+ubicaciony+","+tipo+","+grados;
            write.write(line);
            write.newLine();
