@@ -67,11 +67,11 @@ public class VistaReporteController implements Initializable {
     @FXML
     private void BuscarRegistro(MouseEvent event) {
         try{
-            //List<Exploration> exploraciones = ExplorationData.obtenerExploracion();
-        List<Exploration> exploraciones =new ArrayList<>();
-        exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
-        exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
-        exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
+        List<Exploration> exploraciones = ExplorationData.obtenerExploracion();
+        //List<Exploration> exploraciones =new ArrayList<>();
+        //exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
+        //exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
+        //exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
         String FechaI=this.fIniciotxt.getText();
         String FechaF=this.ffintxt.getText();
         String minerales=this.mineralestxt.getText();

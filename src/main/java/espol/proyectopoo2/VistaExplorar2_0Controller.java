@@ -120,8 +120,7 @@ public class VistaExplorar2_0Controller implements Initializable {
         }
         
     }
-    
-    
+        
     
     @FXML
     private void cargarRovers(ActionEvent event) throws IOException {
@@ -226,11 +225,8 @@ public class VistaExplorar2_0Controller implements Initializable {
                         }
                                               
                 }
-                }
-                        
-                    
-          
-                String[] p= text.split(":");
+                }else{
+                    String[] p= text.split(":");
                 if(p[0].equals("girar")){
                     try{
                         rover.girar(Double.parseDouble(p[1]));
@@ -251,7 +247,18 @@ public class VistaExplorar2_0Controller implements Initializable {
                         alert.setHeaderText(null);
                         alert.showAndWait();
                     }
+                }else{
+                    Alert alert= new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText("Comando no valido");
+                    alert.setHeaderText(null);
+                    alert.showAndWait();
                 }
+                    
+                }
+                        
+                    
+          
+                
                 
                 
          

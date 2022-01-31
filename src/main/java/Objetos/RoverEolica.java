@@ -5,6 +5,7 @@
 package Objetos;
 
 import Data.RoversData;
+import espol.proyectopoo2.VistaExplorar2_0Controller;
 import javafx.scene.control.Alert;
 
 /**
@@ -24,7 +25,7 @@ public class RoverEolica extends Rovers {
         alert.setContentText("despliegue de molinos");
         alert.setHeaderText(null);
         alert.showAndWait();
-        super.girar(-90);
+        VistaExplorar2_0Controller.rotar(-90);
         RoversData.escribirRover();
         super.setBateria(100);
     }

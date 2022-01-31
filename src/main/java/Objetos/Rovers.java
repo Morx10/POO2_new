@@ -10,6 +10,7 @@ import Data.RoversData;
 import espol.proyectopoo2.VistaExplorar2_0Controller;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Alert;
 
 /**
  *
@@ -34,16 +35,23 @@ public abstract class Rovers implements Acciones {
 
     @Override
     public void avanzar() {
-        bateria=bateria-1;
+        if(bateria>0){
+            bateria=bateria-1;
         double ubicacionX =getUbicacionx();
         double ubicacionY =getUbicaciony();
         
         setUbicacionx(Math.cos(Math.toRadians(grados))*(10*(Math.pow(2,1/2)))+ubicacionx);
         setUbicaciony(Math.sin(Math.toRadians(grados))*(10*(Math.pow(2,1/2)))+ubicaciony);
-    
         VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
         
         RoversData.escribirRover();
+        }else{
+            Alert alert= new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Bateria insuficiente, Ingrese el comando cargar");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+        
         
         
                 
@@ -60,20 +68,30 @@ public abstract class Rovers implements Acciones {
 
     @Override
     public void dirigirse(double x, double y) {
-        double dirX= x-ubicacionx;
+        
+            double dirX= x-ubicacionx;
         double dirY= y-ubicaciony;
        
         double hypot = Math.hypot(dirX,dirY);
-        bateria= bateria - (hypot/20 );
+        double newbateria= bateria - (hypot/10 );
+        if(newbateria>0){           
+            bateria=newbateria;
+            System.out.println(bateria);
+            double ubicacionX= ubicacionx;
+            double ubicacionY= ubicaciony;
         
-        double ubicacionX= ubicacionx;
-        double ubicacionY= ubicacionx;
-        
-        ubicacionx=x;
-        ubicaciony=y;
+            ubicacionx=x;
+            ubicaciony=y;
      
-        VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
-        RoversData.escribirRover();
+            VistaExplorar2_0Controller.moverobjeto(ubicacionX, ubicacionY);
+            RoversData.escribirRover();          
+        }else{
+            Alert alert= new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Bateria insuficiente, No puede llegar a ese destino");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+        
     }
 
     @Override

@@ -1,1 +1,5 @@
-
+2022-01-30;Kenny;Cobre,Plomo,Aluminio
+2022-01-30;Graham;Calcio,Oro,Oro,Sodio,Hierro,Cobre,Sodio,Carbono,Cobre,Carbono
+2022-01-30;Graham;Calcio,Oro,Oro,Sodio,Hierro,Cobre,Sodio,Carbono,Cobre,Carbono,Vanadio,Hierro
+2022-01-30;Rosa Bonheur;Aluminio,Plata,Vanadio,Aluminio
+2022-01-30;Sayers;Aluminio,Hierro,Aluminio,Plomo,Plomo,Calcio,Carbono,Plata,Plata,Calcio,Oro
