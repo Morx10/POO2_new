@@ -63,17 +63,26 @@ public class ExplorationData {
         
     }
      public static LocalDate TransformarFecha(String fecha){
-        LocalDate fechafin=LocalDate.now();
-        if(validarFecha(fecha)){
-           fechafin = LocalDate.parse(fecha); 
-        }
+        //LocalDate fechafin=LocalDate.now()
+           LocalDate fechafin = LocalDate.parse(fecha); 
+        
      return fechafin;}
      
      
      
-    public static boolean ValidationFecha(LocalDate FInicio,LocalDate Ffin,Exploration exp){
-         LocalDate fecha=TransformarFecha(exp.getFecha());
-         return (fecha.isBefore( Ffin)||fecha.isEqual( Ffin))&&(fecha.isAfter(FInicio)||fecha.isEqual(FInicio))&&(FInicio.isBefore( Ffin));}
+    public static boolean ValidationFecha(String Inicio,String fin,Exploration exp){
+        boolean valor=false;
+        if((validarFecha(Inicio))&&(validarFecha(fin))){
+            LocalDate FInicio=TransformarFecha(Inicio);
+            LocalDate Ffin=TransformarFecha(fin);
+            LocalDate fecha=TransformarFecha(exp.getFecha());
+            valor= (fecha.isBefore( Ffin)||fecha.isEqual( Ffin))&&(fecha.isAfter(FInicio)||fecha.isEqual(FInicio))&&(FInicio.isBefore( Ffin));
+        }
+        if(!valor){
+           Alert a=new Alert(Alert.AlertType.WARNING);
+           a.setContentText("Formato de Fecha no válido");
+           a.show();}
+         return valor;}
      
      
     public static boolean ValidarMinerales(Exploration exp,String minel)throws StringIndexOutOfBoundsException{
@@ -94,27 +103,16 @@ public class ExplorationData {
             formatoFecha.parse(fecha);
         } 
           catch (ParseException e) {
-            Alert a=new Alert(Alert.AlertType.INFORMATION);
-             a.setContentText("Formato de Fecha no válido");
-             a.show();
             return false;}
         return true;
     }
      
      
-     public static List<Exploration>  FiltradoFecha(LocalDate FInicio,LocalDate Ffin,List<Exploration> explorations, String mineral){
-<<<<<<< Updated upstream
-       
-=======
-   
->>>>>>> Stashed changes
+     public static List<Exploration>  FiltradoFecha(String FInicio,String Ffin,List<Exploration> explorations, String mineral){
+
          List<Exploration>  filtrado=explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
          
          Collections.sort(filtrado, (j1, j2) -> (j1.getNameCrater()).compareTo((j2.getNameCrater())));
-         if(filtrado.isEmpty()){
-             Alert a=new Alert(Alert.AlertType.INFORMATION);
-             a.setContentText("No hay datos que mostrar");
-             a.show();}
          
         return filtrado;}
      

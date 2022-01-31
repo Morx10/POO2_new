@@ -81,17 +81,21 @@ public class VistaReporteController implements Initializable {
         String primeraLetra = minerales.substring(0, 1).toUpperCase();
         String restoDeLaCadena = minerales.substring(1).toLowerCase();
         String m = primeraLetra + restoDeLaCadena;
-        LocalDate fechafin=ExplorationData.TransformarFecha(FechaF);
-        LocalDate fechaini=ExplorationData.TransformarFecha(FechaI);
-        datos=ExplorationData.FiltradoFecha(fechaini,fechafin,exploraciones,m);
+        //LocalDate fechafin=ExplorationData.TransformarFecha(FechaF);
+        //LocalDate fechaini=ExplorationData.TransformarFecha(FechaI);
+        datos=ExplorationData.FiltradoFecha(FechaI,FechaF,exploraciones,m);
         System.out.println(datos);
         this.Fecha.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
         this.Nombre.setCellValueFactory(new PropertyValueFactory<>("NameCrater"));
         this.Minerales.setCellValueFactory(new PropertyValueFactory<>("Mineral"));
         this.TablaRegistro.setItems(FXCollections.observableList(datos));
+        if(datos.isEmpty()){
+             Alert a=new Alert(Alert.AlertType.INFORMATION);
+             a.setContentText("No hay datos que mostrar");
+             a.show();}
         }
         catch(NullPointerException |StringIndexOutOfBoundsException ex){
-           Alert a = new Alert(Alert.AlertType.ERROR);
+           Alert a = new Alert(Alert.AlertType.WARNING);
            a.setContentText("Por favor llenar todos los campos");
            a.show();
                 }
