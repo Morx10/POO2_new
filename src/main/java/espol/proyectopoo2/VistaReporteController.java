@@ -27,7 +27,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author sanch
+ * @author sanch & Grace
  */
 public class VistaReporteController implements Initializable {
 
@@ -56,14 +56,21 @@ public class VistaReporteController implements Initializable {
         ffintxt.setPromptText("yyyy-mm-dd");
         mineralestxt.setPromptText("Mineral");
        
-    }    
+    } 
+    /**
+     * Método que permite al usuario regresar al Vista Principal
+     * @param event MouseEvent evento del mouse que indica la acción a realizar
+     */
 
     @FXML
     private void volverMenuPrincipal(MouseEvent event) throws IOException {
         Parent root = App.loadFXML("VistaPrincipal");
         App.setRoot(root);
     }
-
+     /**
+     * Método que permite al buscar el registro de la exploraciones
+     * @param event MouseEvent evento del mouse que indica la acción a realizar
+     */
     @FXML
     private void BuscarRegistro(MouseEvent event) {
         try{
