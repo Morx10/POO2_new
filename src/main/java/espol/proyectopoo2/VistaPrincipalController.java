@@ -17,7 +17,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * Clase controladora FXML para la Vista Principal
  *
- * @author sanch
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class VistaPrincipalController implements Initializable {
 
