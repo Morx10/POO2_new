@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -43,6 +44,10 @@ public class VistaPlanificarController implements Initializable {
     private TextField crateresTxt;
     @FXML
     private ComboBox<Rovers> roverExploracion;
+    @FXML
+    private VBox vboxCrateres;
+    
+    private List<Crater> crateres = CraterData.cargarCrateres();
     /**
      * Initializes the controller class.
      */
@@ -51,6 +56,25 @@ public class VistaPlanificarController implements Initializable {
         crateresTxt.setPromptText("xxxx, yyyy, zzzz");
         vboxRutas.setVisible(false);
         List<Rovers> rovers = RoversData.cargarRovers();
+        
+        vboxCrateres.setSpacing(10);
+        vboxCrateres.setPadding(new Insets(3));
+        
+        vboxCrateres.setAlignment(Pos.TOP_CENTER);       
+        Label tituloCrateres = new Label("Cráteres disponibles");
+        tituloCrateres.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        tituloCrateres.setAlignment(Pos.CENTER);
+        GridPane paneCrateres = new GridPane();
+        paneCrateres.setGridLinesVisible(true);
+        int i=1;
+        for(Crater c: crateres){
+            Label crater = new Label(i+".- "+c.getNombrecrater());
+            paneCrateres.add(crater,0,i);
+            crater.setFont(Font.font("Verdana", FontWeight.NORMAL, 10));
+            i++;
+        }
+        paneCrateres.setAlignment(Pos.CENTER);
+        vboxCrateres.getChildren().addAll(tituloCrateres, paneCrateres);
         roverExploracion.getItems().addAll(rovers);
     }    
 
@@ -69,7 +93,6 @@ public class VistaPlanificarController implements Initializable {
             if(tecla == tecla.ENTER){
                 vboxRutas.getChildren().clear();
                 //Crear una lista con los cráteres que se quieren visitar
-                List<Crater> crateres = CraterData.cargarCrateres();
                 ArrayList<Crater> crateresPorExplorar = new ArrayList<>();
                 ArrayList<Crater> crateresRepetidos = new ArrayList<>();
                 ArrayList<String> crateresFake = new ArrayList<>();                
@@ -112,8 +135,8 @@ public class VistaPlanificarController implements Initializable {
                 //Se muestran en pantalla las listas finales
             
                 //Rutas por explorar
-                Label tituloRuta = new Label("Ruta sugerida de exploración");
-                tituloRuta.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                Label tituloRuta = new Label("Ruta de exploración");
+                tituloRuta.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
                 tituloRuta.setAlignment(Pos.CENTER);
                 GridPane paneRutas = new GridPane();
                 paneRutas.setGridLinesVisible(true);
@@ -127,7 +150,7 @@ public class VistaPlanificarController implements Initializable {
 
                 //Crateres repetidos
                 Label tituloRepetidos = new Label("Cráteres repetidos");
-                tituloRepetidos.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                tituloRepetidos.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
                 tituloRepetidos.setAlignment(Pos.CENTER);
                 GridPane paneRepetidos = new GridPane();
                 paneRepetidos.setGridLinesVisible(true);
@@ -149,7 +172,7 @@ public class VistaPlanificarController implements Initializable {
 
                 //Cráteres no encontrados
                 Label tituloFalsos = new Label("Cráteres no encontrados");
-                tituloFalsos.setFont(Font.font("Verdana", FontWeight.BOLD, 16));
+                tituloFalsos.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
                 tituloFalsos.setAlignment(Pos.CENTER);
                 GridPane paneFalsos = new GridPane();
                 paneFalsos.setGridLinesVisible(true);
@@ -191,8 +214,8 @@ public class VistaPlanificarController implements Initializable {
     public double calcularDistancia(Rovers rover, Crater crater){
         double x1 = rover.getUbicacionx();
         double y1 = rover.getUbicaciony();
-        double x2 = crater.getLatitud();
-        double y2 = crater.getLongitud();
+        double x2 = crater.getLongitud();
+        double y2 = crater.getLatitud();
         return Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5);
     }
     
