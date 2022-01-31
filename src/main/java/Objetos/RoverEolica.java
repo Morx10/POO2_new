@@ -5,20 +5,28 @@
 package Objetos;
 
 import Data.RoversData;
-import espol.proyectopoo2.VistaExplorar2_0Controller;
 import javafx.scene.control.Alert;
 
 /**
- *
- * @author marit
+ * Informacion y acciones del rover eólico
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class RoverEolica extends Rovers {
 
-
+    /**
+     * Constructor del rover eólico
+     * @param nombreRover Nombre del rover eólico
+     * @param ubicacionx Coordenada x (longitud) del rover eólico
+     * @param ubicaciony Coordenada y (latitud) del rover eólico
+     * @param grados Cantidad de grados por rotar del rover eólico
+     */
     public RoverEolica(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
         super(nombreRover, ubicacionx, ubicaciony,grados);
     }
-
+    
+    /**
+     * Inicio de la operación de recarga del rover eólico
+     */
     @Override
     public void cargar() {
         Alert alert= new Alert(Alert.AlertType.INFORMATION);

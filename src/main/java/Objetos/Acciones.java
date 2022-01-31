@@ -22,8 +22,8 @@ public interface Acciones {
     
     /**
      * Indica al rover que debe moverse a un punto específico del planeta
-     * @param x Posicion x (longitud) del rover
-     * @param y Posicion y (latitud) del rover
+     * @param x Coordenada x (longitud) del rover
+     * @param y Coordenada y (latitud) del rover
      */
     public void dirigirse( double x, double y);
     

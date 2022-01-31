@@ -6,23 +6,30 @@ package Objetos;
 
 import Data.RoversData;
 import espol.proyectopoo2.VistaExplorar2_0Controller;
-import java.util.HashSet;
 import javafx.scene.control.Alert;
 
 /**
- *
- * @author marit
+ * Información y acciones del rover solar
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class RoverSolar extends Rovers {
     
-
+    /**
+     * Constructor del rover solar
+     * @param nombreRover Nombre del rover solar
+     * @param ubicacionx Coordenada x (longitud) del rover solar
+     * @param ubicaciony Coordenada y (latitud) del rover solar
+     * @param grados Cantidad de grados por rotar del rover solar
+     */
     public RoverSolar(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
         super(nombreRover, ubicacionx, ubicaciony, grados);
     }
 
 
 
-
+    /**
+     * Inicio de la operación de recarga del rover solar
+     */
     @Override
     public void cargar() {
         Alert alert= new Alert(Alert.AlertType.INFORMATION);

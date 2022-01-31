@@ -74,8 +74,8 @@ public class VistaExplorar2_0Controller implements Initializable {
             st.getChildren().add(c);
             
             
-            st.setLayoutX(i.isLongitud());
-            st.setLayoutY(i.isLatitud());
+            st.setLayoutX(i.getLongitud());
+            st.setLayoutY(i.getLatitud());
             marteimage.getChildren().addAll(st);
             
             List<String> crateresSensados= CraterData.crateresSensados();

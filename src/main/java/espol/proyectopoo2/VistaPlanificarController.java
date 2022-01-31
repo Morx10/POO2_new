@@ -33,7 +33,6 @@ import javafx.scene.text.FontWeight;
 
 /**
  * Clase controladora FXML para la Vista Planificar
- *
  * @author Grupo#1 Paralelo#3 POO
  */
 public class VistaPlanificarController implements Initializable {
@@ -80,7 +79,7 @@ public class VistaPlanificarController implements Initializable {
     
     /**
      * Retorna a la vista del Menu Principal
-     * @param event Evento de tipo OnMouseClicked
+     * @param event Evento de tipo OnMouseClicked cuando se presiona el botón "Volver"
      * @throws IOException Excepción si no se encuentra el archivo
      */
     @FXML
@@ -91,7 +90,7 @@ public class VistaPlanificarController implements Initializable {
     
     /**
      * Genera la lista de crateres por explorar en orden del mas cercano al mas lejano
-     * @param event Evento de tipo OnKeyPressed
+     * @param event Evento de tipo OnKeyPressed cuando se presiona ENTER
      */
     @FXML
     private void generarRuta(KeyEvent event) {
@@ -226,8 +225,8 @@ public class VistaPlanificarController implements Initializable {
     
     /**
      * Calcula la distancia entre un crater y un rover
-     * @param x1 Posición en x del rover
-     * @param y1 Posición en y del rover
+     * @param x1 Coordenada x del rover
+     * @param y1 Coordenada y del rover
      * @param crater Crater del que se conocerá su ubicacion
      * @return distancia Distancia entre el crater y un rover
      */
@@ -241,8 +240,8 @@ public class VistaPlanificarController implements Initializable {
     /**
      * Extrae el crater mas cercano que hay en un grupo de crateres
      * @param crateres ArrayList de crateres por analizar
-     * @param x Posicion x del rover
-     * @param y Posicion y del rover
+     * @param x Coordenada x del rover
+     * @param y Coordenada y del rover
      * @return Crater mas cercano con respecto a la ubicacion del rover
      */
     public Crater getCraterMasCercano(ArrayList<Crater> crateres, double x, double y){

@@ -5,8 +5,8 @@
 package espol.proyectopoo2;
 
 /**
- *
- * @author marit
+ * Llama al App
+ * @author Grupo#1 Paralelo#3 POO 
  */
 public class Launcher {
     public static void main(String[] args){

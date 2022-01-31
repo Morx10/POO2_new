@@ -13,8 +13,8 @@ import java.util.List;
 import javafx.scene.control.Alert;
 
 /**
- *
- * @author marit
+ * Información y métodos del rover
+ * @author Grupo#1 Paralelo#3 POO
  */
 public abstract class Rovers implements Acciones {
     
@@ -23,7 +23,14 @@ public abstract class Rovers implements Acciones {
     private double ubicaciony;
     private double bateria;
     private double grados;
-
+    
+    /**
+     * Constructor del rover
+     * @param nombreRover Nombre del rover
+     * @param ubicacionx Coordenada x (longitud) del rover
+     * @param ubicaciony Coordenada y (latitud) del rover
+     * @param grados Cantidad de grados por rotar del rover
+     */
     public Rovers(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
         this.nombreRover = nombreRover;
         this.ubicacionx = ubicacionx;
@@ -32,7 +39,9 @@ public abstract class Rovers implements Acciones {
         this.grados = grados;
     }      
     
-
+    /**
+     * Indica al rover que debe moverse hacia delante
+     */
     @Override
     public void avanzar() {
         if(bateria>0){
