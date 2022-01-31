@@ -52,8 +52,8 @@ public class VistaReporteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fIniciotxt.setPromptText("dd-mm-yy");
-        ffintxt.setPromptText("dd-mm-yy");
+        fIniciotxt.setPromptText("yyyy-mm-dd");
+        ffintxt.setPromptText("yyyy-mm-dd");
         mineralestxt.setPromptText("Mineral");
        
     }    
