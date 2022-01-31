@@ -103,8 +103,13 @@ public class ExplorationData {
      
      
      public static List<Exploration>  FiltradoFecha(LocalDate FInicio,LocalDate Ffin,List<Exploration> explorations, String mineral){
+<<<<<<< Updated upstream
        
+=======
+   
+>>>>>>> Stashed changes
          List<Exploration>  filtrado=explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
+         
          Collections.sort(filtrado, (j1, j2) -> (j1.getNameCrater()).compareTo((j2.getNameCrater())));
          if(filtrado.isEmpty()){
              Alert a=new Alert(Alert.AlertType.INFORMATION);

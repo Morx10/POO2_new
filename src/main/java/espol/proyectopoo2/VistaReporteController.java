@@ -72,9 +72,12 @@ public class VistaReporteController implements Initializable {
         //exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
         //exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
         //exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
-        String FechaI=this.fIniciotxt.getText();
-        String FechaF=this.ffintxt.getText();
-        String minerales=this.mineralestxt.getText();
+        
+        System.out.println("presione boton");
+        
+        String FechaI=fIniciotxt.getText();
+        String FechaF=ffintxt.getText();
+        String minerales=mineralestxt.getText();
         String primeraLetra = minerales.substring(0, 1).toUpperCase();
         String restoDeLaCadena = minerales.substring(1).toLowerCase();
         String m = primeraLetra + restoDeLaCadena;

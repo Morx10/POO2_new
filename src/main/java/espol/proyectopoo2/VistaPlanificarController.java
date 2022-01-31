@@ -122,14 +122,18 @@ public class VistaPlanificarController implements Initializable {
                 }
                 
                 
-                List<Crater> rutaCrateres = new ArrayList<>(crateresPorExplorar);
-                for(int i=0;i<rutaCrateres.size();i++){
+                ArrayList<Crater> rutaCrateres = new ArrayList<>();
+                int size = crateresPorExplorar.size();
+                double roverX = roverExploracion.getValue().getUbicacionx();
+                double roverY = roverExploracion.getValue().getUbicaciony();
+                for(int i=0;i<size;i++){
                     Crater craterCercano = getCraterMasCercano(crateresPorExplorar,
-                                        roverExploracion.getValue());
-                    rutaCrateres.set(i,craterCercano);
+                                        roverX, roverY);
+                    rutaCrateres.add(craterCercano);
                     crateresPorExplorar.remove(craterCercano);
-                    roverExploracion.getValue().setUbicacionx(craterCercano.getLatitud());
-                    roverExploracion.getValue().setUbicaciony(craterCercano.getLongitud());
+                    roverX = craterCercano.getLongitud();
+                    roverY = craterCercano.getLatitud();
+                    
                 }
             
                 //Se muestran en pantalla las listas finales
@@ -211,19 +215,18 @@ public class VistaPlanificarController implements Initializable {
         }
     }
     
-    public double calcularDistancia(Rovers rover, Crater crater){
-        double x1 = rover.getUbicacionx();
-        double y1 = rover.getUbicaciony();
+    public double calcularDistancia(double x1, double y1, Crater crater){
         double x2 = crater.getLongitud();
         double y2 = crater.getLatitud();
-        return Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5);
+        double distancia = Math.pow(Math.pow(x2-x1,2) + Math.pow(y2-y1,2),0.5);
+        return distancia;
     }
     
-    public Crater getCraterMasCercano(ArrayList<Crater> crateres, Rovers rover){
-        List<Double> distancias = new ArrayList<>();
+    public Crater getCraterMasCercano(ArrayList<Crater> crateres, double x, double y){
+        ArrayList<Double> distancias = new ArrayList<>();
         for(Crater crater: crateres){
-            distancias.add(calcularDistancia(rover, crater));
+            distancias.add(calcularDistancia(x, y, crater));
         }
-        return crateres.get(distancias.indexOf(Collections.max(distancias)));
+        return crateres.get(distancias.indexOf(Collections.min(distancias)));
     }   
 }
