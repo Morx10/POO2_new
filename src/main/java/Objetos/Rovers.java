@@ -29,10 +29,10 @@ public abstract class Rovers implements Acciones {
     
     /**
      * Constructor del rover
-     * @param string
-     * @param d
-     * @param d1
-     * @param d2
+     * @param nombreRover nombre del rover
+     * @param ubicacionx Coordenada x (longitud) del rover
+     * @param ubicaciony Coordenada y (latitud) del rover
+     * @param grados Cantidad de grados por rotar del rover
      */
     public Rovers(String nombreRover, double ubicacionx, double ubicaciony, double grados) {
         this.nombreRover = nombreRover;
@@ -68,7 +68,11 @@ public abstract class Rovers implements Acciones {
         
                 
     }
-
+    
+    /**
+     * Indica al rover que debe rotar en sentido de las manecillas del reloj
+     * @param girar Cantidad de grados por rotar 
+     */
     @Override
     public void girar(double girar) {
         grados= grados+girar;
@@ -78,6 +82,11 @@ public abstract class Rovers implements Acciones {
         
     }
 
+    /**
+     * Indica al rover que debe moverse a un punto específico del planeta
+     * @param x Coordenada x (longitud) del rover
+     * @param y Coordenada y (latitud) del rover
+     */
     @Override
     public void dirigirse(double x, double y) {
         
@@ -105,7 +114,11 @@ public abstract class Rovers implements Acciones {
         }
         
     }
-
+    
+    /**
+     * Indica al rover que debe sensar al suelo en su posición actual
+     * @param c Crater a ser sensado
+     */
     @Override
     public void sensar(Crater c) {
         try{          
@@ -133,102 +146,106 @@ public abstract class Rovers implements Acciones {
             
         }
     }
-
+    
+    /**
+     * Indica al rover que inicie la operación de recarga
+     */
     @Override
     public abstract void cargar();
     
+    /**
+     * Conversión a String del objeto rover
+     * @return Representación en String del objeto rover
+     */
     @Override
     public String toString() {
         return "Rover=" + nombreRover ;
     }
 
     /**
-     *
-     * @return
+     * Devuelve el nombre del rover
+     * @return nombreRover nombre del Rover
      */
     public String getNombreRover() {
         return nombreRover;
     }
 
     /**
-     *
-     * @param nombreRover
+     * Actualiza el nombre del rover
+     * @param nombreRover Nuevo nombre del rover
      */
     public void setNombreRover(String nombreRover) {
         this.nombreRover = nombreRover;
     }
 
     /**
-     *
-     * @return
+     * Devuelve la coordenada x (longitud) del rover
+     * @return ubicacionx Coordenada x (longitud) del rover
      */
     public double getUbicacionx() {
         return ubicacionx;
     }
 
     /**
-     *
-     * @param ubicacionx
+     * Actualiza la coordenada x (longitud) del rover
+     * @param ubicacionx Nueva coordenada x (longitud) del rover
      */
     public void setUbicacionx(double ubicacionx) {
         this.ubicacionx = ubicacionx;
     }
 
     /**
-     *
-     * @return
+     * Devuelve la coordenada y (latitud) del rover
+     * @return ubicaciony Coordenada y (latitud) del rover
      */
     public double getUbicaciony() {
         return ubicaciony;
     }
 
     /**
-     *
-     * @param ubicaciony
+     * Actualiza la coordenada y (latitud) del rover
+     * @param ubicaciony Nueva coordenada y (latitud) del rover
      */
     public void setUbicaciony(double ubicaciony) {
         this.ubicaciony = ubicaciony;
     }
 
     /**
-     *
-     * @return
+     * Devuelve el valor del nivel de batería del rover
+     * @return bateria Porcentaje de carga de la batería
      */
     public double getBateria() {
         return bateria;
     }
 
     /**
-     *
-     * @param bateria
+     * Actualiza el nivel de batería del rover
+     * @param bateria Porcentaje actual de carga de la batería
      */
     public void setBateria(int bateria) {
         this.bateria = bateria;
     }
 
     /**
-     *
-     * @return
+     * Devuelve la cantidad de grados por rotar del rover
+     * @return grados Cantidad de grados por rotar del rover
      */
     public double getGrados() {
         return grados;
     }
 
     /**
-     *
-     * @param grados
+     * Actualiza los grados por rotar del rover
+     * @param grados Nueva cantidad de grados por rotar del rover
      */
     public void setGrados(double grados) {
         this.grados = grados;
     }
     
     /**
-     *
+     * Actualiza la cantidad de grados por rotar del rover a 0
      */
     public void resetGrados(){
         this.grados=0;
-    }
-        
-    
-    
+    } 
 }
