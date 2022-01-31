@@ -85,12 +85,14 @@ public class VistaReporteController implements Initializable {
         this.Fecha.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
         this.Nombre.setCellValueFactory(new PropertyValueFactory<>("NameCrater"));
         this.Minerales.setCellValueFactory(new PropertyValueFactory<>("Mineral"));
-        this.TablaRegistro.setItems(FXCollections.observableList(datos));}
-        catch(NullPointerException ex){
+        this.TablaRegistro.setItems(FXCollections.observableList(datos));
+        }
+        catch(NullPointerException |StringIndexOutOfBoundsException ex){
            Alert a = new Alert(Alert.AlertType.ERROR);
            a.setContentText("Por favor llenar todos los campos");
            a.show();
                 }
+       
             
     }
 }

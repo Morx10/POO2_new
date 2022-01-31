@@ -76,13 +76,15 @@ public class ExplorationData {
          return (fecha.isBefore( Ffin)||fecha.isEqual( Ffin))&&(fecha.isAfter(FInicio)||fecha.isEqual(FInicio))&&(FInicio.isBefore( Ffin));}
      
      
-    public static boolean ValidarMinerales(Exploration exp,String minel){
+    public static boolean ValidarMinerales(Exploration exp,String minel)throws StringIndexOutOfBoundsException{
+        
             String minerales=exp.getMineral();
             String [] parts=minerales.split(",");
              for (String part : parts) {
                  if (part.equals(minel)) {
                      return true;}
            }
+        
          return false;}
     
     public static boolean validarFecha(String fecha) {
