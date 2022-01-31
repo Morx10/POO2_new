@@ -72,16 +72,13 @@ public class ExplorationData {
      
     public static boolean ValidationFecha(String Inicio,String fin,Exploration exp){
         boolean valor=false;
-        if((validarFecha(Inicio))&&(validarFecha(fin))){
+        System.out.println("entre");
+        
             LocalDate FInicio=TransformarFecha(Inicio);
             LocalDate Ffin=TransformarFecha(fin);
             LocalDate fecha=TransformarFecha(exp.getFecha());
             valor= (fecha.isBefore( Ffin)||fecha.isEqual( Ffin))&&(fecha.isAfter(FInicio)||fecha.isEqual(FInicio))&&(FInicio.isBefore( Ffin));
-        }
-        if(!valor){
-           Alert a=new Alert(Alert.AlertType.WARNING);
-           a.setContentText("Formato de Fecha no válido");
-           a.show();}
+               
          return valor;}
      
      
@@ -103,15 +100,22 @@ public class ExplorationData {
             formatoFecha.parse(fecha);
         } 
           catch (ParseException e) {
+              Alert a=new Alert(Alert.AlertType.WARNING);
+              a.setContentText("Formato de Fecha no válido");
+              a.show();
             return false;}
         return true;
     }
      
      
      public static List<Exploration>  FiltradoFecha(String FInicio,String Ffin,List<Exploration> explorations, String mineral){
-
-         List<Exploration>  filtrado=explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
          
+         List<Exploration>  filtrado= new ArrayList<>();
+         
+         if((validarFecha(FInicio))&&(validarFecha(Ffin))){
+             filtrado=explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList()); 
+         }         
+   
          Collections.sort(filtrado, (j1, j2) -> (j1.getNameCrater()).compareTo((j2.getNameCrater())));
          
         return filtrado;}

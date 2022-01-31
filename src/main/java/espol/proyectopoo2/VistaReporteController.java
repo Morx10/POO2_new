@@ -73,8 +73,6 @@ public class VistaReporteController implements Initializable {
         //exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
         //exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
         
-        System.out.println("presione boton");
-        
         String FechaI=fIniciotxt.getText();
         String FechaF=ffintxt.getText();
         String minerales=mineralestxt.getText();

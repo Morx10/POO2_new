@@ -3,3 +3,4 @@
 2022-01-30;Graham;Calcio,Oro,Oro,Sodio,Hierro,Cobre,Sodio,Carbono,Cobre,Carbono,Vanadio,Hierro
 2022-01-30;Rosa Bonheur;Aluminio,Plata,Vanadio,Aluminio
 2022-01-30;Sayers;Aluminio,Hierro,Aluminio,Plomo,Plomo,Calcio,Carbono,Plata,Plata,Calcio,Oro
+2022-01-31;Baker;Plata,Carbono,Carbono,Plomo,Hierro,Plata,Calcio,Sodio,Calcio,Vanadio,Vanadio
