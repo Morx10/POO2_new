@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.List;
 import javafx.scene.image.Image;
@@ -22,15 +21,15 @@ public class App extends Application {
     private static List<Rovers> rovers;
     
     /**
-     *
-     * @return
+     * Devuelve la lista de rovers
+     * @return rovers Lista de rovers
      */
     public static List<Rovers> getRovers() {
         return rovers;
     }
 
     /**
-     *
+     * Inicia la App
      * @param stage
      */
     @Override
@@ -51,18 +50,18 @@ public class App extends Application {
          rovers = RoversData.cargarRovers();
     }
     /**
-     * Cambia el contenedor raiz de la escena por el pasado como parametro
-     * @param root : contenedor raiz
-     * @throws IOException 
+     * Cambia el contenedor raiz de la escena por el pasado como parámetro
+     * @param root contenedor raiz
+     * @throws IOException
      */
     public static void setRoot(Parent root) throws IOException {
         scene.setRoot(root);
     }
 
     /**
-     *
-     * @param fxmlfile
-     * @return
+     * Carga el archivo FXML a ser mostrado en la vista del programa
+     * @param fxmlfile Archivo FXML
+     * @return Contenedor raíz
      * @throws IOException
      */
     public static Parent loadFXML(String fxmlfile) throws IOException {
@@ -71,7 +70,7 @@ public class App extends Application {
     }
 
     /**
-     *
+     * Método main del programa
      * @param args
      */
     public static void main(String[] args) {

@@ -6,13 +6,13 @@ package espol.proyectopoo2;
 
 
 /**
- * Llama al App
+ * Llama a la App
  * @author Grupo#1 Paralelo#3 POO 
  */
 public class Launcher {
 
     /**
-     *
+     * Método main del programa
      * @param args
      */
     public static void main(String[] args){

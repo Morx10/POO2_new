@@ -15,16 +15,14 @@ import javafx.scene.input.MouseEvent;
 
 
 /**
- * FXML Controller class
+ * Clase controladora FXML para la Vista Principal
  *
  * @author sanch
  */
 public class VistaPrincipalController implements Initializable {
 
     /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
+     * Inicializa la clase controladora
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
