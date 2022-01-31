@@ -1,1 +1,1 @@
-2022-01-29;Markham;Sodio,Titanio,Hierro,Hierro,Carbono,Aluminio,Oro,Plata,Carbono
+2022-01-29;Grey;Sodio,Aluminio
