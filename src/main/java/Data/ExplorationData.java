@@ -154,20 +154,11 @@ public class ExplorationData {
          
         return filtrado;}
      
-     
+     /**
+      * metodo main ExplorationData
+      * @param args 
+      */
      public static void main(String[] args) {
-        /*List<Exploration> exploraciones = new ArrayList<>();
-        exploraciones.add(new Exploration("2020-01-10", "Mead", "Aluminio,Magnesio,Sodio"));
-        exploraciones.add(new Exploration("2022-01-10", "Lucerito", "Argón,Potasio,Sodio"));
-        exploraciones.add(new Exploration("2021-10-12", "Astra", "Cobre,Potasio,Plata"));
-        LocalDate fi=TransformarFecha("2020-01-10");
-        LocalDate ff=TransformarFecha("2021-10-12");
-        boolean valor=validarFecha("2020-01-10");
-        Exploration exp=new Exploration("2021-10-12","Astra","Cobre,Potasio,Plata");
         
-        System.out.println(fi);
-        System.out.println(ff);
-      
-        System.out.println(FiltradoFecha(fi,ff,exploraciones,"Aluminio"));*/ 
   
 }}

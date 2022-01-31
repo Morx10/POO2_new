@@ -16,11 +16,14 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 /**
  *
- * @author marit
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class RoversData {
     public static String ruta=CONSTANTES.ARCHIVOS+"/rovers-1.txt";
-    
+    /**
+     * Lee archivo en donde se guarda la información de los rovers
+     * @return Una lista con los rovers
+     */
     public static List<Rovers> cargarRovers(){
         List<Rovers> rovers = new ArrayList<>();
         try( BufferedReader bf = 
@@ -42,7 +45,9 @@ public class RoversData {
         }
         return rovers;
     }
-    
+    /**
+     * Sobreescribe el archivo de los rovers para actualizar su ubicación y dirección
+     */
     public static void escribirRover(){   
         try(BufferedWriter write 
                 = new BufferedWriter(new FileWriter(ruta));){
@@ -74,7 +79,10 @@ public class RoversData {
         }
         
     }
-    
+    /**
+     * metodo main de RoversData
+     * @param args 
+     */
     public static void main(String[] args){
         System.out.println(cargarRovers());
     }

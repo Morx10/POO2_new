@@ -14,12 +14,15 @@ import java.util.List;
 
 /**
  *
- * @author marit
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class CraterData {
     public static String ruta=CONSTANTES.ARCHIVOS+"/crateres_info.txt";
     public static String ruta2=CONSTANTES.ARCHIVOS+"/exploraciones.txt";
-    
+    /**
+     * Lee archivo y carga los crateres en una lista
+     * @return Lista con los crateres del terreno
+     */
     public static List<Crater> cargarCrateres(){
         List<Crater> crateres = new ArrayList<>();
         try( BufferedReader bf = 
@@ -43,7 +46,11 @@ public class CraterData {
         }
         return crateres;
     }
-    
+    /**
+     * Carga los minerales encontrados en el archivo de exploraciones
+     * @param crater Crater al cual se le van a ingresar los minerales encontrados
+     * @return una lista con los minerales encontrados
+     */
     private static ArrayList<String> cargarMinerales(String crater){
         ArrayList<String> minerales = null;
         try( BufferedReader bf = 
@@ -64,7 +71,10 @@ public class CraterData {
         }
         return minerales;
     }
-    
+    /**
+     * Lee uhn archivo en donde se encuentran los crateres que han sido sensados
+     * @return una lista con los nombres de los crateres sensados
+     */
     
     public static List<String> crateresSensados(){
         List<String> crateres = new ArrayList<>();
@@ -80,8 +90,11 @@ public class CraterData {
         }
         return crateres;
     }
-    
+    /**
+     * metodo main CraterData
+     * @param args 
+     */
     public static void main(String[] args){
-        System.out.println(cargarCrateres());
+       
     }
 }

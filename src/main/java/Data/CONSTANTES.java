@@ -9,10 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
- * @author marit
+ * Clase de variables fijas
+ * @author Grupo#1 Paralelo#3 POO
  */
-public abstract class CONSTANTES {
+public abstract class CONSTANTES {    
     public static final String ARCHIVOS = "datos";
     public static final List<String> minerales= new ArrayList<String>(Arrays.asList("Aluminio","Sodio","Cobre","Hierro","Titanio","Vanadio","Carbono","Calcio","Oro","Plata","Plomo"));
     
