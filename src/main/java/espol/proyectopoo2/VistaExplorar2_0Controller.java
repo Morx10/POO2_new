@@ -293,7 +293,7 @@ public class VistaExplorar2_0Controller implements Initializable {
     //NO SE TOCA
 
     /**
-     *
+     *Clase para crear el Hilo de movimiento
      */
     
     public static class MovRunnable implements Runnable{
@@ -306,9 +306,9 @@ public class VistaExplorar2_0Controller implements Initializable {
         public MovRunnable(){}
 
         /**
-         *
-         * @param partidaX
-         * @param partidaY
+         *Constructor del Hilo
+         * @param partidaX punto de partida en X
+         * @param partidaY punto de partida en Y
          */
         public MovRunnable(double partidaX, double partidaY){
             this.partidaX = partidaX;
