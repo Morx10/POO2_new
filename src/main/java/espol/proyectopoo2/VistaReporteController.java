@@ -52,8 +52,8 @@ public class VistaReporteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fIniciotxt.setPromptText("dd-mm-yy");
-        ffintxt.setPromptText("dd-mm-yy");
+        fIniciotxt.setPromptText("yyyy-mm-dd");
+        ffintxt.setPromptText("yyyy-mm-dd");
         mineralestxt.setPromptText("Mineral");
        
     }    
@@ -69,9 +69,9 @@ public class VistaReporteController implements Initializable {
         try{
             //List<Exploration> exploraciones = ExplorationData.obtenerExploracion();
         List<Exploration> exploraciones =new ArrayList<>();
-        exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
-        exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
-        exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
+        exploraciones.add(new Exploration("2020-01-10", "Mead", "Aluminio,Magnesio,Sodio"));
+        exploraciones.add(new Exploration("2022-01-01", "Lucerito", "Argón,Potasio,Sodio"));
+        exploraciones.add(new Exploration("2021-10-12", "Astra", "Cobre,Potasio,Plata"));
         String FechaI=this.fIniciotxt.getText();
         String FechaF=this.ffintxt.getText();
         String minerales=this.mineralestxt.getText();

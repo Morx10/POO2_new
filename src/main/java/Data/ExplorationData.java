@@ -65,17 +65,7 @@ public class ExplorationData {
      public static LocalDate TransformarFecha(String fecha){
         LocalDate fechafin=LocalDate.now();
         if(validarFecha(fecha)){
-            int posicion =fecha.indexOf("-");
-            String dia= fecha.substring(0,posicion);
-            fecha= fecha.substring(posicion+1);
-            posicion=fecha.indexOf("-");
-            String mes=fecha.substring(0,posicion);
-            fecha= fecha.substring(posicion+1);
-            String anyo=fecha;
-            int datodia = Integer.parseInt(dia);
-            int datomes = Integer.parseInt(mes);
-            int datoanyo = Integer.parseInt(anyo);
-            fechafin=  LocalDate.of(datoanyo,datomes,datodia); 
+           fechafin = LocalDate.parse(fecha); 
         }
      return fechafin;}
      
@@ -98,7 +88,7 @@ public class ExplorationData {
     
     public static boolean validarFecha(String fecha) {
         try {
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
             formatoFecha.setLenient(false);
             formatoFecha.parse(fecha);
         } 
