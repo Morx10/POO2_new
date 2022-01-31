@@ -412,8 +412,8 @@ public class VistaExplorar2_0Controller implements Initializable {
         } 
     
     /**
-     *
-     * @param grados
+     *Rota el imageView del Rover
+     * @param grados grados a rotar
      */
     public static void rotar(double grados){
         imgview.setRotate(grados);
@@ -422,7 +422,7 @@ public class VistaExplorar2_0Controller implements Initializable {
 
     /**
      *
-     * @return
+     * @return lista de Crateres 
      */
     public static List<Crater> getCrateres() {
         return crateres;
