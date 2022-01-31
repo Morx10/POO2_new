@@ -11,7 +11,7 @@ import javafx.beans.property.StringProperty;
 
 /**
  *Clase  que representa los datos y métodos de las diferentes exploraciones
- * @author Grace
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class Exploration {
     private  String fecha;
