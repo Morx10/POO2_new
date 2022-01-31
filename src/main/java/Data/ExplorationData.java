@@ -93,9 +93,9 @@ public class ExplorationData {
             formatoFecha.parse(fecha);
         } 
           catch (ParseException e) {
-            /**Alert a=new Alert(Alert.AlertType.INFORMATION);
+            Alert a=new Alert(Alert.AlertType.INFORMATION);
              a.setContentText("Formato de Fecha no válido");
-             a.show();*/
+             a.show();
             return false;}
         return true;
     }
@@ -108,7 +108,7 @@ public class ExplorationData {
      }
      
      public static void main(String[] args) {
-       
+       /*
         List<Exploration> exploraciones = new ArrayList<Exploration>();
         exploraciones.add(new Exploration("2020-01-10", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("2022-01-10", "Lucerito", "Argón,Potasio,Sodio"));
@@ -121,7 +121,7 @@ public class ExplorationData {
         System.out.println(valor);
         System.out.println(ValidationFecha(fi,ff,exp));
         System.out.println(ValidarMinerales(exp,"Magnesio"));
-        System.out.println(FiltradoFecha(fi,ff,exploraciones,"Aluminio")); 
+        System.out.println(FiltradoFecha(fi,ff,exploraciones,"Aluminio")); */
   
 }
 }
