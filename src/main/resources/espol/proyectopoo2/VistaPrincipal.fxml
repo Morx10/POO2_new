@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="marte_fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@fondo.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaPrincipalController">
+<StackPane fx:id="marte_fondo" maxHeight="1200" maxWidth="720" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@fondo.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.proyectopoo2.VistaPrincipalController">
    <children>
       <VBox fx:id="vboxOpciones" alignment="CENTER" prefHeight="450.0" prefWidth="700.0" spacing="20.0">
          <children>

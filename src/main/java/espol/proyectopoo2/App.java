@@ -33,7 +33,7 @@ public class App extends Application {
             stage.setTitle("Exploración en Marte");
             Image icon = new Image(getClass().getResourceAsStream("icon.png"));
             stage.getIcons().add(icon);
-            stage.setResizable(true);
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
         }catch(IOException ex){
