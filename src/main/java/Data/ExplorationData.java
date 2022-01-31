@@ -32,7 +32,7 @@ public class ExplorationData {
     
     public static void escribirExploracion(Crater c) throws IOException{
         try(BufferedWriter bf = 
-                new BufferedWriter(new FileWriter(archivoExploration))){
+                new BufferedWriter(new FileWriter((archivoExploration),true))){
             List<String> minerales =c.getMinerales();
             String str = "";
           

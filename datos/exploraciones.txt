@@ -1,1 +1,3 @@
-2022-01-29;Grey;Sodio,Aluminio
+
+2022-01-30;Grey;Sodio,Oro,Vanadio,Plomo,Calcio,Plomo,Oro,Plata,Calcio,Carbono,Hierro
+2022-01-30;Markham;Plomo,Hierro,Titanio,Hierro,Plata,Aluminio,Sodio,Cobre,Vanadio
