@@ -93,28 +93,36 @@ public class ExplorationData {
             formatoFecha.parse(fecha);
         } 
           catch (ParseException e) {
-            Alert a=new Alert(Alert.AlertType.INFORMATION);
+           /* Alert a=new Alert(Alert.AlertType.INFORMATION);
              a.setContentText("Formato de Fecha no válido");
-             a.show();
+             a.show();*/
             return false;}
         return true;
     }
      
      
      public static List<Exploration>  FiltradoFecha(LocalDate FInicio,LocalDate Ffin,List<Exploration> explorations, String mineral){
-         List<Exploration>  filtrado=explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
+         List<Exploration> filtrado= new ArrayList<>();
+         for(Exploration ex:explorations){
+          if(((ValidationFecha(FInicio,Ffin,ex))&&(ValidarMinerales(ex,mineral)))){
+              filtrado.add(ex);
+              }
+         
+         
+         }return filtrado;
+}
+         /*List<Exploration>  filtrado=explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
          Collections.sort(filtrado, (j1, j2) -> (j1.getNameCrater()).compareTo((j2.getNameCrater())));
          if(filtrado.isEmpty()){
              Alert a=new Alert(Alert.AlertType.INFORMATION);
              a.setContentText("No ha datos que mostrar");
              a.show();}
          
-        return filtrado;
-     }
+        return filtrado;*/
+     
      
      public static void main(String[] args) {
-       /*
-        List<Exploration> exploraciones = new ArrayList<Exploration>();
+        List<Exploration> exploraciones = new ArrayList<>();
         exploraciones.add(new Exploration("2020-01-10", "Mead", "Aluminio,Magnesio,Sodio"));
         exploraciones.add(new Exploration("2022-01-10", "Lucerito", "Argón,Potasio,Sodio"));
         exploraciones.add(new Exploration("2021-10-12", "Astra", "Cobre,Potasio,Plata"));
@@ -126,7 +134,7 @@ public class ExplorationData {
         System.out.println(valor);
         System.out.println(ValidationFecha(fi,ff,exp));
         System.out.println(ValidarMinerales(exp,"Magnesio"));
-        System.out.println(FiltradoFecha(fi,ff,exploraciones,"Aluminio")); */
+        System.out.println(FiltradoFecha(fi,ff,exploraciones,"Aluminio")); 
   
 }
 }
