@@ -46,7 +46,7 @@ public class VistaReporteController implements Initializable {
     @FXML
     private TableColumn<Exploration,String> Minerales;
     
-    private ObservableList<Exploration> datos;
+    private List<Exploration> datos;
     /**
      * Initializes the controller class.
      */
@@ -85,7 +85,7 @@ public class VistaReporteController implements Initializable {
         this.Fecha.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
         this.Nombre.setCellValueFactory(new PropertyValueFactory<>("NameCrater"));
         this.Minerales.setCellValueFactory(new PropertyValueFactory<>("Mineral"));
-        this.TablaRegistro.setItems(datos);}
+        this.TablaRegistro.setItems(FXCollections.observableList(datos));}
         catch(NullPointerException ex){
            Alert a = new Alert(Alert.AlertType.ERROR);
            a.setContentText("Por favor llenar todos los campos");

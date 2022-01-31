@@ -93,30 +93,35 @@ public class ExplorationData {
             formatoFecha.parse(fecha);
         } 
           catch (ParseException e) {
-            Alert a=new Alert(Alert.AlertType.INFORMATION);
+            /**Alert a=new Alert(Alert.AlertType.INFORMATION);
              a.setContentText("Formato de Fecha no válido");
-             a.show();
+             a.show();*/
             return false;}
         return true;
     }
      
      
-     public static ObservableList<Exploration>  FiltradoFecha(LocalDate FInicio,LocalDate Ffin,List<Exploration> explorations, String mineral){
+     public static List<Exploration>  FiltradoFecha(LocalDate FInicio,LocalDate Ffin,List<Exploration> explorations, String mineral){
          List<Exploration>  filtrado=explorations.stream().filter(x->((ValidationFecha(FInicio,Ffin,x))&&(ValidarMinerales(x,mineral)))).collect(Collectors.toList());
          Collections.sort(filtrado, (j1, j2) -> (j1.getNameCrater()).compareTo((j2.getNameCrater())));
-         ObservableList<Exploration>  datos=FXCollections.observableArrayList();
-         for(Exploration ex:filtrado){
-             datos.add(ex);}
-        return datos;
+        return filtrado;
      }
      
      public static void main(String[] args) {
-        /**
+       
         List<Exploration> exploraciones = new ArrayList<Exploration>();
-        exploraciones.add(new Exploration("12-02-2020", "Mead", "Aluminio,Magnesio,Sodio"));
-        exploraciones.add(new Exploration("10-01-2022", "Lucerito", "Argón,Potasio,Sodio"));
-        exploraciones.add(new Exploration("10-12-2021", "Astra", "Cobre,Potasio,Plata"));
-        System.out.println(FiltradoFecha("10-01-2020","11-10-2021",exploraciones,"Aluminio")); */
+        exploraciones.add(new Exploration("2020-01-10", "Mead", "Aluminio,Magnesio,Sodio"));
+        exploraciones.add(new Exploration("2022-01-10", "Lucerito", "Argón,Potasio,Sodio"));
+        exploraciones.add(new Exploration("2021-10-12", "Astra", "Cobre,Potasio,Plata"));
+        LocalDate fi=TransformarFecha("2020-01-10");
+        LocalDate ff=TransformarFecha("2021-10-12");
+        boolean valor=validarFecha("2020-01-10");
+        Exploration exp=new Exploration("2020-01-10", "Mead", "Aluminio,Magnesio,Sodio");
+        System.out.println(fi);
+        System.out.println(valor);
+        System.out.println(ValidationFecha(fi,ff,exp));
+        System.out.println(ValidarMinerales(exp,"Magnesio"));
+        System.out.println(FiltradoFecha(fi,ff,exploraciones,"Aluminio")); 
   
 }
 }
