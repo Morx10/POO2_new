@@ -5,7 +5,6 @@
 package espol.proyectopoo2;
 
 import Data.CraterData;
-import Data.RoversData;
 import Objetos.Crater;
 import Objetos.Rovers;
 import java.io.IOException;
@@ -18,7 +17,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -30,7 +28,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -38,9 +35,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 /**
- * FXML Controller class
- *
- * @author marit
+ * Clase controladora FXML para la Vista Explorar
+ * 
+ * @author Grupo#1 Paralelo#3 POO
  */
 public class VistaExplorar2_0Controller implements Initializable {
     
@@ -61,7 +58,7 @@ public class VistaExplorar2_0Controller implements Initializable {
     @FXML
     private VBox datos;
     /**
-     * Initializes the controller class.
+     * Inicializa la clase Explorar.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -272,7 +269,11 @@ public class VistaExplorar2_0Controller implements Initializable {
         Parent root = App.loadFXML("VistaPrincipal");
         App.setRoot(root);   
     }
-    
+    /**
+     * mueve el objeto tipo Rovers
+     * @param ubicacionX ubicacion de partida en X del objeto
+     * @param ubicacionY ubicacion de partida en Y del objeto
+     */
     public static void moverobjeto(double ubicacionX, double ubicacionY){
         
 
