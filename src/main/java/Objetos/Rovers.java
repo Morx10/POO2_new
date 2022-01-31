@@ -170,4 +170,10 @@ public abstract class Rovers implements Acciones {
         this.grados = grados;
     }
     
+    public void resetGrados(){
+        this.grados=0;
+    }
+        
+    
+    
 }

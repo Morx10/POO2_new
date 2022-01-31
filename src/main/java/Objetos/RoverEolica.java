@@ -25,7 +25,8 @@ public class RoverEolica extends Rovers {
         alert.setContentText("despliegue de molinos");
         alert.setHeaderText(null);
         alert.showAndWait();
-        VistaExplorar2_0Controller.rotar(-90);
+        super.resetGrados();
+        super.girar(-90);
         RoversData.escribirRover();
         super.setBateria(100);
     }
