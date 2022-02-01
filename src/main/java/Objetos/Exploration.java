@@ -4,7 +4,6 @@
  */
 package Objetos;
 
-
 /**
  *Clase  que representa los datos y métodos de las diferentes exploraciones
  * @author Grupo#1 Paralelo#3 POO

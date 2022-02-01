@@ -27,7 +27,8 @@ public class Crater {
      * @param latitud Coordenada y del cráter
      * @param radiocrater Radio del cráter
      */
-    public Crater(String idcrater, String nombrecrater, double longitud, double latitud, double radiocrater) {
+    public Crater(String idcrater, String nombrecrater, double longitud, 
+            double latitud, double radiocrater) {
         this.idcrater = idcrater;
         this.nombrecrater = nombrecrater;
         this.latitud = latitud;
